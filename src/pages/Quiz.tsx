@@ -1,16 +1,17 @@
-
-
 import React from 'react';
-import { IonButton, IonContent, IonToolbar, IonTitle, IonItem } from '@ionic/react';
+import { IonPage, IonButton, IonContent, IonToolbar, IonTitle } from '@ionic/react';
 
-const Quiz: React.FC = () => {
-    return ( 
-        <IonContent fullscreen class="ion-padding">
-            <IonToolbar>
-                <IonTitle size="large" class="title">Get Your Greenback Quiz</IonTitle>
-                <IonButton expand="block" routerLink="/quiz/question1">Start Quiz</IonButton>
-            </IonToolbar>
-        </IonContent>);
-    };
+const Quiz: React.FC<{ question: string }> = ({ question }) => {
+    return (
+        <IonPage>
+            <IonContent fullscreen class="ion-padding">
+                <IonToolbar>
+                    <IonTitle class="title">Get Your<br />Greenback Quiz</IonTitle>
+                    <IonButton routerLink="/quiz/question" >Start Quiz</IonButton>
+                </IonToolbar>
+            </IonContent>
+        </IonPage>
+    );
+};
 
 export default Quiz;

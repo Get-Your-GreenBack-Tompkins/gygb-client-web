@@ -2,7 +2,18 @@
 http://ionicframework.com/docs/theming/ */
 
 .title {
-  padding-bottom: 5%;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  font-size: 36px;
+}
+
+.subtitle {
+  margin-top: -4%;
+  margin-bottom: 2%;
+}
+
+ion-button {
+  margin-bottom: 1%;
 }
 
 /** Ionic CSS Variables **/

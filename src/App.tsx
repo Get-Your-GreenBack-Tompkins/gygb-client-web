@@ -3,7 +3,10 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Quiz from './pages/Quiz';
-import Question1 from './pages/Question1';
+import PQuestion from './pages/PQuestion';
+import Correct from './pages/Correct';
+import Incorrect from './pages/Incorrect';
+//import CQuestion from './components/CQuestion';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -29,7 +32,9 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/quiz" component={Quiz} exact={true} />
-        <Route path="/quiz/question1" component={Question1} exact={true} />
+        <Route path="/quiz/question" component={PQuestion} exact={true} />
+        <Route path="/quiz/correct" component={Correct} exact={true} />
+        <Route path="/quiz/incorrect" component={Incorrect} exact={true} />
         <Route exact path="/" render={() => <Redirect to="/quiz" />} />
       </IonRouterOutlet>
     </IonReactRouter>
