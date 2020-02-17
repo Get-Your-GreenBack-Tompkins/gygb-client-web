@@ -1,4 +1,24 @@
 {
-  "1": "hi",
-  "2": "bye"
+  "1": {
+    "question": "hi1",
+    "answers": [
+      "bye1.1",
+      "bye1.2",
+      "bye1.3",
+      "bye1.4"
+    ],
+    "correct_text": "yeet1",
+    "correct": 0
+  },
+  "2": {
+    "question": "hi2",
+    "answers": [
+      "bye2.1",
+      "bye2.2",
+      "bye2.3",
+      "bye2.4"
+    ],
+    "correct_text": "yeet2",
+    "correct": 1
+  }
 }

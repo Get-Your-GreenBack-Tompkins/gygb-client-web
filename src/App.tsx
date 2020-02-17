@@ -3,10 +3,9 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Quiz from './pages/Quiz';
-import PQuestion from './pages/PQuestion';
-import Correct from './pages/Correct';
+import Question from './pages/Question';
 import Incorrect from './pages/Incorrect';
-//import CQuestion from './components/CQuestion';
+import Correct from './pages/Correct';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,18 +26,18 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/quiz" component={Quiz} exact={true} />
-        <Route path="/quiz/question" component={PQuestion} exact={true} />
-        <Route path="/quiz/correct" component={Correct} exact={true} />
-        <Route path="/quiz/incorrect" component={Incorrect} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/quiz" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
-
+export const App: React.FC = () =>
+  (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route exact path="/quiz" component={Quiz} />
+          <Route path={`/quiz/question/:num`} component={Question} />
+          <Route path={`/quiz/incorrect/:num`} component={Incorrect} />
+          <Route path={`/quiz/correct/:num`} component={Correct} />
+          <Redirect exact from="/" to="/quiz" />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
 export default App;
