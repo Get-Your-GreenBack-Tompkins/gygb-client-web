@@ -7,7 +7,7 @@ const Quiz: React.FC = () => {
       <IonContent fullscreen class="ion-padding">
         <IonToolbar>
           <IonTitle class="title">Get Your<br />Greenback Quiz</IonTitle>
-          <IonButton routerLink="/quiz/question/1">Start Quiz</IonButton>
+          <IonButton routerLink="/quiz/question">Start Quiz</IonButton>
         </IonToolbar>
       </IonContent>
     </IonPage >
