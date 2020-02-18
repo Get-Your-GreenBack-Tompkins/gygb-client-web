@@ -8,13 +8,16 @@ interface Props extends RouteComponentProps {
   setQuestionNum: Function;
 }
 
-const end = (questionNum: number) => {
+const generateSkipButton = (questionNum: number, setQuestionNum: Function) => {
   const total = Object.keys(data).length;
   if (questionNum === total) {
-    return "/quiz/end";
-  }
-  else {
-    return "/quiz/question";
+    return (
+      <IonButton color="medium" routerLink="/quiz/end">Skip</IonButton>
+      );
+  } else {
+    return (
+    <IonButton color="medium" onClick={() => setQuestionNum(questionNum + 1)} routerLink="/quiz/question">Skip</IonButton>
+    );
   }
 }
 
@@ -25,7 +28,7 @@ const Incorrect: React.FC<Props> = ({ questionNum, setQuestionNum }) => {
         <IonToolbar>
           <IonTitle size="large" class="title">Whoops!</IonTitle>
           <IonTitle class="subtitle">That isn't quite right...</IonTitle>
-          <IonButton color="medium" onClick={() => setQuestionNum(questionNum + 1)} routerLink={end(questionNum)}>Skip</IonButton>
+          {generateSkipButton(questionNum, setQuestionNum)}
           <IonButton routerLink="/quiz/question">Try Again</IonButton>
         </IonToolbar>
       </IonContent>

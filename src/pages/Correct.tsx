@@ -10,19 +10,16 @@ interface Props extends RouteComponentProps {
   setNumCorrect: Function;
 }
 
-const end = (questionNum: number) => {
-  console.log("CORRECT questionNum")
-  console.log(questionNum);
+const generateContinueButton = (questionNum: number, setQuestionNum: Function, numCorrect: number, setNumCorrect: Function) => {
   const total = Object.keys(data).length;
-  console.log("TOTAL");
-  console.log(total);
   if (questionNum === total) {
-    console.log("EQUAL");
-    return "/quiz/end";
-  }
-  else {
-    console.log("NOT EQUAL");
-    return "/quiz/question";
+    return (
+      <IonButton onClick={() => { setNumCorrect(numCorrect + 1); }} color="medium" routerLink="/quiz/end">Continue</IonButton>
+      );
+  } else {
+    return (
+    <IonButton onClick={() => { setQuestionNum(questionNum + 1); setNumCorrect(numCorrect + 1); }} routerLink="/quiz/question">Continue</IonButton>
+    );
   }
 }
 
@@ -34,7 +31,7 @@ const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, numCorrect, set
         <IonToolbar>
           <IonTitle size="large" class="title">Correct!</IonTitle>
           <IonTitle class="subtitle">{val.correct_text}!</IonTitle>
-          <IonButton onClick={() => { setQuestionNum(questionNum + 1); setNumCorrect(numCorrect + 1); }} routerLink={end(questionNum)}>Continue</IonButton>
+          {generateContinueButton(questionNum, setQuestionNum, numCorrect, setNumCorrect)}
         </IonToolbar>
       </IonContent>
     </IonPage >
