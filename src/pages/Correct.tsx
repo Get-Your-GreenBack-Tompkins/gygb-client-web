@@ -14,11 +14,11 @@ const generateContinueButton = (questionNum: number, setQuestionNum: Function, n
   const total = Object.keys(data).length;
   if (questionNum === total) {
     return (
-      <IonButton onClick={() => { setNumCorrect(numCorrect + 1); }} color="medium" routerLink="/quiz/end">Continue</IonButton>
-      );
+      <IonButton onClick={() => { setNumCorrect(numCorrect + 1); }} routerLink="/quiz/end">Continue</IonButton>
+    );
   } else {
     return (
-    <IonButton onClick={() => { setQuestionNum(questionNum + 1); setNumCorrect(numCorrect + 1); }} routerLink="/quiz/question">Continue</IonButton>
+      <IonButton onClick={() => { setQuestionNum(questionNum + 1); setNumCorrect(numCorrect + 1); }} routerLink="/quiz/question">Continue</IonButton>
     );
   }
 }

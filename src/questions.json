@@ -7,7 +7,7 @@
       "bye1.3",
       "bye1.4"
     ],
-    "correct_text": "yeet1",
+    "correct_text": "correct1",
     "correct": 0
   },
   "2": {
@@ -18,7 +18,7 @@
       "bye2.3",
       "bye2.4"
     ],
-    "correct_text": "yeet2",
+    "correct_text": "correct2",
     "correct": 1
   }
 }
