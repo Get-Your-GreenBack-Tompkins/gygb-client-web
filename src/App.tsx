@@ -27,15 +27,31 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import axios from 'axios';
+
+const sendGetRequest = async () => {
+  const response = await axios({
+    "url": "https://gygb-backend-v1.herokuapp.com/v1/quiz/web-client",
+    "method": "GET",
+    "timeout": 0,
+  });
+  let data = await response.data;
+  console.log(response.data);
+  return data;
+};
+
 export const App: React.FC = () => {
   const [questionNum, setQuestionNum] = useState(1);
   const [numCorrect, setNumCorrect] = useState(0);
-  console.log(numCorrect);
+  const [data, setData] = React.useState();
+  React.useEffect(() => {
+    sendGetRequest().then(data => setData(data));
+  }, []);
   return (
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/quiz" component={Quiz} />
+          <Route exact path="/quiz" render={(props) => <Quiz {...props} data={data} />} />
           <Route path="/quiz/question"
             render={(props) => <Question {...props} questionNum={questionNum} />} />
           <Route path="/quiz/incorrect"
