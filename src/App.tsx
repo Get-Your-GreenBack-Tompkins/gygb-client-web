@@ -29,31 +29,30 @@ import './theme/variables.css';
 
 import axios from 'axios';
 
-const sendGetRequest = async () => {
+const sendGetQuizRequest = async () => {
   const response = await axios({
     "url": "https://gygb-backend-v1.herokuapp.com/v1/quiz/web-client",
     "method": "GET",
     "timeout": 0,
   });
   let data = await response.data;
-  console.log(response.data);
   return data;
 };
 
 export const App: React.FC = () => {
   const [questionNum, setQuestionNum] = useState(1);
   const [numCorrect, setNumCorrect] = useState(0);
-  const [data, setData] = React.useState();
+  const [quiz, setQuiz] = React.useState();
   React.useEffect(() => {
-    sendGetRequest().then(data => setData(data));
+    sendGetQuizRequest().then(quiz => setQuiz(quiz));
   }, []);
   return (
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/quiz" render={(props) => <Quiz {...props} data={data} />} />
+          <Route exact path="/quiz" render={(props) => <Quiz {...props} quiz={quiz} />} />
           <Route path="/quiz/question"
-            render={(props) => <Question {...props} questionNum={questionNum} />} />
+            render={(props) => <Question {...props} questionNum={questionNum} quiz={quiz} />} />
           <Route path="/quiz/incorrect"
             render={(props) => <Incorrect {...props} questionNum={questionNum} setQuestionNum={setQuestionNum} />} />
           <Route path="/quiz/correct"

@@ -3,17 +3,15 @@ import { IonPage, IonButton, IonContent, IonToolbar, IonTitle } from '@ionic/rea
 import { RouteComponentProps } from 'react-router';
 
 interface Props extends RouteComponentProps {
-  data: any;
+  quiz: any;
 }
 
-const Quiz: React.FC<Props> = ({ data }) => {
-  console.log("DATA");
-  console.log(data);
+const Quiz: React.FC<Props> = ({ quiz }) => {
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
         <IonToolbar>
-          <IonTitle class="title">{data.name}</IonTitle>
+          <IonTitle class="title">{quiz && quiz.name}</IonTitle>
           <IonButton routerLink="/quiz/question">Start Quiz</IonButton>
         </IonToolbar>
       </IonContent>
