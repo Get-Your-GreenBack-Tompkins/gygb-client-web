@@ -16,24 +16,24 @@ const sendGetAnswerRequest = async (questionId: any, answerId: any) => {
     "timeout": 0,
   });
   let data = await response.data;
-  console.log(data);
-  return data;
+  return "xxxxxxxxxxxx";
 };
 
 const Question: React.FC<Props> = ({ quiz, questionNum }) => {
   const val = quiz && quiz.questions[questionNum-1];
-  //console.log(sendGetAnswerRequest("NvVbhHbiWDv0fw5Y5H9j", "4XUigHcwNzyzeK6UjSws"));
+
   const createAnswers = () => {
     let answers = [];
     const answerNum = val && val.answers.length;
 
     for (let i = 0; i < answerNum; i++) {
       let answer: any;
-      const quizID = val && val.id;
+      const qId = val && val.id;
       const ansID = val && val.answers[i].id;
-      sendGetAnswerRequest(quizID, ansID).then(ans => answer = ans);
+      
+      sendGetAnswerRequest(qId, ansID).then(ans => answer = ans);
       console.log(answer);
-      if (answer && answer.correct) {
+      if (false) {
         answers.push(<IonButton expand="block" routerLink="/quiz/correct">{val && val.answers[i].text}</IonButton>)
       }
       else {
@@ -48,6 +48,9 @@ const Question: React.FC<Props> = ({ quiz, questionNum }) => {
       <IonContent fullscreen class="ion-padding">
         <IonToolbar>
           <IonTitle class="title">{quiz && quiz.questions[questionNum-1].header}</IonTitle>
+          <IonTitle class="subtitle">
+            {quiz && quiz.questions[questionNum-1].body}
+          </IonTitle>
           {createAnswers()}
         </IonToolbar>
       </IonContent>
