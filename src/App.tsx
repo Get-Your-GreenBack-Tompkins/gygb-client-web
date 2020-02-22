@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonLoading } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Quiz from './pages/Quiz';
 import Question from './pages/Question';
@@ -46,6 +46,9 @@ export const App: React.FC = () => {
   React.useEffect(() => {
     sendGetQuizRequest().then(quiz => setQuiz(quiz));
   }, []);
+  if (!quiz) {
+    return <IonLoading isOpen={true} message={"Loading..."} />
+  }
   return (
     <IonApp>
       <IonReactRouter>
