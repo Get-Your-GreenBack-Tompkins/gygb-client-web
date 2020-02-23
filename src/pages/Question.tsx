@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
 import { IonPage, IonButton, IonContent, IonToolbar, IonTitle, IonLoading } from '@ionic/react';
-//import data from '../questions.json';
 import { RouteComponentProps } from 'react-router';
 import axios from 'axios';
 
 interface Props extends RouteComponentProps {
   questionNum: number;
   quiz: any;
+  setAnswer: Function;
 }
 
 
-const Question: React.FC<Props> = ({ quiz, questionNum }) => {
+const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
 
-  const [correct, setCorrect] = React.useState();
-  console.log(quiz);
+  const question = quiz.questions[questionNum - 1];
+
   const sendGetAnswerRequest = () => {
-    const question = quiz.questions[questionNum - 1];
     let data = question.answers.map((el: any) => {
       return axios({
         "url": `https://gygb-backend-v1.herokuapp.com/v1/quiz/web-client/question/${question.id}/verify-answer/${el.id}`,
@@ -27,6 +26,7 @@ const Question: React.FC<Props> = ({ quiz, questionNum }) => {
   };
 
   const [results, setResults] = React.useState(sendGetAnswerRequest());
+  const [correct, setCorrect] = React.useState();
 
   useEffect(() => {
     results.then(data => {
@@ -38,15 +38,25 @@ const Question: React.FC<Props> = ({ quiz, questionNum }) => {
     return <IonLoading isOpen={true} message={"Loading..."} />
   }
 
+  function createSubtitle() {
+    return { __html: quiz && question.body };
+  }
+
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
         <IonToolbar>
           <IonTitle class="title">{quiz && quiz.questions[questionNum - 1].header}</IonTitle>
+          <IonTitle class="subtitle">
+            <div dangerouslySetInnerHTML={createSubtitle()} />
+          </IonTitle>
+
           {quiz.questions[questionNum - 1].answers.map((x: any, i: number) => {
             let ansCorrect = correct[i].data.correct;
             let linkText = ansCorrect ? 'correct' : 'incorrect';
-            return <IonButton expand="block" routerLink={`/quiz/${linkText}`}>{x.text}</IonButton>
+            return <IonButton expand="block" routerLink={`/quiz/${linkText}`} onClick={() => setAnswer(correct[i].data.message)}>
+              <div dangerouslySetInnerHTML={{ __html: x.text }} />
+            </IonButton>
           })}
 
         </IonToolbar>

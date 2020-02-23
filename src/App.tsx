@@ -43,6 +43,7 @@ export const App: React.FC = () => {
   const [questionNum, setQuestionNum] = useState(1);
   const [numCorrect, setNumCorrect] = useState(0);
   const [quiz, setQuiz] = React.useState();
+  const [answer, setAnswer] = React.useState();
   React.useEffect(() => {
     sendGetQuizRequest().then(quiz => setQuiz(quiz));
   }, []);
@@ -55,15 +56,18 @@ export const App: React.FC = () => {
         <IonRouterOutlet>
           <Route exact path="/quiz" render={(props) => <Quiz {...props} quiz={quiz} />} />
           <Route path="/quiz/question"
-            render={(props) => <Question {...props} questionNum={questionNum} quiz={quiz} />} />
+            render={(props) => <Question {...props} questionNum={questionNum}
+              quiz={quiz} setAnswer={setAnswer} />} />
           <Route path="/quiz/incorrect"
-            render={(props) => <Incorrect {...props} questionNum={questionNum} setQuestionNum={setQuestionNum} />} />
+            render={(props) => <Incorrect {...props} answer={answer} quiz={quiz}
+              questionNum={questionNum} setQuestionNum={setQuestionNum} />} />
           <Route path="/quiz/correct"
             render={(props) => <Correct {...props}
               questionNum={questionNum} setQuestionNum={setQuestionNum}
-              numCorrect={numCorrect} setNumCorrect={setNumCorrect} />} />
+              numCorrect={numCorrect} setNumCorrect={setNumCorrect}
+              quiz={quiz} answer={answer} />} />
           <Route path="/quiz/end"
-            render={(props) => <End {...props} numCorrect={numCorrect} />} />
+            render={(props) => <End {...props} numCorrect={numCorrect} quiz={quiz} />} />
           <Redirect exact from="/" to="/quiz" />
         </IonRouterOutlet>
       </IonReactRouter>
