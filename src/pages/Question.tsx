@@ -38,6 +38,10 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
     return <IonLoading isOpen={true} message={"Loading..."} />
   }
 
+  function createTitle() {
+    return { __html: quiz && quiz.questions[questionNum - 1].header };
+  }
+
   function createSubtitle() {
     return { __html: quiz && question.body };
   }
@@ -46,7 +50,9 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
     <IonPage>
       <IonContent fullscreen class="ion-padding">
         <IonToolbar>
-          <IonTitle class="title">{quiz && quiz.questions[questionNum - 1].header}</IonTitle>
+          <IonTitle class="title">
+            <div dangerouslySetInnerHTML={createTitle()} />
+          </IonTitle>
           <IonTitle class="subtitle">
             <div dangerouslySetInnerHTML={createSubtitle()} />
           </IonTitle>
