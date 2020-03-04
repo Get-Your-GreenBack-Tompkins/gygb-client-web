@@ -21,22 +21,28 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
   const question = quiz.questions[questionNum - 1];
 
   const sendGetAnswerRequest = () => {
-    let data = question.answers.map((el: any) => {
+    let data = question.answers.map((el: any, i: number) => {
       return api.get(
-        `/quiz/web-client/question/${question.id}/verify-answer/${el.id}`
+        `/quiz/web-client/question/${question.id}/verify-answer/${i}`
       );
     });
 
     return Promise.all(data).then(result => result);
   };
 
-  const [results, setResults] = React.useState(sendGetAnswerRequest());
+  const [results, setResults] = React.useState();
   const [correct, setCorrect] = React.useState();
 
   useEffect(() => {
-    results.then(data => {
-      setCorrect(data);
-    });
+    setResults(sendGetAnswerRequest());
+  }, [questionNum]);
+
+  useEffect(() => {
+    if (results) {
+      results.then((data: any) => {
+        setCorrect(data);
+      });
+    }
   }, [results]);
 
   if (!correct) {
@@ -64,6 +70,7 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
 
           {quiz.questions[questionNum - 1].answers.map((x: any, i: number) => {
             let ansCorrect = correct[i].data.correct;
+            console.log(correct);
             let linkText = ansCorrect ? "correct" : "incorrect";
             return (
               <IonButton
