@@ -20,22 +20,19 @@ interface Props extends RouteComponentProps {
 const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
   const question = quiz.questions[questionNum - 1];
 
-  const sendGetAnswerRequest = () => {
+  const [results, setResults] = React.useState();
+  const [correct, setCorrect] = React.useState();
+
+  useEffect(() => {
     let data = question.answers.map((el: any, i: number) => {
       return api.get(
         `/quiz/web-client/question/${question.id}/verify-answer/${i}`
       );
     });
 
-    return Promise.all(data).then(result => result);
-  };
-
-  const [results, setResults] = React.useState();
-  const [correct, setCorrect] = React.useState();
-
-  useEffect(() => {
-    setResults(sendGetAnswerRequest());
-  }, [questionNum]);
+    let res = Promise.all(data).then(result => result);
+    setResults(res);
+  }, [questionNum, question]);
 
   useEffect(() => {
     if (results) {
