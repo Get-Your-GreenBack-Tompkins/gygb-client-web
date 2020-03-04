@@ -1,6 +1,21 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+.title {
+  margin-top: 10%;
+  margin-bottom: 5%;
+  font-size: 36px;
+}
+
+.subtitle {
+  margin-top: -4%;
+  margin-bottom: 2%;
+}
+
+ion-button {
+  margin-bottom: 1%;
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -10,6 +25,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
   --ion-color-primary-tint: #4c8dff;
+  text-align: center;
 
   /** secondary **/
   --ion-color-secondary: #0cd1e8;
