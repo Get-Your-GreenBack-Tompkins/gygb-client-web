@@ -1,7 +1,15 @@
-import React, { useEffect } from 'react';
-import { IonPage, IonButton, IonContent, IonToolbar, IonTitle, IonLoading } from '@ionic/react';
-import { RouteComponentProps } from 'react-router';
-import axios from 'axios';
+import React, { useEffect } from "react";
+import {
+  IonPage,
+  IonButton,
+  IonContent,
+  IonToolbar,
+  IonTitle,
+  IonLoading
+} from "@ionic/react";
+import { RouteComponentProps } from "react-router";
+
+import api from "../api";
 
 interface Props extends RouteComponentProps {
   questionNum: number;
@@ -9,19 +17,16 @@ interface Props extends RouteComponentProps {
   setAnswer: Function;
 }
 
-
 const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
-
   const question = quiz.questions[questionNum - 1];
 
   const sendGetAnswerRequest = () => {
     let data = question.answers.map((el: any) => {
-      return axios({
-        "url": `https://gygb-backend-v1.herokuapp.com/v1/quiz/web-client/question/${question.id}/verify-answer/${el.id}`,
-        "method": "GET",
-        "timeout": 0,
-      })
+      return api.get(
+        `/quiz/web-client/question/${question.id}/verify-answer/${el.id}`
+      );
     });
+
     return Promise.all(data).then(result => result);
   };
 
@@ -30,12 +35,12 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
 
   useEffect(() => {
     results.then(data => {
-      setCorrect(data)
-    })
-  }, [results])
+      setCorrect(data);
+    });
+  }, [results]);
 
   if (!correct) {
-    return <IonLoading isOpen={true} message={"Loading..."} />
+    return <IonLoading isOpen={true} message={"Loading..."} />;
   }
 
   function createSubtitle() {
@@ -46,22 +51,29 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
     <IonPage>
       <IonContent fullscreen class="ion-padding">
         <IonToolbar>
-          <IonTitle class="title">{quiz && quiz.questions[questionNum - 1].header}</IonTitle>
+          <IonTitle class="title">
+            {quiz && quiz.questions[questionNum - 1].header}
+          </IonTitle>
           <IonTitle class="subtitle">
             <div dangerouslySetInnerHTML={createSubtitle()} />
           </IonTitle>
 
           {quiz.questions[questionNum - 1].answers.map((x: any, i: number) => {
             let ansCorrect = correct[i].data.correct;
-            let linkText = ansCorrect ? 'correct' : 'incorrect';
-            return <IonButton expand="block" routerLink={`/quiz/${linkText}`} onClick={() => setAnswer(correct[i].data.message)}>
-              <div dangerouslySetInnerHTML={{ __html: x.text }} />
-            </IonButton>
+            let linkText = ansCorrect ? "correct" : "incorrect";
+            return (
+              <IonButton
+                expand="block"
+                routerLink={`/quiz/${linkText}`}
+                onClick={() => setAnswer(correct[i].data.message)}
+              >
+                <div dangerouslySetInnerHTML={{ __html: x.text }} />
+              </IonButton>
+            );
           })}
-
         </IonToolbar>
       </IonContent>
-    </IonPage >
+    </IonPage>
   );
 };
 

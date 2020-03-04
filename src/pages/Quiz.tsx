@@ -15,7 +15,7 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
           <IonButton routerLink="/quiz/question">Start Quiz</IonButton>
         </IonToolbar>
       </IonContent>
-    </IonPage >
+    </IonPage>
   );
 };
 
