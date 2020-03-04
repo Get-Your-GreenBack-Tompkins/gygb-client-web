@@ -40,6 +40,7 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
         setCorrect(data);
       });
     }
+
   }, [results]);
 
   if (!correct) {
@@ -67,7 +68,6 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
 
           {quiz.questions[questionNum - 1].answers.map((x: any, i: number) => {
             let ansCorrect = correct[i].data.correct;
-            console.log(correct);
             let linkText = ansCorrect ? "correct" : "incorrect";
             return (
               <IonButton
