@@ -24,12 +24,12 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
   const [correct, setCorrect] = React.useState();
 
   useEffect(() => {
+    setCorrect(null);
     let data = question.answers.map((el: any, i: number) => {
       return api.get(
         `/quiz/web-client/question/${question.id}/verify-answer/${i}`
       );
     });
-
     let res = Promise.all(data).then(result => result);
     setResults(res);
   }, [questionNum, question]);
@@ -40,7 +40,6 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
         setCorrect(data);
       });
     }
-
   }, [results]);
 
   if (!correct) {
@@ -67,7 +66,7 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
           </IonTitle>
 
           {quiz.questions[questionNum - 1].answers.map((x: any, i: number) => {
-            let ansCorrect = correct[i].data.correct;
+            let ansCorrect = correct[i] && correct[i].data.correct;
             let linkText = ansCorrect ? "correct" : "incorrect";
             return (
               <IonButton
