@@ -5,7 +5,12 @@ import {
   IonContent,
   IonToolbar,
   IonTitle,
-  IonLoading
+  IonLoading,
+  IonItem,
+  IonLabel,
+  IonRow,
+  IonHeader,
+  IonCol
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 
@@ -56,14 +61,14 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
 
   return (
     <IonPage>
-      <IonContent fullscreen class="ion-padding">
-        <IonToolbar>
-          <IonTitle class="title">
-            <div dangerouslySetInnerHTML={createTitle()} />
-          </IonTitle>
-          <IonTitle class="subtitle">
+      <IonContent fullscreen>
+        <IonToolbar no-border>
+          <IonCol text-wrap class="subtitle">
+            <IonTitle class="title">
+              <div dangerouslySetInnerHTML={createTitle()} />
+            </IonTitle>
             <div dangerouslySetInnerHTML={createSubtitle()} />
-          </IonTitle>
+          </IonCol>
 
           {quiz.questions[questionNum - 1].answers.map((x: any, i: number) => {
             let ansCorrect = correct[i] && correct[i].data.correct;

@@ -8,13 +8,13 @@ http://ionicframework.com/docs/theming/ */
 }
 
 .subtitle {
-  margin-top: -4%;
-  margin-bottom: 2%;
+  font-size: 25px;
 }
 
 ion-button {
   margin-bottom: 1%;
 }
+
 
 /** Ionic CSS Variables **/
 :root {
