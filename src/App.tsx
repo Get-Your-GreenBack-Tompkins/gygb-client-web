@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, IonLoading } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
@@ -30,24 +30,32 @@ import "./theme/variables.css";
 import api from "./api";
 
 const sendGetQuizRequest = async () => {
-  const response = await api.get(
-    `https://gygb-backend-v1.herokuapp.com/v1/quiz/web-client`
-  );
+  const response = await api.get(`/quiz/web-client`);
   let data = await response.data;
   return data;
 };
 
 export const App: React.FC = () => {
   const [questionNum, setQuestionNum] = useState(1);
+  const [question, setQuestion] = useState();
   const [numCorrect, setNumCorrect] = useState(0);
   const [quiz, setQuiz] = React.useState();
   const [answer, setAnswer] = React.useState();
-  React.useEffect(() => {
+
+  useEffect(() => {
     sendGetQuizRequest().then(quiz => setQuiz(quiz));
   }, []);
+
+  useEffect(() => {
+    if (quiz) {
+      setQuestion(quiz.questions[questionNum - 1]);
+    }
+  }, [quiz, questionNum]);
+
   if (!quiz) {
     return <IonLoading isOpen={true} message={"Loading..."} />;
   }
+
   return (
     <IonApp>
       <IonReactRouter>
@@ -60,12 +68,7 @@ export const App: React.FC = () => {
           <Route
             path="/quiz/question"
             render={props => (
-              <Question
-                {...props}
-                questionNum={questionNum}
-                quiz={quiz}
-                setAnswer={setAnswer}
-              />
+              <Question {...props} question={question} setAnswer={setAnswer} />
             )}
           />
           <Route

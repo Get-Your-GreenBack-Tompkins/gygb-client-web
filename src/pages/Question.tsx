@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   IonPage,
   IonButton,
@@ -6,10 +6,6 @@ import {
   IonToolbar,
   IonTitle,
   IonLoading,
-  IonItem,
-  IonLabel,
-  IonRow,
-  IonHeader,
   IonCol
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
@@ -17,46 +13,45 @@ import { RouteComponentProps } from "react-router";
 import api from "../api";
 
 interface Props extends RouteComponentProps {
-  questionNum: number;
-  quiz: any;
+  question: any;
   setAnswer: Function;
 }
 
-const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
-  const question = quiz.questions[questionNum - 1];
+const Question: React.FC<Props> = ({ question, history }) => {
+  const sendGetAnswerRequest = (answerId: string) => {
+    return api.get(
+      `/quiz/web-client/question/${question.id}/verify-answer/${answerId}`
+    );
+  };
 
-  const [results, setResults] = React.useState();
-  const [correct, setCorrect] = React.useState();
+  const [correct, setCorrect] = useState();
+  const [answer, setAnswer] = useState();
 
   useEffect(() => {
-    setCorrect(null);
-    let data = question.answers.map((el: any, i: number) => {
-      return api.get(
-        `/quiz/web-client/question/${question.id}/verify-answer/${i}`
-      );
+    sendGetAnswerRequest(answer).then(res => {
+      setCorrect(res.data);
     });
-    let res = Promise.all(data).then(result => result);
-    setResults(res);
-  }, [questionNum, question]);
+  }, [answer]);
 
   useEffect(() => {
-    if (results) {
-      results.then((data: any) => {
-        setCorrect(data);
-      });
-    }
-  }, [results]);
+    let correctPath = "/quiz/correct";
+    let incorrectPath = "/quiz/incorrect";
 
-  if (!correct) {
-    return <IonLoading isOpen={true} message={"Loading..."} />;
-  }
+    if (correct) {
+      if (correct.correct) {
+        history.push(correctPath);
+      } else {
+        history.push(incorrectPath);
+      }
+    }
+  }, [correct]);
 
   function createTitle() {
-    return { __html: quiz && quiz.questions[questionNum - 1].header };
+    return question.header;
   }
 
   function createSubtitle() {
-    return { __html: quiz && question.body };
+    return { __html: question.body };
   }
 
   return (
@@ -64,22 +59,20 @@ const Question: React.FC<Props> = ({ quiz, questionNum, setAnswer }) => {
       <IonContent fullscreen>
         <IonToolbar no-border>
           <IonCol text-wrap class="subtitle">
-            <IonTitle class="title">
-              <div dangerouslySetInnerHTML={createTitle()} />
-            </IonTitle>
+            <IonTitle class="title">{createTitle()}</IonTitle>
             <div dangerouslySetInnerHTML={createSubtitle()} />
           </IonCol>
 
-          {quiz.questions[questionNum - 1].answers.map((x: any, i: number) => {
-            let ansCorrect = correct[i] && correct[i].data.correct;
-            let linkText = ansCorrect ? "correct" : "incorrect";
+          {question.answers.map((a: any) => {
+            const { id } = a;
             return (
               <IonButton
                 expand="block"
-                routerLink={`/quiz/${linkText}`}
-                onClick={() => setAnswer(correct[i].data.message)}
+                onClick={() => {
+                  setAnswer(id);
+                }}
               >
-                <div dangerouslySetInnerHTML={{ __html: x.text }} />
+                <div dangerouslySetInnerHTML={{ __html: a.text }} />
               </IonButton>
             );
           })}

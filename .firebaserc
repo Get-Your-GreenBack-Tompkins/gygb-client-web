@@ -1,5 +1,23 @@
 {
   "projects": {
-    "default": "get-your-greenback"
+    "default": "get-your-greenback",
+    "development": "get-your-greenback-development",
+    "production": "get-your-greenback"
+  },
+  "targets": {
+    "get-your-greenback": {
+      "hosting": {
+        "web": [
+          "get-your-greenback"
+        ]
+      }
+    },
+    "get-your-greenback-development": {
+      "hosting": {
+        "web": [
+          "get-your-greenback-development"
+        ]
+      }
+    }
   }
 }
