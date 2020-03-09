@@ -17,7 +17,7 @@ jobs:
       with:
         node-version: '12.x'
     - name: Override API endpoint.
-      run: echo "https://gygb-backend-v1-dev.herokuapp.com/v1/" > .env.production.local
+      run: echo "https://gygb-backend-v1-dev.herokuapp.com/v1/" > ${{ GITHUB_WORKSPACE }}/gygb-client-web/.env.production.local
     - name: NPM Install
       run: npm install
     - name: NPM Build
