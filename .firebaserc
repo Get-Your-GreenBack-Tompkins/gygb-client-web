@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "get-your-greenback"
+  },
+  "targets": {
+    "get-your-greenback": {
+      "hosting": {
+        "prod": [
+          "get-your-greenback"
+        ],
+        "dev": [
+          "get-your-greenback-dev"
+        ]
+      }
+    }
   }
 }
