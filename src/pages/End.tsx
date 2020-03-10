@@ -1,6 +1,8 @@
-import React from 'react';
-import { IonPage, IonContent, IonToolbar, IonTitle } from '@ionic/react';
+import React from "react";
+import { IonPage, IonContent, IonToolbar, IonTitle, IonItem, IonInput, IonButton } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
+import api from "../api";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 interface Props extends RouteComponentProps {
   numCorrect: number;
@@ -28,6 +30,41 @@ const subtitle = (numCorrect: number) => {
     return "Enjoy Your Knowledge!";
   }
 }
+let emailAddress: any;
+
+const postEmail = () => {
+  emailAddress = 'ss@dd.ed'
+  console.log(emailAddress);
+  return api.post(
+    `/user`,
+    {
+      email: emailAddress,
+      marketing: true,
+      source: "ios"
+    }
+  );
+};
+
+const handleEmailValue = (value: any) => {
+  emailAddress = value;
+  console.log(emailAddress);
+};
+
+const displayEnterEmail = (numCorrect: number, quiz: any) => {
+  const total = quiz && quiz.questions.length;
+  if (numCorrect/total > 0.70) {
+    return (
+      <form onSubmit={() => postEmail()}>
+        <IonItem>
+          <IonInput placeholder="example@company.com" type="email" onInput={(value) => handleEmailValue(value)}></IonInput>
+        </IonItem>
+        <IonButton expand="block" type="submit" class="ion-no-margin">Submit Email</IonButton>
+      </form>
+    );
+  } else {
+    return (<IonTitle class="subtitle">Get more questions correct to be entered to raffle!</IonTitle>);
+  }
+}
 
 const End: React.FC<Props> = ({ numCorrect, quiz }) => {
   return (
@@ -37,6 +74,7 @@ const End: React.FC<Props> = ({ numCorrect, quiz }) => {
           <IonTitle size="large" class="title">{numCorrectFunc(numCorrect, quiz)}</IonTitle>
           <IonTitle class="subtitle">{subtitle(numCorrect)}</IonTitle>
         </IonToolbar>
+        {displayEnterEmail(numCorrect, quiz)}
       </IonContent>
     </IonPage >
   );
