@@ -5,7 +5,6 @@ import {
   IonContent,
   IonToolbar,
   IonTitle,
-  IonLoading,
   IonCol
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";

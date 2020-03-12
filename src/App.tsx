@@ -28,6 +28,7 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import api from "./api";
+import Thanks from "./pages/Thanks";
 
 const sendGetQuizRequest = async () => {
   const response = await api.get(`/quiz/web-client`);
@@ -103,6 +104,7 @@ export const App: React.FC = () => {
               <End {...props} numCorrect={numCorrect} quiz={quiz} />
             )}
           />
+          <Route path="/quiz/thanks" component={Thanks} />
           <Redirect exact from="/" to="/quiz" />
         </IonRouterOutlet>
       </IonReactRouter>
