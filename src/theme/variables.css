@@ -15,6 +15,9 @@ ion-button {
   margin-bottom: 1%;
 }
 
+.alert-title, .alert-sub-title {
+  text-align: center;
+}
 
 /** Ionic CSS Variables **/
 :root {
