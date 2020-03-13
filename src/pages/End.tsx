@@ -1,28 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IonPage, IonContent, IonToolbar, IonTitle, IonItem, IonInput, IonButton, IonAlert, IonLabel, IonCheckbox } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 import api from "../api";
 
 interface Props extends RouteComponentProps {
-  numCorrect: number;
+  answerIDs: Array<number>;
   quiz: any;
 }
 
-const numCorrectFunc = (numCorrect: number, quiz: any) => {
-  const total = quiz && quiz.questions.length;
-  if (numCorrect === total) {
+const numCorrectFunc = (numCorrect: any) => {
+  if (numCorrect.correct === numCorrect.total) {
     return "You got all questions correct!";
   }
-  else if (numCorrect > 0) {
-    return "You got " + numCorrect + "/" + total + " questions correct!";
+  else if (numCorrect.correct > 0) {
+    return "You got " + numCorrect.correct + "/" + numCorrect.total + " questions correct!";
   }
   else {
     return "You got no questions correct.";
   }
 }
 
-const subtitle = (numCorrect: number) => {
-  if (numCorrect === 0) {
+const subtitle = (numCorrect: any) => {
+  if (numCorrect.correct === 0) {
     return "Maybe Try Again?";
   }
   else {
@@ -45,9 +44,21 @@ const postEmail = (email: string, history: any, setShowAlert: Function, checked:
   );
 };
 
-const displayEnterEmail = (numCorrect: number, quiz: any, email: string, setEmail: Function, history: any, setShowAlert: Function, checked: boolean, setChecked: Function) => {
-  const total = quiz && quiz.questions.length;
-  if (numCorrect / total > 0.70) {
+const getNumCorrect = (answerIDs: Array<number>, quiz: any) => {
+  var obj:any = {}
+  for (var i = 0; i < answerIDs.length; i++) {
+    obj[quiz.questions[i].id] = answerIDs[i];
+  }
+  return api.post(
+    `/quiz/web-client/verify/`,
+    {
+      answers: obj
+    }
+  )
+};
+
+const displayEnterEmail = (numCorrect: any, email: string, setEmail: Function, history: any, setShowAlert: Function, checked: boolean, setChecked: Function) => {
+  if (numCorrect.correct / numCorrect.total > 0.70) {
     return (
       <form onSubmit={(e) => { e.preventDefault(); postEmail(email, history, setShowAlert, checked) }}>
         <IonItem>
@@ -65,20 +76,28 @@ const displayEnterEmail = (numCorrect: number, quiz: any, email: string, setEmai
   }
 }
 
-const End: React.FC<Props> = ({ numCorrect, quiz, history }) => {
+
+const End: React.FC<Props> = ({ answerIDs, quiz, history }) => {
 
   const [email, setEmail] = useState();
   const [showAlert, setShowAlert] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [numCorrect, setNumCorrect] = useState(0);
+
+  useEffect(() => {
+    getNumCorrect(answerIDs, quiz).then(res => {
+      setNumCorrect(res.data)
+    });
+  }, []);
 
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
         <IonToolbar>
-          <IonTitle size="large" class="title">{numCorrectFunc(numCorrect, quiz)}</IonTitle>
+          <IonTitle size="large" class="title">{numCorrectFunc(numCorrect)}</IonTitle>
           <IonTitle class="subtitle">{subtitle(numCorrect)}</IonTitle>
         </IonToolbar>
-        {displayEnterEmail(numCorrect, quiz, email, setEmail, history, setShowAlert, checked, setChecked)}
+        {displayEnterEmail(numCorrect, email, setEmail, history, setShowAlert, checked, setChecked)}
         <IonAlert
           isOpen={showAlert}
           onDidDismiss={() => setShowAlert(false)}
