@@ -13,10 +13,11 @@ import api from "../api";
 
 interface Props extends RouteComponentProps {
   question: any;
+  answer: number;
   setAnswer: Function;
 }
 
-const Question: React.FC<Props> = ({ question, history }) => {
+const Question: React.FC<Props> = ({ question, answer, setAnswer, history }) => {
   const sendGetAnswerRequest = (answerId: string) => {
     return api.get(
       `/quiz/web-client/question/${question.id}/verify-answer/${answerId}`
@@ -24,10 +25,9 @@ const Question: React.FC<Props> = ({ question, history }) => {
   };
 
   const [correct, setCorrect] = useState();
-  const [answer, setAnswer] = useState();
 
   useEffect(() => {
-    sendGetAnswerRequest(answer).then(res => {
+    sendGetAnswerRequest(String(answer)).then(res => {
       setCorrect(res.data);
     });
   }, [answer]);

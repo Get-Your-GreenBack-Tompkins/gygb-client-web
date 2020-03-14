@@ -39,9 +39,9 @@ const sendGetQuizRequest = async () => {
 export const App: React.FC = () => {
   const [questionNum, setQuestionNum] = useState(1);
   const [question, setQuestion] = useState();
-  const [numCorrect, setNumCorrect] = useState(0);
   const [quiz, setQuiz] = React.useState();
-  const [answer, setAnswer] = React.useState();
+  const [answer, setAnswer] = React.useState(0);
+  const [answerIDs, setAnswerIDs] = React.useState([]);
 
   useEffect(() => {
     sendGetQuizRequest().then(quiz => setQuiz(quiz));
@@ -69,7 +69,7 @@ export const App: React.FC = () => {
           <Route
             path="/quiz/question"
             render={props => (
-              <Question {...props} question={question} setAnswer={setAnswer} />
+              <Question {...props} question={question} answer={answer} setAnswer={setAnswer} />
             )}
           />
           <Route
@@ -81,6 +81,8 @@ export const App: React.FC = () => {
                 quiz={quiz}
                 questionNum={questionNum}
                 setQuestionNum={setQuestionNum}
+                answerIDs={answerIDs}
+                setAnswerIDs={setAnswerIDs}
               />
             )}
           />
@@ -91,17 +93,17 @@ export const App: React.FC = () => {
                 {...props}
                 questionNum={questionNum}
                 setQuestionNum={setQuestionNum}
-                numCorrect={numCorrect}
-                setNumCorrect={setNumCorrect}
                 quiz={quiz}
                 answer={answer}
+                answerIDs={answerIDs}
+                setAnswerIDs={setAnswerIDs}
               />
             )}
           />
           <Route
             path="/quiz/end"
             render={props => (
-              <End {...props} numCorrect={numCorrect} quiz={quiz} />
+              <End {...props} answerIDs={answerIDs} quiz={quiz} />
             )}
           />
           <Route path="/quiz/thanks" component={Thanks} />
