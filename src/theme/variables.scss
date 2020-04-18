@@ -1,6 +1,10 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+.md ion-button {
+  text-transform: none;
+}
+
 .title {
   margin-top: 10%;
   margin-bottom: 5%;
@@ -15,7 +19,8 @@ ion-button {
   margin-bottom: 1%;
 }
 
-.alert-title, .alert-sub-title {
+.alert-title,
+.alert-sub-title {
   text-align: center;
 }
 

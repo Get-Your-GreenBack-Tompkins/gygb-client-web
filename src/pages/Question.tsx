@@ -3,9 +3,10 @@ import {
   IonPage,
   IonButton,
   IonContent,
-  IonToolbar,
   IonTitle,
-  IonCol
+  IonCol,
+  IonGrid,
+  IonRow
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 
@@ -17,7 +18,12 @@ interface Props extends RouteComponentProps {
   setAnswer: Function;
 }
 
-const Question: React.FC<Props> = ({ question, answer, setAnswer, history }) => {
+const Question: React.FC<Props> = ({
+  question,
+  answer,
+  setAnswer,
+  history
+}) => {
   const sendGetAnswerRequest = (answerId: string) => {
     return api.get(
       `/quiz/web-client/question/${question.id}/verify-answer/${answerId}`
@@ -56,26 +62,52 @@ const Question: React.FC<Props> = ({ question, answer, setAnswer, history }) => 
   return (
     <IonPage>
       <IonContent fullscreen>
-        <IonToolbar no-border>
-          <IonCol text-wrap class="subtitle">
-            <IonTitle class="title">{createTitle()}</IonTitle>
-            <div dangerouslySetInnerHTML={createSubtitle()} />
-          </IonCol>
-
-          {question.answers.map((a: any) => {
-            const { id } = a;
-            return (
-              <IonButton
-                expand="block"
-                onClick={() => {
-                  setAnswer(id);
-                }}
-              >
-                <div dangerouslySetInnerHTML={{ __html: a.text }} />
-              </IonButton>
-            );
-          })}
-        </IonToolbar>
+        <IonGrid
+          no-border
+          style={{
+            display: "flex",
+            flexWrap: "nowrap",
+            flexDirection: "column",
+            height: "100%"
+          }}
+        >
+          <IonRow>
+            <IonCol>
+              <IonTitle class="title">{createTitle()}</IonTitle>
+              <div dangerouslySetInnerHTML={createSubtitle()} />
+            </IonCol>
+          </IonRow>
+          <IonRow style={{ flexGrow: 1 }}>
+            <IonCol>
+              <IonGrid style={{ height: "100%" }}>
+                <IonRow style={{ height: "100%" }}>
+                  {question.answers.map((a: any) => {
+                    const { id } = a;
+                    return (
+                      <IonCol key={id} size="12" size-md="6">
+                        <IonButton
+                          style={{ height: "100%" }}
+                          size="large"
+                          expand="block"
+                          onClick={() => {
+                            setAnswer(id);
+                          }}
+                        >
+                          <div className="answer-container">
+                            <span
+                              dangerouslySetInnerHTML={{ __html: a.text }}
+                              className="answer-text"
+                            ></span>
+                          </div>
+                        </IonButton>
+                      </IonCol>
+                    );
+                  })}
+                </IonRow>
+              </IonGrid>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );

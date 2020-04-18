@@ -25,7 +25,10 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 /* Theme variables */
-import "./theme/variables.css";
+import "./theme/variables.scss";
+
+/* Styling */
+import "./theme/style.scss";
 
 import api from "./api";
 import Thanks from "./pages/Thanks";
@@ -69,7 +72,12 @@ export const App: React.FC = () => {
           <Route
             path="/quiz/question"
             render={props => (
-              <Question {...props} question={question} answer={answer} setAnswer={setAnswer} />
+              <Question
+                {...props}
+                question={question}
+                answer={answer}
+                setAnswer={setAnswer}
+              />
             )}
           />
           <Route
