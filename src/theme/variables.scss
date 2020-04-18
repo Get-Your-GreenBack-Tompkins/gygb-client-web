@@ -5,20 +5,6 @@ http://ionicframework.com/docs/theming/ */
   text-transform: none;
 }
 
-.title {
-  margin-top: 10%;
-  margin-bottom: 5%;
-  font-size: 36px;
-}
-
-.subtitle {
-  font-size: 25px;
-}
-
-ion-button {
-  margin-bottom: 1%;
-}
-
 .alert-title,
 .alert-sub-title {
   text-align: center;
@@ -27,12 +13,12 @@ ion-button {
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #83ce27;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: #70b122;
+  --ion-color-primary-tint: #91ce46;
   text-align: center;
 
   /** secondary **/

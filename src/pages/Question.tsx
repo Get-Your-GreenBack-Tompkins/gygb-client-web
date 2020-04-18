@@ -3,25 +3,32 @@ import {
   IonPage,
   IonButton,
   IonContent,
-  IonTitle,
   IonCol,
   IonGrid,
-  IonRow
+  IonRow,
+  IonProgressBar
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 
 import api from "../api";
 
+interface QuizMetrics {
+  completed: number;
+  total: number;
+}
+
 interface Props extends RouteComponentProps {
   question: any;
   answer: number;
   setAnswer: Function;
+  metrics: QuizMetrics;
 }
 
 const Question: React.FC<Props> = ({
   question,
   answer,
   setAnswer,
+  metrics,
   history
 }) => {
   const sendGetAnswerRequest = (answerId: string) => {
@@ -65,6 +72,7 @@ const Question: React.FC<Props> = ({
         <IonGrid
           no-border
           style={{
+            padding: "28px 22px 8px",
             display: "flex",
             flexWrap: "nowrap",
             flexDirection: "column",
@@ -73,20 +81,25 @@ const Question: React.FC<Props> = ({
         >
           <IonRow>
             <IonCol>
-              <IonTitle class="title">{createTitle()}</IonTitle>
-              <div dangerouslySetInnerHTML={createSubtitle()} />
+              <IonProgressBar className="question-progress" value={metrics.completed / metrics.total} color="primary" ></IonProgressBar>
+            </IonCol>
+          </IonRow>
+          <IonRow className="ion-justify-content-start">
+            <IonCol>
+              <h3 className="title question-title">{createTitle()}</h3>
+              <div className="question-subtitle" dangerouslySetInnerHTML={createSubtitle()} />
             </IonCol>
           </IonRow>
           <IonRow style={{ flexGrow: 1 }}>
             <IonCol>
-              <IonGrid style={{ height: "100%" }}>
-                <IonRow style={{ height: "100%" }}>
+              <IonGrid className="answer-grid" style={{ height: "100%" }}>
+                <IonRow className="answer-row" style={{ height: "100%" }}>
                   {question.answers.map((a: any) => {
                     const { id } = a;
                     return (
-                      <IonCol key={id} size="12" size-md="6">
+                      <IonCol className="answer-item" key={id} size="12" size-md="6">
                         <IonButton
-                          style={{ height: "100%" }}
+                          className="answer-button"
                           size="large"
                           expand="block"
                           onClick={() => {

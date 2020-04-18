@@ -74,6 +74,10 @@ export const App: React.FC = () => {
             render={props => (
               <Question
                 {...props}
+                metrics={{
+                  total: quiz.questions.length,
+                  completed: questionNum
+                }}
                 question={question}
                 answer={answer}
                 setAnswer={setAnswer}
