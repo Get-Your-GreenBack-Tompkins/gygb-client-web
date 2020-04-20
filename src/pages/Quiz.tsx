@@ -9,7 +9,9 @@ import {
   IonCol
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
-import WelcomePath from "../assets/welcome-path.svg";
+// import WelcomePath from "../assets/welcome-path.svg";
+import Logo from "../assets/logo.svg";
+import Try from "../assets/try.svg";
 
 interface Props extends RouteComponentProps {
   quiz: any;
@@ -18,25 +20,26 @@ interface Props extends RouteComponentProps {
 const Quiz: React.FC<Props> = ({ quiz }) => {
   return (
     <IonPage>
-      <IonContent fullscreen class="ion-padding">
+        
+        <IonImg className="home-lines" src={Try}></IonImg>
+        <IonImg className="logo" src={Logo}></IonImg>
+        <IonButton size="large" className="welcome-button" routerLink="/quiz/question">
+                WELCOME
+              </IonButton>
+     
+       
         <IonGrid className="welcome-content">
           <IonRow>
             <IonCol>
-              <IonImg src="/assets/logo.png" />
               <h1 className="subtitle">{quiz && quiz.name}</h1>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton size="large" className="welcome-button" routerLink="/quiz/question">
-                Start Quiz!
-              </IonButton>
+             
             </IonCol>
           </IonRow>
         </IonGrid>
-
-        <IonImg className="welcome-path" src={WelcomePath}></IonImg>
-      </IonContent>
     </IonPage>
   );
 };

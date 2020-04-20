@@ -1,6 +1,15 @@
 import React from 'react';
-import { IonPage, IonButton, IonContent, IonToolbar, IonTitle } from '@ionic/react';
+import { 
+  IonPage,
+  IonButton,
+  IonContent,
+  IonToolbar,
+  IonIcon,
+  IonImg,
+  IonTitle } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
+import greenLines from "../assets/greenLines.svg";
+import '../theme/style.scss'
 
 interface Props extends RouteComponentProps {
   questionNum: number;
@@ -29,9 +38,10 @@ const generateContinueButton = (questionNum: number, setQuestionNum: Function, q
 const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs }) => {
   return (
     <IonPage>
-      <IonContent fullscreen class="ion-padding">
+      <IonContent fullscreen>
         <IonToolbar>
-          <IonTitle size="large" class="title">Correct!</IonTitle>
+          <IonImg src={greenLines}></IonImg>
+          <IonTitle size="large" class="title">Correct</IonTitle>
           {generateContinueButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
         </IonToolbar>
       </IonContent>

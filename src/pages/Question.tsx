@@ -6,9 +6,12 @@ import {
   IonCol,
   IonGrid,
   IonRow,
+  IonImg,
   IonProgressBar
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
+import Star from "../assets/star.svg";
+import '../theme/style.scss'
 
 import api from "../api";
 
@@ -88,6 +91,7 @@ const Question: React.FC<Props> = ({
             <IonCol>
               <h3 className="title question-title">{createTitle()}</h3>
               <div className="question-subtitle" dangerouslySetInnerHTML={createSubtitle()} />
+              <IonImg className="star" src={Star}></IonImg>
             </IonCol>
           </IonRow>
           <IonRow style={{ flexGrow: 1 }}>
