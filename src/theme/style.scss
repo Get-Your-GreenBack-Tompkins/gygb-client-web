@@ -1,29 +1,81 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+$mycolor: "#83CE27";
 
 body {
-  font-family: "Montserrat", "sans-serif";
+  font-family: "serif", "sans-serif";
+  background-color: "#83CE27";
 }
 
+svg{
+ display: flex;
+ position: relative;
+}
 .title {
   font-size: 2.25em;
+  font-weight: bold;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-.welcome-content {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+#root{
+  margin: 0px;
+  padding: 0px;
 }
 
-.welcome-path {
+ion-button.skip{
+  margin-top: 10%;
+  margin-left: 3%;
+  width: 35%;
+  height: 50px;
+  font-size: 1.5em;
+}
+
+.star{
+  position: absolute;
+  right: 3%;
+  left: 80%;
+  top: 2%;
+  bottom: 80%;
+  display: flex;
+}
+
+.icon{
+  min-width:100%;
+  min-height:100%;
   position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
+  top:50;
+  left:50;
+}
+
+.home-lines svg{
+  top: 0;
+  min-width: 100%;
+  min-height: 100%;
+  position: relative;
+}
+.correct{
+  top:25%;
+  bottom: 25%;
+}
+.welcome-button{
+  top: 78%;
+  bottom: 10%;
+  left: 25%;
+  right: 25%;
+  border-radius: 30px;
+  position: absolute;
+}
+
+.logo{
+  top: 25%;
+  bottom: 25%;
+  right: 3%;
+  left: 3%;
+  position: absolute;
+}
+.welcome-path svg{
+  bottom: sticky;
+  width:100%;
 }
 
 .question-progress {
@@ -50,10 +102,6 @@ body {
 
 .subtitle {
   font-size: 25px;
-}
-
-ion-button {
-  margin-bottom: 1%;
 }
 
 .answer-container {
