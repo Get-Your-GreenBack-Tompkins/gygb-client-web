@@ -21,8 +21,8 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
   return (
     <IonPage>
      
-        <IonImg className="home-lines" src={H1}></IonImg>
-        <IonImg className="home-lines-2" src={H2}></IonImg> 
+        <IonImg className="home-lines home-lines-top" src={H1}></IonImg>
+        <IonImg className="home-lines home-lines-bottom" src={H2}></IonImg> 
 
         <IonGrid className="welcome-content">
         

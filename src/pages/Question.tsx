@@ -93,8 +93,8 @@ const Question: React.FC<Props> = ({
                 <h3 className="title question-title">{createTitle()}</h3>
             </IonCol>
 
-            <IonCol>
-              <IonButton className = "score"> 1/3 </IonButton>
+            <IonCol size="auto">
+              <IonButton className="score"> 1/3 </IonButton>
             </IonCol>
           </IonRow>
 

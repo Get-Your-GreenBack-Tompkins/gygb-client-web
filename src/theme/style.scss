@@ -13,40 +13,58 @@ body {
   text-transform: uppercase;
 }
 
-ion-row{
+ion-row {
   justify-content: center;
   align-items: center;
 }
 
-#root{
+#root {
   margin: 0;
   padding: 0;
 }
 
-.home-lines{
+.home-lines {
+  &-bottom {
+    bottom: 0;
+  }
+
+  &-top {
+    top: 0;
+  }
+
+  max-height: 50vh;
+  object-fit: cover;
   width: 100%;
-  top: 0;
   position: absolute;
 }
 
-.home-lines-2{
+.grid-lines {
   width: 100%;
-  bottom: 0;
-  position: absolute;
+
+  @media (min-width: 576px) {
+    display: none;
+  }
 }
 
-.col{
+.line-grid {
+  @media (max-width: 576px) {
+    margin-top: -10vh;
+    padding: 2vh 7.5vw;
+  }
+}
+
+.col {
   height: 100%;
 }
 
-.logo{
+.logo {
   z-index: 100;
   top: 55%;
   align-self: center;
   margin-top: 55%;
 }
 
-.subtitle{
+.subtitle {
   top: 50% !important;
   width: 100%;
   font-weight: bold;
@@ -56,7 +74,7 @@ ion-row{
 
 //QUESTION PAGE
 
-ion-justify-content-start{
+ion-justify-content-start {
   width: 100%;
 }
 
@@ -67,21 +85,26 @@ ion-justify-content-start{
   padding: 16px 0;
 }
 
+.answer-button .button-native {
+  height: auto;
+  min-height: 2.8em;
+}
+
 .answer-container {
   width: 75%;
+  margin: 0.5rem;
   overflow-wrap: normal;
   overflow: hidden;
   word-break: break-word;
   white-space: normal;
   text-align: center;
-  display:flex;
+  display: flex;
   justify-content: center;
-
 }
 
-.score{
+.score {
   float: right;
-  --background: #FFE552;
+  --background: #ffe552;
   --color: black;
 }
 
@@ -100,23 +123,23 @@ ion-justify-content-start{
 }
 
 ion-button.answer-button {
-// Applies a background to an [ion-button]
-// TODO: Don't use opacity.
---background: rgba(0, 0, 0, 0.8);
---background-hover: rgba(0, 0, 0, 0.6);
+  // Applies a background to an [ion-button]
+  // TODO: Don't use opacity.
+  --background: rgba(0, 0, 0, 0.8);
+  --background-hover: rgba(0, 0, 0, 0.6);
 }
 
 .answer-grid {
-margin: -8px;
-flex-grow: 1;
+  margin: -8px;
+  flex-grow: 1;
 }
 
 .answer-item {
-padding-bottom: 1em;
-flex-grow: 1;
+  padding-bottom: 1em;
+  flex-grow: 1;
 }
 
-question-progress {
+.question-progress {
   height: 16px;
   border-radius: 40px;
   margin: 12px 0;
@@ -124,15 +147,14 @@ question-progress {
 }
 
 //CORRECT PAGE
-.correctLines{
+.correctLines {
   display: flex;
   justify-content: center;
 }
 
 @media only screen and (min-width: 700px) {
-  
-  .correctLines{
-    display:flex;
+  .correctLines {
+    display: flex;
   }
 
   .title {
@@ -142,105 +164,108 @@ question-progress {
     text-transform: uppercase;
   }
 
-  ion-button.correct-button{
-    font-size: 2.10em;
+  ion-button.correct-button {
+    font-size: 2.1em;
   }
 
-  p{
+  p {
     font-size: 1.5em;
   }
 }
 
-.skip{
+.skip {
   margin-top: 10%;
   margin-left: 3%;
   width: fit-content;
   height: 50px;
   font-size: 1.15em;
   letter-spacing: 2px;
-  --background:#E64937;
+  --background: #e64937;
+  --background-hover: #e64937;
   text-transform: uppercase !important;
 }
 
-.wrong{
-  color:#E64937;
-}
-.right{
-  color: #83CE27;
+.wrong {
+  color: #e64937;
 }
 
-.correct-button{
-  --background: #83CE27;
-  width: 50%;
-  font-size: 1.10em;
-  letter-spacing:2px; 
+.right {
+  color: #83ce27;
+}
+
+.correct-button {
+  --background: #83ce27;
+  font-size: 1.1em;
+  letter-spacing: 2px;
   text-transform: uppercase !important;
   font-weight: bold;
   transition-duration: 0.4s;
 }
 
-.correct-button:hover{
+.correct-button:hover {
   --background: #a2e94c;
 }
 
-.correct{
+.correct {
   justify-content: center;
   text-align: center;
   width: 100%;
 }
 
-.icon{
-  min-width:100%;
-  min-height:100%;
+.icon {
+  min-width: 100%;
+  min-height: 100%;
   position: fixed;
-  top:50;
-  left:50;
+  top: 50;
+  left: 50;
 }
-
 
 //END PAGE
 
-.image-lines{
+.image-lines {
   top: 15%;
   left: 10%;
   width: 85%;
   position: absolute;
-  
 }
 
-.img-title{
+.img-title {
   font-weight: bold;
   letter-spacing: 2.5px;
   text-transform: uppercase !important;
   top: 25%;
 }
 
-.img-subtitle{
+.img-subtitle {
   letter-spacing: 1.5px;
   text-transform: uppercase !important;
   top: 25%;
   color: rgba(0, 0, 0, 0.6);
 }
 
-.raffle-button{
-  --background: #228AD3;
+.raffle-button {
+  --background: #228ad3;
   text-transform: uppercase !important;
   letter-spacing: 2px;
   width: fit-content;
 }
 
 //TUTORAIL PAGE
-.tutorial-lines{
+.tutorial-lines {
   min-height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
 }
 
-.start-button{
+.start-button {
+  &:hover {
+    color: white;
+  }
+
   --background: white;
-  color: #83CE27;
-  border: 3px solid #83CE27;
+  color: #83ce27;
+  border: 3px solid #83ce27;
   border-radius: 10px;
   text-transform: uppercase !important;
   letter-spacing: 2px;
