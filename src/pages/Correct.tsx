@@ -11,13 +11,13 @@ interface Props extends RouteComponentProps {
   setAnswerIDs: Function;
 }
 
-const generateContinueButton = (questionNum: number, setQuestionNum: Function, quiz: any, answer:number, answerIDs: Array<number>,
+const generateContinueButton = (questionNum: number, setQuestionNum: Function, quiz: any, answer: number, answerIDs: Array<number>,
   setAnswerIDs: Function) => {
   const total = quiz && quiz.questions.length;
   console.log(total);
   if (questionNum === total) {
     return (
-      <IonButton onClick={() => { setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/end">Continue</IonButton>
+      <IonButton onClick={() => { setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/result">Continue</IonButton>
     );
   } else {
     return (
