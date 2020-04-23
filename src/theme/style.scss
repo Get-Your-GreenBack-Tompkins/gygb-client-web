@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
-$mycolor: "#83CE27";
 
 body {
   font-family: "Montserrat", "sans-serif";
-  background-color: "#83CE27";
 }
+
+//QUIZ PAGE
 
 .title {
   font-size: 2.25em;
@@ -18,92 +18,46 @@ ion-row{
   align-items: center;
 }
 
-ion-img.correctLines{
-  display: flex;
-  justify-content: center;
-}
-
-ion-button.correct-button{
-  --background: linear-gradient(180deg, #7CAB41 0%, #83CE27 95.31%);
-}
-
-.subtitle{
-  bottom: 10%;
-  position: relative;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
 #root{
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
-ion-button.skip{
-  margin-top: 10%;
-  margin-left: 3%;
-  width: 35%;
-  height: 50px;
-  font-size: 1.5em;
-}
-
-ion-img.star{
-  position: relative;
-  right: 3%;
-  display: flex;
-}
-
-.icon{
-  min-width:100%;
-  min-height:100%;
-  position: fixed;
-  top:50;
-  left:50;
-}
-
-ion-img.home-lines{
-  top: 0;
+.home-lines{
   width: 100%;
+  top: 0;
   position: absolute;
+}
+
+.home-lines-2{
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+
+.col{
+  height: 100%;
 }
 
 .logo{
-  top: 25%;
-  bottom: 25%;
-  right: 3%;
-  left: 3%;
-  position: absolute;
   z-index: 100;
+  top: 55%;
+  align-self: center;
+  margin-top: 55%;
 }
 
-.welcome-button{
-  top: 78%;
-  bottom: 10%;
-  left: 25%;
-  right: 25%;
-  border-radius: 30px;
-  position: absolute;
+.subtitle{
+  top: 50% !important;
+  width: 100%;
+  font-weight: bold;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px;
 }
 
-//TUTORAIL PAGE
-.tutorial-lines{
-  width:100%;
-  position: absolute;
-}
+//QUESTION PAGE
 
-.question-progress {
-  height: 16px;
-  border-radius: 40px;
-  margin: 12px 0;
-
-  --buffer-background: #e5e5e5;
-}
-
-.question-title {
-  font-size: 2.1em;
-  width: -moz-fit-content;
-  width: -webkit-fill-available;
-  width: fit-content;
+ion-justify-content-start{
+  width: 100%;
 }
 
 .question-subtitle {
@@ -123,26 +77,176 @@ ion-img.home-lines{
   display:flex;
   justify-content: center;
 
-  .answer-text {
-    vertical-align: middle;
-    line-height: 1.25rem;
-    font-size: 1rem;
-  }
+}
+
+.score{
+  float: right;
+  --background: #FFE552;
+  --color: black;
+}
+
+.question-title {
+  font-size: 2.1em;
+  width: -moz-fit-content;
+  width: -webkit-fill-available;
+  width: 100%;
+  text-align: left;
+}
+
+.answer-text {
+  vertical-align: middle;
+  line-height: 1.25rem;
+  font-size: 1rem;
 }
 
 ion-button.answer-button {
-  // Applies a background to an [ion-button]
-  // TODO: Don't use opacity.
-  --background: rgba(0, 0, 0, 0.8);
-  --background-hover: rgba(0, 0, 0, 0.6);
+// Applies a background to an [ion-button]
+// TODO: Don't use opacity.
+--background: rgba(0, 0, 0, 0.8);
+--background-hover: rgba(0, 0, 0, 0.6);
 }
 
 .answer-grid {
-  margin: -8px;
-  flex-grow: 1;
+margin: -8px;
+flex-grow: 1;
 }
 
 .answer-item {
-  padding: 1em;
-  flex-grow: 1;
+padding-bottom: 1em;
+flex-grow: 1;
+}
+
+question-progress {
+  height: 16px;
+  border-radius: 40px;
+  margin: 12px 0;
+  --buffer-background: #e5e5e5;
+}
+
+//CORRECT PAGE
+.correctLines{
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 700px) {
+  
+  .correctLines{
+    display:flex;
+  }
+
+  .title {
+    font-size: 4.25em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  ion-button.correct-button{
+    font-size: 2.10em;
+  }
+
+  p{
+    font-size: 1.5em;
+  }
+}
+
+.skip{
+  margin-top: 10%;
+  margin-left: 3%;
+  width: fit-content;
+  height: 50px;
+  font-size: 1.15em;
+  letter-spacing: 2px;
+  --background:#E64937;
+  text-transform: uppercase !important;
+}
+
+.wrong{
+  color:#E64937;
+}
+.right{
+  color: #83CE27;
+}
+
+.correct-button{
+  --background: #83CE27;
+  width: 50%;
+  font-size: 1.10em;
+  letter-spacing:2px; 
+  text-transform: uppercase !important;
+  font-weight: bold;
+  transition-duration: 0.4s;
+}
+
+.correct-button:hover{
+  --background: #a2e94c;
+}
+
+.correct{
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.icon{
+  min-width:100%;
+  min-height:100%;
+  position: fixed;
+  top:50;
+  left:50;
+}
+
+
+//END PAGE
+
+.image-lines{
+  top: 15%;
+  left: 10%;
+  width: 85%;
+  position: absolute;
+  
+}
+
+.img-title{
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  text-transform: uppercase !important;
+  top: 25%;
+}
+
+.img-subtitle{
+  letter-spacing: 1.5px;
+  text-transform: uppercase !important;
+  top: 25%;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.raffle-button{
+  --background: #228AD3;
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+  width: fit-content;
+}
+
+//TUTORAIL PAGE
+.tutorial-lines{
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.start-button{
+  --background: white;
+  color: #83CE27;
+  border: 3px solid #83CE27;
+  border-radius: 10px;
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+  font-size: 1.15em;
+  font-weight: bold;
+  width: fit-content;
+  top: 50%;
+  margin-top: 15%;
 }

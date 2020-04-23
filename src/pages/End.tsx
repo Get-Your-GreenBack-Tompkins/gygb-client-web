@@ -23,21 +23,36 @@ interface Props extends RouteComponentProps {
 
 const numCorrectFunc = (numCorrect: any) => {
   if (numCorrect.correct === numCorrect.total) {
-    return "You got all questions correct!";
+    return "Congratulations!";
   } else if (numCorrect.correct > 0) {
-    return "You got " + numCorrect.correct + "/" + numCorrect.total + " questions correct!";
+    return "Well done!";
   } else {
     return "You got no questions correct.";
   }
 };
 
 const subtitle = (numCorrect: any) => {
-  if (numCorrect.correct === 0) {
-    return "Maybe Try Again?";
+  if (numCorrect.correct === numCorrect.total) {
+    return "You got all questions correct";
+  } 
+  else if (numCorrect.correct > 0) {
+    return "You got " + numCorrect.correct + "/" + numCorrect.total + " questions correct!";
   } else {
-    return "Enjoy Your Knowledge!";
+    return "Not to worry, sign up for our e-newsletter to get energy tips and help every month";
   }
 };
+
+const imageReturn = (numCorrect: any) => {
+  if (numCorrect.correct === numCorrect.total) {
+    return 'src="../assets/confetti.svg"';
+  } 
+  else if (numCorrect.correct > 0) {
+    return 'src="../assets/hatsoff.svg"';
+  } else {
+    return 'src="../assets/house.svg"';
+  }
+};
+
 
 const postEmail = (email: string, history: any, setShowAlert: Function, checked: Boolean) => {
   api
@@ -59,6 +74,7 @@ const getNumCorrect = (answerIDs: Array<number>, quiz: any) => {
     answers: obj
   });
 };
+
 
 const displayEnterEmail = (
   numCorrect: any,

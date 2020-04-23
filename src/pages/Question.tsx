@@ -88,11 +88,13 @@ const Question: React.FC<Props> = ({
             </IonCol>
           </IonRow>
           <IonRow className="ion-justify-content-start">
+
             <IonCol>
-              <h3 className="title question-title">{createTitle()}</h3>
+                <h3 className="title question-title">{createTitle()}</h3>
             </IonCol>
+
             <IonCol>
-                <IonImg className="star" src={Star}></IonImg>
+              <IonButton className = "score"> 1/3 </IonButton>
             </IonCol>
           </IonRow>
 

@@ -4,11 +4,10 @@ import {
   IonButton,
   IonContent,
   IonToolbar,
-  IonIcon,
   IonImg,
   IonGrid,
   IonRow,
-  IonTitle } from '@ionic/react';
+  IonCol} from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 import GreenLines from "../assets/greenLines.svg";
 import '../theme/style.scss'
@@ -28,11 +27,11 @@ const generateContinueButton = (questionNum: number, setQuestionNum: Function, q
   console.log(total);
   if (questionNum === total) {
     return (
-      <IonButton className = "correct-button" onClick={() => { setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/end">Continue</IonButton>
+      <IonButton className = "correct-button" onClick={() => { setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/end">continue</IonButton>
     );
   } else {
     return (
-      <IonButton className = "correct-button" onClick={() => { setQuestionNum(questionNum + 1); setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/question">Continue</IonButton>
+      <IonButton className = "correct-button" onClick={() => { setQuestionNum(questionNum + 1); setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/question">continue</IonButton>
     );
   }
 }
@@ -48,10 +47,13 @@ const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, quiz, answer, a
               <h1 className="title">Correct</h1>
             </IonRow>
             <IonRow>
-              <p>Here we will insert the reasoning why this <b>answer</b> is correct. </p>
+              <p>Here we will insert the reasoning why this <b className = "right">answer</b> is correct. </p>
             </IonRow>
             <IonRow>
+              <IonCol className = "correct">
               {generateContinueButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
+              </IonCol>
+              
             </IonRow>
           </IonGrid>
          
