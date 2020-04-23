@@ -10,7 +10,8 @@ import {
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 import Logo from "../assets/logo.svg";
-import Homelines from "../assets/homelines.svg";
+import H1 from "../assets/homelines.svg";
+import H2 from "../assets/h1.svg";
 
 interface Props extends RouteComponentProps {
   quiz: any;
@@ -19,21 +20,23 @@ interface Props extends RouteComponentProps {
 const Quiz: React.FC<Props> = ({ quiz }) => {
   return (
     <IonPage>
+     
+        <IonImg className="home-lines" src={H1}></IonImg>
+        <IonImg className="home-lines-2" src={H2}></IonImg> 
+
         <IonGrid className="welcome-content">
         
           <IonRow>
-            <IonImg className="home-lines" src={Homelines}></IonImg>
-          </IonRow>
+            <IonCol className ="col">
+              <IonImg className="logo" src={Logo} alt="Powerhouse"></IonImg>
+              <h1 className="subtitle">{quiz && quiz.name}</h1>
+              </IonCol>
+            </IonRow>
 
-          <IonRow>
-            <IonImg className="logo" src={Logo} alt="Powerhouse"></IonImg>
-            <h1 className="subtitle">{quiz && quiz.name}</h1>
-          </IonRow>
-
-          <IonRow>
-            <IonButton size="large" className="welcome-button" routerLink="/quiz/question">welcome</IonButton>
-          </IonRow>
-
+            <IonRow>
+              <IonButton size="large" className="start-button" routerLink="/quiz/question">enter quiz</IonButton>
+            </IonRow>
+          
         </IonGrid>
     </IonPage>
   );
