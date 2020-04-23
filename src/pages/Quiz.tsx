@@ -9,9 +9,8 @@ import {
   IonCol
 } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
-// import WelcomePath from "../assets/welcome-path.svg";
 import Logo from "../assets/logo.svg";
-import Try from "../assets/try.svg";
+import Homelines from "../assets/homelines.svg";
 
 interface Props extends RouteComponentProps {
   quiz: any;
@@ -20,25 +19,21 @@ interface Props extends RouteComponentProps {
 const Quiz: React.FC<Props> = ({ quiz }) => {
   return (
     <IonPage>
-        
-        <IonImg className="home-lines" src={Try}></IonImg>
-        <IonImg className="logo" src={Logo}></IonImg>
-        <IonButton size="large" className="welcome-button" routerLink="/quiz/question">
-                WELCOME
-              </IonButton>
-     
-       
         <IonGrid className="welcome-content">
+        
           <IonRow>
-            <IonCol>
-              <h1 className="subtitle">{quiz && quiz.name}</h1>
-            </IonCol>
+            <IonImg className="home-lines" src={Homelines}></IonImg>
           </IonRow>
+
           <IonRow>
-            <IonCol>
-             
-            </IonCol>
+            <IonImg className="logo" src={Logo} alt="Powerhouse"></IonImg>
+            <h1 className="subtitle">{quiz && quiz.name}</h1>
           </IonRow>
+
+          <IonRow>
+            <IonButton size="large" className="welcome-button" routerLink="/quiz/question">welcome</IonButton>
+          </IonRow>
+
         </IonGrid>
     </IonPage>
   );

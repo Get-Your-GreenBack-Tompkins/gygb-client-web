@@ -6,9 +6,11 @@ import {
   IonToolbar,
   IonIcon,
   IonImg,
+  IonGrid,
+  IonRow,
   IonTitle } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
-import greenLines from "../assets/greenLines.svg";
+import GreenLines from "../assets/greenLines.svg";
 import '../theme/style.scss'
 
 interface Props extends RouteComponentProps {
@@ -26,11 +28,11 @@ const generateContinueButton = (questionNum: number, setQuestionNum: Function, q
   console.log(total);
   if (questionNum === total) {
     return (
-      <IonButton onClick={() => { setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/end">Continue</IonButton>
+      <IonButton className = "correct-button" onClick={() => { setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/end">Continue</IonButton>
     );
   } else {
     return (
-      <IonButton onClick={() => { setQuestionNum(questionNum + 1); setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/question">Continue</IonButton>
+      <IonButton className = "correct-button" onClick={() => { setQuestionNum(questionNum + 1); setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/question">Continue</IonButton>
     );
   }
 }
@@ -40,9 +42,19 @@ const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, quiz, answer, a
     <IonPage>
       <IonContent fullscreen>
         <IonToolbar>
-          <IonImg src={greenLines}></IonImg>
-          <IonTitle size="large" class="title">Correct</IonTitle>
-          {generateContinueButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
+          <IonImg className="correctLines" src={GreenLines}></IonImg>
+          <IonGrid>
+            <IonRow>
+              <h1 className="title">Correct</h1>
+            </IonRow>
+            <IonRow>
+              <p>Here we will insert the reasoning why this <b>answer</b> is correct. </p>
+            </IonRow>
+            <IonRow>
+              {generateContinueButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
+            </IonRow>
+          </IonGrid>
+         
         </IonToolbar>
       </IonContent>
     </IonPage >

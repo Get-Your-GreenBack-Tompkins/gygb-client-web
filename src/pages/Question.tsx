@@ -90,12 +90,18 @@ const Question: React.FC<Props> = ({
           <IonRow className="ion-justify-content-start">
             <IonCol>
               <h3 className="title question-title">{createTitle()}</h3>
-              <div className="question-subtitle" dangerouslySetInnerHTML={createSubtitle()} />
-              <IonImg className="star" src={Star}></IonImg>
+            </IonCol>
+            <IonCol>
+                <IonImg className="star" src={Star}></IonImg>
             </IonCol>
           </IonRow>
-          <IonRow style={{ flexGrow: 1 }}>
-            <IonCol>
+
+          <IonRow>
+            <div className="question-subtitle" dangerouslySetInnerHTML={createSubtitle()} />
+          </IonRow>
+
+          <IonRow>
+            <IonCol style={{ flexGrow: 1 }}>
               <IonGrid className="answer-grid" style={{ height: "100%" }}>
                 <IonRow className="answer-row" style={{ height: "100%" }}>
                   {question.answers.map((a: any) => {

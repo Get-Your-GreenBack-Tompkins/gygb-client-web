@@ -2,19 +2,36 @@
 $mycolor: "#83CE27";
 
 body {
-  font-family: "serif", "sans-serif";
+  font-family: "Montserrat", "sans-serif";
   background-color: "#83CE27";
 }
 
-svg{
- display: flex;
- position: relative;
-}
 .title {
   font-size: 2.25em;
   font-weight: bold;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+ion-row{
+  justify-content: center;
+  align-items: center;
+}
+
+ion-img.correctLines{
+  display: flex;
+  justify-content: center;
+}
+
+ion-button.correct-button{
+  --background: linear-gradient(180deg, #7CAB41 0%, #83CE27 95.31%);
+}
+
+.subtitle{
+  bottom: 10%;
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 #root{
@@ -30,12 +47,9 @@ ion-button.skip{
   font-size: 1.5em;
 }
 
-.star{
-  position: absolute;
+ion-img.star{
+  position: relative;
   right: 3%;
-  left: 80%;
-  top: 2%;
-  bottom: 80%;
   display: flex;
 }
 
@@ -47,22 +61,9 @@ ion-button.skip{
   left:50;
 }
 
-.home-lines svg{
+ion-img.home-lines{
   top: 0;
-  min-width: 100%;
-  min-height: 100%;
-  position: relative;
-}
-.correct{
-  top:25%;
-  bottom: 25%;
-}
-.welcome-button{
-  top: 78%;
-  bottom: 10%;
-  left: 25%;
-  right: 25%;
-  border-radius: 30px;
+  width: 100%;
   position: absolute;
 }
 
@@ -72,10 +73,22 @@ ion-button.skip{
   right: 3%;
   left: 3%;
   position: absolute;
+  z-index: 100;
 }
-.welcome-path svg{
-  bottom: sticky;
+
+.welcome-button{
+  top: 78%;
+  bottom: 10%;
+  left: 25%;
+  right: 25%;
+  border-radius: 30px;
+  position: absolute;
+}
+
+//TUTORAIL PAGE
+.tutorial-lines{
   width:100%;
+  position: absolute;
 }
 
 .question-progress {
@@ -100,10 +113,6 @@ ion-button.skip{
   padding: 16px 0;
 }
 
-.subtitle {
-  font-size: 25px;
-}
-
 .answer-container {
   width: 75%;
   overflow-wrap: normal;
@@ -111,10 +120,12 @@ ion-button.skip{
   word-break: break-word;
   white-space: normal;
   text-align: center;
+  display:flex;
+  justify-content: center;
 
   .answer-text {
     vertical-align: middle;
-    line-height: 2rem;
+    line-height: 1.25rem;
     font-size: 1rem;
   }
 }
@@ -126,15 +137,12 @@ ion-button.answer-button {
   --background-hover: rgba(0, 0, 0, 0.6);
 }
 
-.answer-button {
-  height: 100%;
-}
-
 .answer-grid {
   margin: -8px;
-  padding: 0;
+  flex-grow: 1;
 }
 
 .answer-item {
-  padding: 8px 8px;
+  padding: 1em;
+  flex-grow: 1;
 }
