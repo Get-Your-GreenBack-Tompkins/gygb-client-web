@@ -1,5 +1,5 @@
 import React from "react";
-import { IonPage, IonButton, IonContent, IonToolbar, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react";
+import { IonPage, IonButton, IonContent, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 import GreenLines from "../assets/greenLines.svg";
 import "../theme/style.scss";

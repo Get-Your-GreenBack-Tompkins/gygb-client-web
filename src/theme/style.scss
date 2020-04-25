@@ -157,12 +157,12 @@ ion-button.answer-button {
     display: flex;
   }
 
-  .title {
-    font-size: 4.25em;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
+  // .title {
+  //   font-size: 4.25em;
+  //   font-weight: bold;
+  //   letter-spacing: 2px;
+  //   text-transform: uppercase;
+  // }
 
   ion-button.correct-button {
     font-size: 2.1em;
@@ -278,4 +278,5 @@ ion-button.answer-button {
 
 .blue-button{
   --background: #228AD3;
+  color: red';
 }

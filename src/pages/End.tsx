@@ -31,12 +31,12 @@ const End: React.FC<Props> = ({ raffle }) => {
             <IonCol>
               <h1 className="title">Success!</h1>
               <h3 className="subtitle">{subtitle(raffle)}</h3>
-              <IonButton routerLink="/quiz">Try Again</IonButton>
+              <IonButton className ="blue-button" routerLink="/quiz">Try Again</IonButton>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton href="tinypowerhouse.org">Return Home</IonButton>
+              <IonButton className ="blue-button" href="tinypowerhouse.org">Return Home</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>
