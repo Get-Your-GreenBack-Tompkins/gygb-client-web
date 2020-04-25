@@ -20,33 +20,15 @@ interface Props extends RouteComponentProps {
   setAnswerIDs: Function;
 }
 
-const generateSkipButton = (
-  questionNum: number,
-  setQuestionNum: Function,
-  quiz: any,
-  answer: number,
-  answerIDs: Array<number>,
-  setAnswerIDs: Function
-) => {
+const generateSkipButton = (questionNum: number, setQuestionNum: Function, quiz: any, answer: number, answerIDs: Array<number>, setAnswerIDs: Function) => {
   const total = quiz && quiz.questions.length;
   if (questionNum === total) {
     return (
-      <IonButton class="skip" onClick={() => setAnswerIDs(answerIDs.concat(answer))} routerLink="/quiz/end">
-        Skip
-      </IonButton>
+      <IonButton color="medium" onClick={() => setAnswerIDs(answerIDs.concat(answer))} routerLink="/quiz/result">Skip</IonButton>
     );
   } else {
     return (
-      <IonButton
-        class="skip"
-        onClick={() => {
-          setQuestionNum(questionNum + 1);
-          setAnswerIDs(answerIDs.concat(answer));
-        }}
-        routerLink="/quiz/question"
-      >
-        Skip
-      </IonButton>
+      <IonButton color="medium" onClick={() => { setQuestionNum(questionNum + 1); setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/question">Skip</IonButton>
     );
   }
 };

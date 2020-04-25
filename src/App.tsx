@@ -6,6 +6,8 @@ import Quiz from "./pages/Quiz";
 import Question from "./pages/Question";
 import Incorrect from "./pages/Incorrect";
 import Correct from "./pages/Correct";
+import Result from "./pages/Result";
+import SignUp from "./pages/SignUp";
 import End from "./pages/End";
 
 /* Core CSS required for Ionic components to work properly */
@@ -31,7 +33,7 @@ import "./theme/variables.scss";
 import "./theme/style.scss";
 
 import api from "./api";
-import Thanks from "./pages/Thanks";
+import Thanks from "./pages/SignUp";
 
 const sendGetQuizRequest = async () => {
   const response = await api.get(`/quiz/web-client`);
@@ -45,6 +47,7 @@ export const App: React.FC = () => {
   const [quiz, setQuiz] = React.useState();
   const [answer, setAnswer] = React.useState(0);
   const [answerIDs, setAnswerIDs] = React.useState([]);
+  const [raffle, setRaffle] = React.useState(false);
 
   useEffect(() => {
     sendGetQuizRequest().then(quiz => setQuiz(quiz));
@@ -113,12 +116,23 @@ export const App: React.FC = () => {
             )}
           />
           <Route
-            path="/quiz/end"
+            path="/quiz/result"
             render={props => (
-              <End {...props} answerIDs={answerIDs} quiz={quiz} />
+              <Result {...props} answerIDs={answerIDs} quiz={quiz} setRaffle={setRaffle} />
             )}
           />
-          <Route path="/quiz/thanks" component={Thanks} />
+          <Route
+            path="/quiz/signup"
+            render={props => (
+              <SignUp {...props} answerIDs={answerIDs} quiz={quiz} raffle={raffle} />
+            )}
+          />
+          <Route
+            path="/quiz/end"
+            render={props => (
+              <End {...props} raffle={raffle} />
+            )}
+          />
           <Redirect exact from="/" to="/quiz" />
         </IonRouterOutlet>
       </IonReactRouter>

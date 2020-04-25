@@ -30,7 +30,7 @@ const generateContinueButton = (
         onClick={() => {
           setAnswerIDs(answerIDs.concat(answer));
         }}
-        routerLink="/quiz/end"
+        routerLink="/quiz/result"
       >
         continue
       </IonButton>
