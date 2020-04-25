@@ -32,6 +32,17 @@ const getNumCorrect = (answerIDs: Array<number>, quiz: any) => {
   });
 };
 
+const imageReturn = (numCorrect: any) => {
+  if (numCorrect.correct === numCorrect.total) {
+    return 'src="../assets/confetti.svg"';
+  } 
+  else if (numCorrect.correct > 0) {
+    return 'src="../assets/hatsoff.svg"';
+  } else {
+    return 'src="../assets/house.svg"';
+  }
+};
+
 const title = (numCorrect: any) => {
   if (numCorrect.correct === numCorrect.total) {
     return "Congratulations";

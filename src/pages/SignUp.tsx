@@ -134,10 +134,10 @@ const generateInput = (raffle: boolean, setFirstName: Function, setLastName: Fun
 
 const generateButton = (raffle: boolean) => {
   if (raffle) {
-    return <IonButton expand="block" type="submit" class="ion-no-margin">Enter Raffle</IonButton>;
+    return <IonButton expand="block" type="submit" className="blue-button">Enter Raffle</IonButton>;
   }
   else {
-    return <IonButton expand="block" type="submit" class="ion-no-margin">Sign Up</IonButton>;
+    return <IonButton expand="block" type="submit" className="blue-button">Sign Up</IonButton>;
   }
 };
 

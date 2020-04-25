@@ -102,8 +102,8 @@ const Question: React.FC<Props> = ({
             <div className="question-subtitle" dangerouslySetInnerHTML={createSubtitle()} />
           </IonRow>
 
-          <IonRow>
-            <IonCol style={{ flexGrow: 1 }}>
+          <IonRow style={{ flexGrow: 1 }}>
+            <IonCol>
               <IonGrid className="answer-grid" style={{ height: "100%" }}>
                 <IonRow className="answer-row" style={{ height: "100%" }}>
                   {question.answers.map((a: any) => {
