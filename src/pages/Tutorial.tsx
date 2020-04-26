@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { IonPage, IonButton, IonContent, IonRow, IonGrid, IonCol } from "@ionic/react";
+import React, { useEffect, useState, useCallback } from "react";
+import { IonPage, IonButton, IonContent, IonImg, IonRow, IonGrid, IonCol } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 
 import api from "../api";
+
+import TutorialLines from "../assets/tutorial.svg";
 
 interface Props extends RouteComponentProps {
   quiz: any;
 }
 
-const sendGetTutorialRequest = (quiz: any) => {
-  return api.get(`/quiz/${quiz.id}/tutorial`);
-};
-
-const sendGetRaffleRequest = (quiz: any) => {
-  return api.get(`/quiz/${quiz.id}/raffle`);
-};
-
 const Quiz: React.FC<Props> = ({ quiz }) => {
+  const sendGetTutorialRequest = useCallback(() => {
+    return api.get(`/quiz/${quiz.id}/tutorial`);
+  }, [quiz]);
+
+  const sendGetRaffleRequest = useCallback(() => {
+    return api.get(`/quiz/${quiz.id}/raffle`);
+  }, [quiz]);
 
   const [header, setHeader] = useState();
   const [body, setBody] = useState();
@@ -25,35 +26,40 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
   const [prize, setPrize] = useState();
 
   useEffect(() => {
-    sendGetTutorialRequest(quiz).then(res => {
+    sendGetTutorialRequest().then(res => {
       setHeader(res.data.header);
       setBody(res.data.body);
       setTotalQuestions(res.data.totalQuestions);
     });
-  }, [quiz]);
+  }, [sendGetTutorialRequest]);
 
   useEffect(() => {
-    sendGetRaffleRequest(quiz).then(res => {
-      setQuestionRequirement(res.data.questionRequirement);
+    sendGetRaffleRequest().then(res => {
       setPrize(res.data.prize);
+      setQuestionRequirement(res.data.questionRequirement);
     });
-  }, [quiz]);
+  }, [sendGetRaffleRequest]);
 
   return (
     <IonPage>
-      <IonContent fullscreen class="ion-padding">
+      <IonContent fullscreen>
+        <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
         <IonGrid className="welcome-content">
-          <IonRow>
+          <IonRow className="tutorial-info">
             <IonCol size="12" size-sm>
-              <b>{header}</b>
+              <h1>{header}</h1>
             </IonCol>
             <IonCol size="12" size-sm>
-              <b>{body}</b>
+              <div dangerouslySetInnerHTML={{ __html: body }} />
             </IonCol>
             <IonCol size="12" size-sm>
-              <b>
-                Complete {questionRequirement} out {totalQuestions} questions to win {prize}
-              </b>
+              <p>{`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}</p>
+            </IonCol>
+            <IonCol size="12" size-sm>
+              <b>{prize}</b>
+            </IonCol>
+            <IonCol size="12" size-sm>
+              <p className="small"> Drawings are done monthly</p>
             </IonCol>
           </IonRow>
           <IonRow>
