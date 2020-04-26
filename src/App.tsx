@@ -5,6 +5,7 @@ import { IonApp, IonRouterOutlet, IonLoading } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
 import Quiz from "./pages/Quiz";
+import Tutorial from "./pages/Tutorial";
 import Question from "./pages/Question";
 import Incorrect from "./pages/Incorrect";
 import Correct from "./pages/Correct";
@@ -69,6 +70,11 @@ export const App: React.FC = () => {
       <IonReactRouter>
         <IonRouterOutlet>
           <Route exact path="/quiz" render={props => <Quiz {...props} quiz={quiz} />} />
+          <Route
+            exact
+            path="/quiz/tutorial"
+            render={props => <Tutorial {...props} quiz={quiz} />}
+          />
           <Route
             path="/quiz/question"
             render={props => (
