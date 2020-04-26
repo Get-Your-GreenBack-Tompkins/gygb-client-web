@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  IonPage,
-  IonButton,
-  IonContent,
-  IonCol,
-  IonGrid,
-  IonRow,
-  IonProgressBar
-} from "@ionic/react";
+
+import { IonPage, IonButton, IonContent, IonCol, IonGrid, IonRow, IonProgressBar } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 
 import api from "../api";
+
+import "../theme/style.scss";
 
 interface QuizMetrics {
   completed: number;
@@ -24,17 +19,9 @@ interface Props extends RouteComponentProps {
   metrics: QuizMetrics;
 }
 
-const Question: React.FC<Props> = ({
-  question,
-  answer,
-  setAnswer,
-  metrics,
-  history
-}) => {
+const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, history }) => {
   const sendGetAnswerRequest = (answerId: string) => {
-    return api.get(
-      `/quiz/web-client/question/${question.id}/verify-answer/${answerId}`
-    );
+    return api.get(`/quiz/web-client/question/${question.id}/verify-answer/${answerId}`);
   };
 
   const [correct, setCorrect] = useState();
@@ -81,19 +68,31 @@ const Question: React.FC<Props> = ({
         >
           <IonRow>
             <IonCol>
-              <IonProgressBar className="question-progress" value={metrics.completed / metrics.total} color="primary" ></IonProgressBar>
+              <IonProgressBar
+                className="question-progress"
+                value={metrics.completed / metrics.total}
+                color="primary"
+              ></IonProgressBar>
             </IonCol>
           </IonRow>
-          <IonRow className="ion-justify-content-start">
+          <IonRow className="question-title-row ion-justify-content-start">
             <IonCol>
               <h3 className="title question-title">{createTitle()}</h3>
-              <div className="question-subtitle" dangerouslySetInnerHTML={createSubtitle()} />
+            </IonCol>
+
+            <IonCol size="auto">
+              <IonButton className="score"> 1/3 </IonButton>
             </IonCol>
           </IonRow>
-          <IonRow style={{ flexGrow: 1 }}>
+
+          <IonRow>
+            <div className="question-subtitle" dangerouslySetInnerHTML={createSubtitle()} />
+          </IonRow>
+
+          <IonRow className="ion-align-items-stretch" style={{ flexGrow: 1 }}>
             <IonCol>
               <IonGrid className="answer-grid" style={{ height: "100%" }}>
-                <IonRow className="answer-row" style={{ height: "100%" }}>
+                <IonRow className="answer-row ion-align-items-stretch" style={{ height: "100%" }}>
                   {question.answers.map((a: any) => {
                     const { id } = a;
                     return (
@@ -107,10 +106,7 @@ const Question: React.FC<Props> = ({
                           }}
                         >
                           <div className="answer-container">
-                            <span
-                              dangerouslySetInnerHTML={{ __html: a.text }}
-                              className="answer-text"
-                            ></span>
+                            <span dangerouslySetInnerHTML={{ __html: a.text }} className="answer-text"></span>
                           </div>
                         </IonButton>
                       </IonCol>

@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from "react";
-import {
-  IonPage,
-  IonContent,
-  IonButton,
-  IonCol,
-  IonRow,
-  IonGrid
-} from "@ionic/react";
+import React from "react";
+
+import { IonPage, IonContent, IonButton, IonCol, IonRow, IonGrid } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 
 interface Props extends RouteComponentProps {
@@ -16,8 +10,7 @@ interface Props extends RouteComponentProps {
 const subtitle = (raffle: boolean) => {
   if (raffle) {
     return "Raffle drawings are done once a month at the end of each month, and winners are notified over email.";
-  }
-  else {
+  } else {
     return "You’ll get periodic updates on amazing new green technologies you can use for your home!";
   }
 };
@@ -31,12 +24,16 @@ const End: React.FC<Props> = ({ raffle }) => {
             <IonCol>
               <h1 className="title">Success!</h1>
               <h3 className="subtitle">{subtitle(raffle)}</h3>
-              <IonButton routerLink="/quiz">Try Again</IonButton>
+              <IonButton className="blue-button" routerLink="/quiz">
+                Try Again
+              </IonButton>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton href="tinypowerhouse.org">Return Home</IonButton>
+              <IonButton className="blue-button" href="tinypowerhouse.org">
+                Return Home
+              </IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>

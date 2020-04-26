@@ -1,0 +1,30 @@
+.tutorial-lines {
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.start-button {
+  --background: white;
+  --background-activity: #{$gygb-green};
+  --background-focused: #{$gygb-green};
+  --background-hover: #{$gygb-green};
+
+  --color: #{$gygb-green};
+  --color-activated: white;
+  --color-focused: white;
+  --color-hover: white;
+
+  --border-color: #{$gygb-green};
+  --border-radius: 10px;
+  --border-style: solid; 
+
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+  font-size: 1.15em;
+  font-weight: bold;
+  width: fit-content;
+  top: 50%;
+  margin-top: 15%;
+}

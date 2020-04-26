@@ -1,6 +1,9 @@
-import React from 'react';
-import { IonPage, IonButton, IonContent, IonToolbar, IonTitle } from '@ionic/react';
-import { RouteComponentProps } from 'react-router';
+import React from "react";
+
+import { IonPage, IonButton, IonContent, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react";
+import { RouteComponentProps } from "react-router";
+
+import RedLines from "../assets/redLines.svg";
 
 interface Props extends RouteComponentProps {
   questionNum: number;
@@ -11,28 +14,76 @@ interface Props extends RouteComponentProps {
   setAnswerIDs: Function;
 }
 
-const generateSkipButton = (questionNum: number, setQuestionNum: Function, quiz: any, answer: number, answerIDs: Array<number>, setAnswerIDs: Function) => {
+const generateSkipButton = (
+  questionNum: number,
+  setQuestionNum: Function,
+  quiz: any,
+  answer: number,
+  answerIDs: Array<number>,
+  setAnswerIDs: Function
+) => {
   const total = quiz && quiz.questions.length;
   if (questionNum === total) {
     return (
-      <IonButton color="medium" onClick={() => setAnswerIDs(answerIDs.concat(answer))} routerLink="/quiz/result">Skip</IonButton>
+      <IonButton
+        className="skip"
+        color="medium"
+        onClick={() => setAnswerIDs(answerIDs.concat(answer))}
+        routerLink="/quiz/result"
+      >
+        Skip
+      </IonButton>
     );
   } else {
     return (
-      <IonButton color="medium" onClick={() => { setQuestionNum(questionNum + 1); setAnswerIDs(answerIDs.concat(answer)); }} routerLink="/quiz/question">Skip</IonButton>
+      <IonButton
+        className="skip"
+        color="medium"
+        onClick={() => {
+          setQuestionNum(questionNum + 1);
+          setAnswerIDs(answerIDs.concat(answer));
+        }}
+        routerLink="/quiz/question"
+      >
+        Skip
+      </IonButton>
     );
   }
-}
+};
 
-const Incorrect: React.FC<Props> = ({ questionNum, setQuestionNum, answer, quiz, answerIDs, setAnswerIDs }) => {
+const Incorrect: React.FC<Props> = ({
+  questionNum,
+  setQuestionNum,
+  answer,
+  quiz,
+  answerIDs,
+  setAnswerIDs
+}) => {
   return (
     <IonPage>
-      <IonContent fullscreen class="ion-padding">
-        <IonToolbar>
-          <IonTitle size="large" class="title">Whoops!</IonTitle>
-          {generateSkipButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
-          <IonButton routerLink="/quiz/question">Try Again</IonButton>
-        </IonToolbar>
+      <IonContent fullscreen>
+        <IonImg className="grid-lines" src={RedLines}></IonImg>
+        <IonGrid className="line-grid vh-50">
+          <IonRow className="vh-25 ion-align-items-end">
+            <IonCol size="12">
+              <h1 className="title">Not Quite</h1>
+
+              <p>
+                Here we will insert the reasoning why this <b className="wrong">answer</b> is incorrect.{" "}
+              </p>
+            </IonCol>
+          </IonRow>
+          <IonRow className="vh-25 incorrect-button-container ion-align-items-start">
+            <IonCol size="auto">
+              <IonButton className="skip" routerLink="/quiz/question">
+                Try Again
+              </IonButton>
+            </IonCol>
+            <IonCol size="auto">
+              {generateSkipButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
+            </IonCol>
+          </IonRow>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );

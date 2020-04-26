@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  IonPage,
-  IonContent,
-  IonTitle,
-  IonItem,
-  IonInput,
-  IonButton,
-  IonAlert,
-  IonLabel,
-  IonCheckbox,
-  IonCol,
-  IonRow,
-  IonGrid
-} from "@ionic/react";
+import { IonPage, IonContent, IonButton, IonCol, IonRow, IonImg, IonGrid } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 import api from "../api";
+
+import Confetti from "../assets/confetti.svg";
+import HatsOff from "../assets/hatsoff.svg";
+import House from "../assets/house.svg";
 
 interface Props extends RouteComponentProps {
   answerIDs: Array<number>;
@@ -30,6 +21,16 @@ const getNumCorrect = (answerIDs: Array<number>, quiz: any) => {
   return api.post(`/quiz/web-client/verify/`, {
     answers: obj
   });
+};
+
+const imageReturn = (numCorrect: any) => {
+  if (numCorrect.correct === numCorrect.total) {
+    return <IonImg src={Confetti}></IonImg>;
+  } else if (numCorrect.correct > 0) {
+    return <IonImg src={HatsOff}></IonImg>;
+  } else {
+    return <IonImg src={House}></IonImg>;
+  }
 };
 
 const title = (numCorrect: any) => {
@@ -55,11 +56,18 @@ const subtitle = (numCorrect: any) => {
 const generateButton = (numCorrect: any, setRaffle: Function) => {
   if (numCorrect.correct / numCorrect.total < 0.7) {
     setRaffle(false);
-    return <IonButton routerLink="/quiz/signup">Learn More</IonButton>;
-  }
-  else {
+    return (
+      <IonButton className="blue-button" routerLink="/quiz/signup">
+        Learn More
+      </IonButton>
+    );
+  } else {
     setRaffle(true);
-    return <IonButton routerLink="/quiz/signup">Enter Raffle</IonButton>;
+    return (
+      <IonButton className="blue-button" routerLink="/quiz/signup">
+        Enter Raffle
+      </IonButton>
+    );
   }
 };
 
@@ -75,6 +83,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
+        {imageReturn(numCorrect)}
         <IonGrid>
           <IonRow>
             <IonCol>
@@ -85,7 +94,9 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton href="tinypowerhouse.org">Return Home</IonButton>
+              <IonButton className="blue-button" href="tinypowerhouse.org">
+                Return Home
+              </IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>
