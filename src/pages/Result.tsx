@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  IonPage,
-  IonContent,
-  IonButton,
-  IonCol,
-  IonRow,
-  IonImg,
-  IonGrid
-} from "@ionic/react";
+import { IonPage, IonContent, IonButton, IonCol, IonRow, IonImg, IonGrid } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 import api from "../api";
 
 import Confetti from "../assets/confetti.svg";
 import HatsOff from "../assets/hatsoff.svg";
 import House from "../assets/house.svg";
-
 
 interface Props extends RouteComponentProps {
   answerIDs: Array<number>;
@@ -34,10 +25,9 @@ const getNumCorrect = (answerIDs: Array<number>, quiz: any) => {
 
 const imageReturn = (numCorrect: any) => {
   if (numCorrect.correct === numCorrect.total) {
-    return <IonImg className="result-img" src={Confetti}></IonImg>;
-  } 
-  else if (numCorrect.correct / numCorrect.total > 0.7) {
-    return <IonImg className="result-img" src={HatsOff}></IonImg>;
+    return <IonImg src={Confetti}></IonImg>;
+  } else if (numCorrect.correct / numCorrect.total > 0.7) {
+    return <IonImg src={HatsOff}></IonImg>;
   } else {
     return <IonImg className="result-img" src={House}></IonImg>;
   }

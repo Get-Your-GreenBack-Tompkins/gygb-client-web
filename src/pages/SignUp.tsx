@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   IonPage,
   IonContent,
-  IonTitle,
   IonItem,
   IonInput,
   IonButton,
@@ -25,13 +24,21 @@ interface Props extends RouteComponentProps {
 const title = (raffle: boolean) => {
   if (raffle) {
     return "Enter To Win";
-  }
-  else {
+  } else {
     return "Sign Up";
   }
 };
 
-const postAll = (answerIDs: Array<number>, quiz: any, firstName: string, lastName: string, email: string, history: any, setShowAlert: Function, checked: Boolean) => {
+const postAll = (
+  answerIDs: Array<number>,
+  quiz: any,
+  firstName: string,
+  lastName: string,
+  email: string,
+  history: any,
+  setShowAlert: Function,
+  checked: Boolean
+) => {
   var obj: any = {};
   for (var i = 0; i < answerIDs.length; i++) {
     obj[quiz.questions[i].id] = answerIDs[i];
@@ -44,19 +51,23 @@ const postAll = (answerIDs: Array<number>, quiz: any, firstName: string, lastNam
       email: email,
       answers: obj
     })
-    .then(res => {
+    .then(() => {
       api
         .post(`/user`, {
           email: email,
           marketing: checked,
           source: "web"
         })
-        .then(result => {
+        .then(() => {
           history.push("/quiz/end");
         })
-        .catch(e => { history.push("/quiz/end"); })
+        .catch(() => {
+          history.push("/quiz/end");
+        });
     })
-    .catch(error => { setShowAlert(true); });
+    .catch(() => {
+      setShowAlert(true);
+    });
 };
 
 const postEmail = (email: string, history: any, setShowAlert: Function, checked: Boolean) => {
@@ -66,24 +77,31 @@ const postEmail = (email: string, history: any, setShowAlert: Function, checked:
       marketing: checked,
       source: "web"
     })
-    .then(res => {
+    .then(() => {
       history.push("/quiz/end");
     })
-    .catch(error => { setShowAlert(true); });
+    .catch(() => {
+      setShowAlert(true);
+    });
 };
 
 const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => {
   if (raffle) {
     return (
-      <IonItem lines = "none" className="sign-up-n">
-        <IonLabel > Sign Up for Newsletter</IonLabel>
+      <IonItem lines = "none" className="sign-up">
+        <IonLabel> Sign Up for Newsletter</IonLabel>
         <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
       </IonItem>
     );
   }
 };
 
-const generateInput = (raffle: boolean, setFirstName: Function, setLastName: Function, setEmail: Function) => {
+const generateInput = (
+  raffle: boolean,
+  setFirstName: Function,
+  setLastName: Function,
+  setEmail: Function
+) => {
   if (raffle) {
     return (
       <div className="sign-up">
@@ -116,8 +134,7 @@ const generateInput = (raffle: boolean, setFirstName: Function, setLastName: Fun
         </IonItem>
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <IonItem className="input-style">
         <IonInput
@@ -134,10 +151,17 @@ const generateInput = (raffle: boolean, setFirstName: Function, setLastName: Fun
 
 const generateButton = (raffle: boolean) => {
   if (raffle) {
-    return <IonButton expand="block" type="submit" className="raffle-button blue-button">Enter Raffle</IonButton>;
-  }
-  else {
-    return <IonButton expand="block" type="submit" className="sign-up blue-button">Sign Up</IonButton>;
+    return (
+      <IonButton expand="block" type="submit" className="blue-button">
+        Enter Raffle
+      </IonButton>
+    );
+  } else {
+    return (
+      <IonButton expand="block" type="submit" className="blue-button">
+        Sign Up
+      </IonButton>
+    );
   }
 };
 
@@ -169,22 +193,14 @@ const displayEnterEmail = (
               <p>Our only purpose is to provide you with key information that can help you save money
                  and live more environmentally.</p>
             </IonCol>
-
+          
+        {generateInput(raffle, setFirstName, setLastName, setEmail)}
         {newsletter(raffle, checked, setChecked)}
-        <IonRow>
-            <IonCol size="12">
-              {generateInput(raffle, setFirstName, setLastName, setEmail)}
-            </IonCol>
-           
-               {generateButton(raffle)}
-            </IonRow>
-            
-
-       
+     
+        {generateButton(raffle)}
       </form>
     );
-  }
-  else {
+  } else {
     return (
       <form
         onSubmit={e => {
@@ -194,21 +210,9 @@ const displayEnterEmail = (
       >
         {generateInput(raffle, setFirstName, setLastName, setEmail)}
         {newsletter(raffle, checked, setChecked)}
-        <IonRow>
-          <IonCol>
-            <p>
-              We never spam. We’re here to serve you!
-            </p>
-            <p>
-              Our only purpose is to provide you with key information that can help you save money and live more environmentally.
-            </p>
-          </IonCol>
-          {generateButton(raffle)}
-        </IonRow>
-       
-        
-          
-
+        We never spam. We’re here to serve you! Our only purpose is to provide you with key information that
+        can help you save money and live more environmentally.
+        {generateButton(raffle)}
       </form>
     );
   }
@@ -226,9 +230,27 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
       <IonContent fullscreen class="ion-padding">
         <IonGrid>
           <IonRow>
-            <IonCol size ="12">
-              <h1 className="sign-title">{title(raffle)}</h1>
-              {displayEnterEmail(answerIDs, quiz, email, setEmail, firstName, setFirstName, lastName, setLastName, history, setShowAlert, checked, setChecked, raffle)}
+            <IonCol>
+              <h1 className="title">{title(raffle)}</h1>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol size="12">
+              {displayEnterEmail(
+                answerIDs,
+                quiz,
+                email,
+                setEmail,
+                firstName,
+                setFirstName,
+                lastName,
+                setLastName,
+                history,
+                setShowAlert,
+                checked,
+                setChecked,
+                raffle
+              )}
             </IonCol>
           </IonRow>
           
