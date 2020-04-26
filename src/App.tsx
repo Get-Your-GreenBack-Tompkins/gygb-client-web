@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
+
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, IonLoading } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+
 import Quiz from "./pages/Quiz";
+import Tutorial from "./pages/Tutorial";
 import Question from "./pages/Question";
 import Incorrect from "./pages/Incorrect";
 import Correct from "./pages/Correct";
+import Result from "./pages/Result";
+import SignUp from "./pages/SignUp";
 import End from "./pages/End";
+
+import api from "./api";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -25,9 +32,10 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 /* Theme variables */
-import "./theme/variables.css";
+import "./theme/variables.scss";
 
-import api from "./api";
+/* Styling */
+import "./theme/style.scss";
 
 const sendGetQuizRequest = async () => {
   const response = await api.get(`/quiz/web-client`);
@@ -38,9 +46,10 @@ const sendGetQuizRequest = async () => {
 export const App: React.FC = () => {
   const [questionNum, setQuestionNum] = useState(1);
   const [question, setQuestion] = useState();
-  const [numCorrect, setNumCorrect] = useState(0);
   const [quiz, setQuiz] = React.useState();
-  const [answer, setAnswer] = React.useState();
+  const [answer, setAnswer] = React.useState(0);
+  const [answerIDs, setAnswerIDs] = React.useState([]);
+  const [raffle, setRaffle] = React.useState(false);
 
   useEffect(() => {
     sendGetQuizRequest().then(quiz => setQuiz(quiz));
@@ -60,15 +69,25 @@ export const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
+          <Route exact path="/quiz" render={props => <Quiz {...props} quiz={quiz} />} />
           <Route
             exact
-            path="/quiz"
-            render={props => <Quiz {...props} quiz={quiz} />}
+            path="/quiz/tutorial"
+            render={props => <Tutorial {...props} quiz={quiz} />}
           />
           <Route
             path="/quiz/question"
             render={props => (
-              <Question {...props} question={question} setAnswer={setAnswer} />
+              <Question
+                {...props}
+                metrics={{
+                  total: quiz.questions.length,
+                  completed: questionNum
+                }}
+                question={question}
+                answer={answer}
+                setAnswer={setAnswer}
+              />
             )}
           />
           <Route
@@ -80,6 +99,8 @@ export const App: React.FC = () => {
                 quiz={quiz}
                 questionNum={questionNum}
                 setQuestionNum={setQuestionNum}
+                answerIDs={answerIDs}
+                setAnswerIDs={setAnswerIDs}
               />
             )}
           />
@@ -90,19 +111,22 @@ export const App: React.FC = () => {
                 {...props}
                 questionNum={questionNum}
                 setQuestionNum={setQuestionNum}
-                numCorrect={numCorrect}
-                setNumCorrect={setNumCorrect}
                 quiz={quiz}
                 answer={answer}
+                answerIDs={answerIDs}
+                setAnswerIDs={setAnswerIDs}
               />
             )}
           />
           <Route
-            path="/quiz/end"
-            render={props => (
-              <End {...props} numCorrect={numCorrect} quiz={quiz} />
-            )}
+            path="/quiz/result"
+            render={props => <Result {...props} answerIDs={answerIDs} quiz={quiz} setRaffle={setRaffle} />}
           />
+          <Route
+            path="/quiz/signup"
+            render={props => <SignUp {...props} answerIDs={answerIDs} quiz={quiz} raffle={raffle} />}
+          />
+          <Route path="/quiz/end" render={props => <End {...props} raffle={raffle} />} />
           <Redirect exact from="/" to="/quiz" />
         </IonRouterOutlet>
       </IonReactRouter>

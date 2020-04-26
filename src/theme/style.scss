@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+@import "./theme-variables.scss";
+
+@import "./correct";
+@import "./end";
+@import "./question";
+@import "./quiz";
+@import "./tutorial";
+@import "./welcome";
+
+body {
+  font-family: "Montserrat", "sans-serif";
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.vh-50 {
+  height: 50vh;
+}
+
+.vh-25 {
+  height: 25vh;
+}
+
+.image-lines {
+  top: 15%;
+  left: 10%;
+  width: 85%;
+  position: absolute;
+}
+
+.img-title {
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  text-transform: uppercase !important;
+  top: 25%;
+}
+
+.img-subtitle {
+  letter-spacing: 1.5px;
+  text-transform: uppercase !important;
+  top: 25%;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.raffle-button {
+  --background: #228ad3;
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+  width: fit-content;
+}
+
+.blue-button {
+  --background: #228ad3;
+}

@@ -1,41 +1,82 @@
-import React from 'react';
-import { IonPage, IonButton, IonContent, IonToolbar, IonTitle } from '@ionic/react';
-import { RouteComponentProps } from 'react-router';
+import React from "react";
+
+import { IonPage, IonButton, IonContent, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react";
+import { RouteComponentProps } from "react-router";
+
+import GreenLines from "../assets/greenLines.svg";
+
+import "../theme/style.scss";
 
 interface Props extends RouteComponentProps {
   questionNum: number;
   setQuestionNum: Function;
-  numCorrect: number;
-  setNumCorrect: Function;
   quiz: any;
-  answer: string;
+  answer: number;
+  answerIDs: Array<number>;
+  setAnswerIDs: Function;
 }
 
-const generateContinueButton = (questionNum: number, setQuestionNum: Function, numCorrect: number, setNumCorrect: Function, quiz: any) => {
+const generateContinueButton = (
+  questionNum: number,
+  setQuestionNum: Function,
+  quiz: any,
+  answer: number,
+  answerIDs: Array<number>,
+  setAnswerIDs: Function
+) => {
   const total = quiz && quiz.questions.length;
   console.log(total);
   if (questionNum === total) {
     return (
-      <IonButton onClick={() => { setNumCorrect(numCorrect + 1); }} routerLink="/quiz/end">Continue</IonButton>
+      <IonButton
+        className="correct-button"
+        onClick={() => {
+          setAnswerIDs(answerIDs.concat(answer));
+        }}
+        routerLink="/quiz/result"
+      >
+        Continue
+      </IonButton>
     );
   } else {
     return (
-      <IonButton onClick={() => { setQuestionNum(questionNum + 1); setNumCorrect(numCorrect + 1); }} routerLink="/quiz/question">Continue</IonButton>
+      <IonButton
+        className="correct-button"
+        onClick={() => {
+          setQuestionNum(questionNum + 1);
+          setAnswerIDs(answerIDs.concat(answer));
+        }}
+        routerLink="/quiz/question"
+      >
+        Continue
+      </IonButton>
     );
   }
-}
+};
 
-const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, numCorrect, setNumCorrect, quiz, answer }) => {
+const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs }) => {
   return (
     <IonPage>
-      <IonContent fullscreen class="ion-padding">
-        <IonToolbar>
-          <IonTitle size="large" class="title">Correct!</IonTitle>
-          <IonTitle class="subtitle">{answer}!</IonTitle>
-          {generateContinueButton(questionNum, setQuestionNum, numCorrect, setNumCorrect, quiz)}
-        </IonToolbar>
+      <IonContent fullscreen>
+        <IonImg className="grid-lines" src={GreenLines}></IonImg>
+        <IonGrid className="line-grid">
+          <IonRow>
+            <IonCol size="12">
+              <h1 className="title">Correct</h1>
+
+              <p>
+                Here we will insert the reasoning why this <b className="right">answer</b> is correct.{" "}
+              </p>
+            </IonCol>
+            <IonRow>
+              <IonCol className="correct">
+                {generateContinueButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
+              </IonCol>
+            </IonRow>
+          </IonRow>
+        </IonGrid>
       </IonContent>
-    </IonPage >
+    </IonPage>
   );
 };
 
