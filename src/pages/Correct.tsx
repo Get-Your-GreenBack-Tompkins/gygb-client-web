@@ -1,7 +1,10 @@
 import React from "react";
+
 import { IonPage, IonButton, IonContent, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
+
 import GreenLines from "../assets/greenLines.svg";
+
 import "../theme/style.scss";
 
 interface Props extends RouteComponentProps {
@@ -32,7 +35,7 @@ const generateContinueButton = (
         }}
         routerLink="/quiz/result"
       >
-        continue
+        Continue
       </IonButton>
     );
   } else {
@@ -45,7 +48,7 @@ const generateContinueButton = (
         }}
         routerLink="/quiz/question"
       >
-        continue
+        Continue
       </IonButton>
     );
   }

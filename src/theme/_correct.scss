@@ -1,0 +1,55 @@
+@media only screen and (min-width: 700px) {
+  ion-button.correct-button {
+    font-size: 2.1em;
+  }
+
+  p {
+    font-size: 1.5em;
+  }
+}
+
+.skip {
+  width: fit-content;
+  height: 50px;
+  font-size: 1.15em;
+  letter-spacing: 2px;
+  --background: #{$gygb-red};
+  --background-hover: #{$gygb-red};
+  text-transform: uppercase !important;
+}
+
+.incorrect-button-container {
+  margin-top: 10px;
+}
+
+.wrong {
+  color: $gygb-red;
+}
+
+.right {
+  color: $gygb-green;
+}
+
+.correct-button {
+  --background: #{$gygb-green};
+  --background-hover: #a2e94c;
+  font-size: 1.1em;
+  letter-spacing: 2px;
+  text-transform: uppercase !important;
+  font-weight: bold;
+  transition-duration: 0.4s;
+}
+
+.correct {
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.icon {
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 50;
+  left: 50;
+}
