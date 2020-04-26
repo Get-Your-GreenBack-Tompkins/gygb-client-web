@@ -25,7 +25,7 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
         </IonRow>
 
         <IonRow>
-          <IonButton size="large" className="start-button" routerLink="/quiz/question">
+          <IonButton size="large" className="start-button" routerLink="/quiz/tutorial">
             Enter Quiz
           </IonButton>
         </IonRow>
