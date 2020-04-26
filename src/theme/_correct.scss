@@ -14,13 +14,14 @@
   font-size: 1.15em;
   letter-spacing: 2px;
   --background: #{$gygb-red};
-  --background-hover: #{$gygb-red};
+  --background-hover: #FE7D6E;
+  --background-activated: #FE7D6E;
   text-transform: uppercase !important;
 }
 
-.incorrect-button-container {
-  margin-top: 10px;
-}
+// .skip{
+//   margin-top: 30%;
+// }
 
 .wrong {
   color: $gygb-red;

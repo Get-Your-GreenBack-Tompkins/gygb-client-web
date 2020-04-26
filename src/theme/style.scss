@@ -3,17 +3,17 @@
 
 //QUIZ PAGE
 
-.title {
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 1.5em;
-  text-align: center;
-  letter-spacing: 0.04em;
-  color: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  justify-content: center;
-}
+// .title {
+//   font-weight: bold;
+//   letter-spacing: 2px;
+//   text-transform: uppercase;
+//   font-size: 1.5em;
+//   text-align: center;
+//   letter-spacing: 0.04em;
+//   color: rgba(0, 0, 0, 0.7);
+//   width: 100%;
+//   justify-content: center;
+// }
 
 ion-row{
   justify-content: center;
@@ -112,26 +112,6 @@ ion-justify-content-start {
   --color: black;
 }
 
-.question-title {
-  font-size: 2.1em;
-  width: -moz-fit-content;
-  width: -webkit-fill-available;
-  width: 100%;
-  text-align: left;
-}
-
-.answer-text {
-  vertical-align: middle;
-  line-height: 1.25rem;
-  font-size: 1rem;
-}
-
-.answer-button {
-  // Applies a background to an [ion-button]
-  // TODO: Don't use opacity.
-  --background: rgba(0, 0, 0, 0.8);
-  --background-hover: rgba(0, 0, 0, 0.6);
-}
 .vh-50 {
   height: 50vh;
 }
@@ -182,159 +162,128 @@ ion-justify-content-start {
   }
 }
 
-.skip {
-  margin-top: 10%;
-  margin-left: 3%;
-  width: fit-content;
-  height: 50px;
-  font-size: 1.15em;
-  letter-spacing: 2px;
-  --background: #e64937;
-  --background-hover: #e64937;
-  text-transform: uppercase !important;
-}
 
-.wrong {
-  color: #e64937;
-}
 
-.right {
-  color: #83ce27;
-}
+// .correct {
+//   justify-content: center;
+//   text-align: center;
+//   width: 100%;
+// }
 
-.correct-button {
-  --background: #83ce27;
-  font-size: 1.1em;
-  letter-spacing: 2px;
-  text-transform: uppercase !important;
-  font-weight: bold;
-  transition-duration: 0.4s;
-}
-
-.correct-button:hover {
-  --background: #a2e94c;
-}
-
-.correct {
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-}
-
-.icon {
-  min-width: 100%;
-  min-height: 100%;
-  position: fixed;
-  top: 50;
-  left: 50;
-}
+// .icon {
+//   min-width: 100%;
+//   min-height: 100%;
+//   position: fixed;
+//   top: 50;
+//   left: 50;
+// }
 
 //END PAGE
 
-.image-lines {
-  top: 15%;
-  left: 10%;
-  width: 85%;
-  position: absolute;
-}
-
-.img-title {
-  font-weight: bold;
-  letter-spacing: 2.5px;
-  text-transform: uppercase !important;
-  top: 25%;
-}
-
-.img-subtitle {
-  letter-spacing: 1.5px;
-  text-transform: uppercase !important;
-  top: 25%;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-
-.blue-button {
-  --background: #228ad3;
-}
-
-// .blue-button{
-//   --background: #228AD3;
-//   --padding-top: 12%;
-//   --padding-bottom: 12%;
-//   --border-radius: 10px;
-//   --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-//   width: 75%;
-//   text-transform: uppercase !important;
-//   letter-spacing: 2px;
-//   justify-content: center;
-
+// .image-lines {
+//   top: 15%;
+//   left: 10%;
+//   width: 85%;
+//   position: absolute;
 // }
 
-.raffle-button{
-  margin-top: 0%;
-  margin-bottom: 3%;
-}
+// .img-title {
+//   font-weight: bold;
+//   letter-spacing: 2.5px;
+//   text-transform: uppercase !important;
+//   top: 25%;
+// }
 
-.home-button{
- width: 60%;
-}
-
-.input-style{
-  --background: #F5F5F5;
-  border: 2px solid rgba(0, 0, 0, 0.13);
-  box-sizing: border-box;
-  border-radius:10px;
-  text-transform: uppercase;
-  margin-bottom: 10%;
-}
-ion-input{
-  color:black;
-}
-.sign-up{
-  margin-top: 15%;
-}
-
-.message{
-  margin-top: 10%;
-}
-
-.sign-title{
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  font-size: 2.25em;
-  font-weight: bold;
-  justify-content: center;
-}
-
-.result-img{
-  display: flex;
-  width: 75%;
-  margin-left: 10%;
-  margin-top: 17%;
-}
-
-.sign-up-n{
-  font-weight: bold;
-  font-weight: bold;
-  justify-content: center;
-}
-
-.result-img{
-  display: flex;
-  width: 75%;
-  margin-left: 10%;
-  margin-top: 17%;
-}
-
-.sign-up-n{
-  font-weight: bold;
-  text-transform: uppercase !important;
-  width: fit-content;
-  font-size: 1em;
-  // letter-spacing: 0.05em;
-}
+// .img-subtitle {
+//   letter-spacing: 1.5px;
+//   text-transform: uppercase !important;
+//   top: 25%;
+//   color: rgba(0, 0, 0, 0.6);
+// }
 
 
-.bluez-button{
-  margin-bottom: 10%;
-}
+// .blue-button {
+//   --background: #228ad3;
+// }
+
+// // .blue-button{
+// //   --background: #228AD3;
+// //   --padding-top: 12%;
+// //   --padding-bottom: 12%;
+// //   --border-radius: 10px;
+// //   --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+// //   width: 75%;
+// //   text-transform: uppercase !important;
+// //   letter-spacing: 2px;
+// //   justify-content: center;
+
+// // }
+
+// .raffle-button{
+//   margin-top: 0%;
+//   margin-bottom: 3%;
+// }
+
+// .home-button{
+//  width: 60%;
+// }
+
+// .input-style{
+//   --background: #F5F5F5;
+//   border: 2px solid rgba(0, 0, 0, 0.13);
+//   box-sizing: border-box;
+//   border-radius:10px;
+//   text-transform: uppercase;
+//   margin-bottom: 10%;
+// }
+// ion-input{
+//   color:black;
+// }
+// .sign-up{
+//   margin-top: 15%;
+// }
+
+// .message{
+//   margin-top: 10%;
+// }
+
+// .sign-title{
+//   letter-spacing: 0.13em;
+//   text-transform: uppercase;
+//   font-size: 2.25em;
+//   font-weight: bold;
+//   justify-content: center;
+// }
+
+// .result-img{
+//   display: flex;
+//   width: 75%;
+//   margin-left: 10%;
+//   margin-top: 17%;
+// }
+
+// .sign-up-n{
+//   font-weight: bold;
+//   font-weight: bold;
+//   justify-content: center;
+// }
+
+// .result-img{
+//   display: flex;
+//   width: 75%;
+//   margin-left: 10%;
+//   margin-top: 17%;
+// }
+
+// .sign-up-n{
+//   font-weight: bold;
+//   text-transform: uppercase !important;
+//   width: fit-content;
+//   font-size: 1em;
+//   // letter-spacing: 0.05em;
+// }
+
+
+// .bluez-button{
+//   margin-bottom: 10%;
+// }

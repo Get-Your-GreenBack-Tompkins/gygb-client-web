@@ -3,7 +3,7 @@ import { IonPage, IonButton, IonContent, IonImg, IonRow, IonGrid, IonCol } from 
 import { RouteComponentProps } from "react-router";
 
 import api from "../api";
-import TutorialLines from "../assets/tutorial.svg";
+import TutorialLines from "../assets/tL.svg";
 
 interface Props extends RouteComponentProps {
   quiz: any;
