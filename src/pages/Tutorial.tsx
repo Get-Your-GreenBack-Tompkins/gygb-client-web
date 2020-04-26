@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IonPage, IonButton, IonContent, IonImg, IonRow, IonGrid, IonCol } from "@ionic/react";
+import { IonPage, IonButton, IonContent, IonRow, IonGrid, IonCol } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 
 import api from "../api";
@@ -8,17 +8,18 @@ interface Props extends RouteComponentProps {
   quiz: any;
 }
 
+const sendGetTutorialRequest = (quiz: any) => {
+  return api.get(`/quiz/${quiz.id}/tutorial`);
+};
+
 const Quiz: React.FC<Props> = ({ quiz }) => {
-  const sendGetTutorialRequest = () => {
-    return api.get(`/quiz/${quiz.id}/tutorial`);
-  };
 
   const [header, setHeader] = useState();
   const [body, setBody] = useState();
   const [totalQuestions, setTotalQuestions] = useState();
 
   useEffect(() => {
-    sendGetTutorialRequest().then(res => {
+    sendGetTutorialRequest(quiz).then(res => {
       setHeader(res.data.header);
       setBody(res.data.body);
       setTotalQuestions(res.data.totalQuestions);

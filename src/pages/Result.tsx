@@ -78,7 +78,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
     getNumCorrect(answerIDs, quiz).then(res => {
       setNumCorrect(res.data);
     });
-  }, []);
+  }, [answerIDs, quiz]);
 
   return (
     <IonPage>
