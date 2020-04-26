@@ -3,6 +3,7 @@ import { IonPage, IonButton, IonContent, IonImg, IonRow, IonGrid, IonCol } from 
 import { RouteComponentProps } from "react-router";
 
 import api from "../api";
+import TutorialLines from "../assets/tutorial.svg";
 
 interface Props extends RouteComponentProps {
   quiz: any;
@@ -27,21 +28,27 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
 
   return (
     <IonPage>
-      <IonContent fullscreen class="ion-padding">
+      <IonContent fullscreen>
+        <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
         <IonGrid className="welcome-content">
-          <IonRow>
+          <IonRow className = "tutorial-info">
             <IonCol size="12" size-sm>
-              <b>{header}</b>
+              <h1> Thanks for coming!</h1>
             </IonCol>
             <IonCol size="12" size-sm>
-              <b>{body}</b>
+              <p>Test your knowledge of how to make your home more energy efficient, pollution free and comfortable--and save money.</p>
+              <b>Find the answers in the Powerhouse!</b>
             </IonCol>
             <IonCol size="12" size-sm>
-              <b>
-                Complete {String(Number(totalQuestions) * 0.6)} out {totalQuestions} questions to win FLIR
-                camera
-              </b>
+              <p> Get {String(Number(totalQuestions) * 0.6)} out of {totalQuestions} questions and you could win a..</p>
             </IonCol>
+            <IonCol size="12" size-sm>
+              <b> A Lux Geo Thermostat</b>
+            </IonCol>
+            <IonCol size="12" size-sm>
+              <p className = "small"> Drawings are done monthly</p>
+            </IonCol>
+            
           </IonRow>
           <IonRow>
             <IonCol>
