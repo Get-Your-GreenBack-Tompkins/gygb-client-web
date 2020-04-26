@@ -14,7 +14,9 @@
   font-size: 1.15em;
   letter-spacing: 2px;
   --background: #{$gygb-red};
-  --background-hover: #{$gygb-red};
+  --background: #{$gygb-light-red};
+  --background-hover: #{$gygb-light-red};
+  --background-activated: #{$gygb-light-red};
   text-transform: uppercase !important;
 }
 
