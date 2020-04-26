@@ -28,16 +28,21 @@ const End: React.FC<Props> = ({ raffle }) => {
       <IonContent fullscreen class="ion-padding">
         <IonGrid>
           <IonRow>
-            <IonCol>
+            <IonCol size="12">
               <h1 className="title">Success!</h1>
               <h3 className="subtitle">{subtitle(raffle)}</h3>
-              <IonButton className ="blue-button" routerLink="/quiz">Try Again</IonButton>
+              
             </IonCol>
+           <IonCol size="12">
+           <IonButton className ="blue-button bluez-button" routerLink="/quiz">Try Again</IonButton>
+           </IonCol>
+            <IonCol size="12">
+            <IonButton className ="blue-button" href="tinypowerhouse.org">Return Home</IonButton>
+            </IonCol>
+            
           </IonRow>
           <IonRow>
-            <IonCol>
-              <IonButton className ="blue-button" href="tinypowerhouse.org">Return Home</IonButton>
-            </IonCol>
+          
           </IonRow>
         </IonGrid>
       </IonContent>
