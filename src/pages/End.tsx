@@ -28,6 +28,7 @@ const End: React.FC<Props> = ({ raffle }) => {
                 Try Again
               </IonButton>
             </IonCol>
+            
           </IonRow>
           <IonRow>
             <IonCol>

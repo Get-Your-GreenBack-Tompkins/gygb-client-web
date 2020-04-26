@@ -131,6 +131,8 @@ ion-justify-content-start {
   // TODO: Don't use opacity.
   --background: rgba(0, 0, 0, 0.8);
   --background-hover: rgba(0, 0, 0, 0.6);
+.vh-50 {
+  height: 50vh;
 }
 .vh-50 {
   height: 50vh;
@@ -299,6 +301,19 @@ ion-input{
   letter-spacing: 0.13em;
   text-transform: uppercase;
   font-size: 2.25em;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.result-img{
+  display: flex;
+  width: 75%;
+  margin-left: 10%;
+  margin-top: 17%;
+}
+
+.sign-up-n{
+  font-weight: bold;
   font-weight: bold;
   justify-content: center;
 }
