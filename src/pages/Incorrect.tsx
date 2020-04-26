@@ -63,8 +63,8 @@ const Incorrect: React.FC<Props> = ({
     <IonPage>
       <IonContent fullscreen>
         <IonImg className="grid-lines" src={RedLines}></IonImg>
-        <IonGrid className="line-grid">
-          <IonRow>
+        <IonGrid className="line-grid vh-50">
+          <IonRow className="vh-25 ion-align-items-end">
             <IonCol size="12">
               <h1 className="title">Not Quite</h1>
 
@@ -73,13 +73,13 @@ const Incorrect: React.FC<Props> = ({
               </p>
             </IonCol>
           </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonButton class="skip" routerLink="/quiz/question">
+          <IonRow className="vh-25 incorrect-button-container ion-align-items-start">
+            <IonCol size="auto">
+              <IonButton className="skip" routerLink="/quiz/question">
                 Try Again
               </IonButton>
             </IonCol>
-            <IonCol>
+            <IonCol size="auto">
               {generateSkipButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
             </IonCol>
           </IonRow>

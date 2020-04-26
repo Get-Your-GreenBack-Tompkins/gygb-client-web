@@ -75,7 +75,7 @@ const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, histo
               ></IonProgressBar>
             </IonCol>
           </IonRow>
-          <IonRow className="ion-justify-content-start">
+          <IonRow className="question-title-row ion-justify-content-start">
             <IonCol>
               <h3 className="title question-title">{createTitle()}</h3>
             </IonCol>
@@ -89,10 +89,10 @@ const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, histo
             <div className="question-subtitle" dangerouslySetInnerHTML={createSubtitle()} />
           </IonRow>
 
-          <IonRow style={{ flexGrow: 1 }}>
+          <IonRow className="ion-align-items-stretch" style={{ flexGrow: 1 }}>
             <IonCol>
               <IonGrid className="answer-grid" style={{ height: "100%" }}>
-                <IonRow className="answer-row" style={{ height: "100%" }}>
+                <IonRow className="answer-row ion-align-items-stretch" style={{ height: "100%" }}>
                   {question.answers.map((a: any) => {
                     const { id } = a;
                     return (

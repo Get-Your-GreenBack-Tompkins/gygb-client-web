@@ -1,226 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
+@import "./theme-variables.scss";
+
+@import "./correct";
+@import "./end";
+@import "./question";
+@import "./quiz";
+@import "./tutorial";
+@import "./welcome";
+
 body {
   font-family: "Montserrat", "sans-serif";
 }
 
-//QUIZ PAGE
-
-.title {
-  font-size: 2.25em;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-ion-row {
-  justify-content: center;
-  align-items: center;
-}
-
-#root {
-  margin: 0;
-  padding: 0;
-}
-
-.home-lines {
-  &-bottom {
-    bottom: 0;
-  }
-
-  &-top {
-    top: 0;
-  }
-
-  max-height: 50vh;
-  object-fit: cover;
-  width: 100%;
-  position: absolute;
-}
-
-.grid-lines {
-  width: 100%;
-
-  @media (min-width: 576px) {
-    display: none;
-  }
-}
-
-.line-grid {
-  @media (max-width: 576px) {
-    margin-top: -10vh;
-    padding: 2vh 7.5vw;
-  }
-}
-
-.col {
+.h-100 {
   height: 100%;
 }
 
-.logo {
-  z-index: 100;
-  top: 55%;
-  align-self: center;
-  margin-top: 55%;
+.vh-50 {
+  height: 50vh;
 }
 
-.subtitle {
-  top: 50% !important;
-  width: 100%;
-  font-weight: bold;
-  text-transform: uppercase !important;
-  letter-spacing: 1.5px;
+.vh-25 {
+  height: 25vh;
 }
-
-//QUESTION PAGE
-
-ion-justify-content-start {
-  width: 100%;
-}
-
-.question-subtitle {
-  text-align: left;
-  font-size: 1.25em;
-  color: rgba(0, 0, 0, 0.8);
-  padding: 16px 0;
-}
-
-.answer-button .button-native {
-  height: auto;
-  min-height: 2.8em;
-}
-
-.answer-container {
-  width: 75%;
-  margin: 0.5rem;
-  overflow-wrap: normal;
-  overflow: hidden;
-  word-break: break-word;
-  white-space: normal;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.score {
-  float: right;
-  --background: #ffe552;
-  --color: black;
-}
-
-.question-title {
-  font-size: 2.1em;
-  width: -moz-fit-content;
-  width: -webkit-fill-available;
-  width: 100%;
-  text-align: left;
-}
-
-.answer-text {
-  vertical-align: middle;
-  line-height: 1.25rem;
-  font-size: 1rem;
-}
-
-ion-button.answer-button {
-  // Applies a background to an [ion-button]
-  // TODO: Don't use opacity.
-  --background: rgba(0, 0, 0, 0.8);
-  --background-hover: rgba(0, 0, 0, 0.6);
-}
-
-.answer-grid {
-  margin: -8px;
-  flex-grow: 1;
-}
-
-.answer-item {
-  padding-bottom: 1em;
-  flex-grow: 1;
-}
-
-.question-progress {
-  height: 16px;
-  border-radius: 40px;
-  margin: 12px 0;
-  --buffer-background: #e5e5e5;
-}
-
-//CORRECT PAGE
-.correctLines {
-  display: flex;
-  justify-content: center;
-}
-
-@media only screen and (min-width: 700px) {
-  .correctLines {
-    display: flex;
-  }
-
-  // .title {
-  //   font-size: 4.25em;
-  //   font-weight: bold;
-  //   letter-spacing: 2px;
-  //   text-transform: uppercase;
-  // }
-
-  ion-button.correct-button {
-    font-size: 2.1em;
-  }
-
-  p {
-    font-size: 1.5em;
-  }
-}
-
-.skip {
-  margin-top: 10%;
-  margin-left: 3%;
-  width: fit-content;
-  height: 50px;
-  font-size: 1.15em;
-  letter-spacing: 2px;
-  --background: #e64937;
-  --background-hover: #e64937;
-  text-transform: uppercase !important;
-}
-
-.wrong {
-  color: #e64937;
-}
-
-.right {
-  color: #83ce27;
-}
-
-.correct-button {
-  --background: #83ce27;
-  font-size: 1.1em;
-  letter-spacing: 2px;
-  text-transform: uppercase !important;
-  font-weight: bold;
-  transition-duration: 0.4s;
-}
-
-.correct-button:hover {
-  --background: #a2e94c;
-}
-
-.correct {
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-}
-
-.icon {
-  min-width: 100%;
-  min-height: 100%;
-  position: fixed;
-  top: 50;
-  left: 50;
-}
-
-//END PAGE
 
 .image-lines {
   top: 15%;
@@ -248,32 +51,6 @@ ion-button.answer-button {
   text-transform: uppercase !important;
   letter-spacing: 2px;
   width: fit-content;
-}
-
-//TUTORAIL PAGE
-.tutorial-lines {
-  min-height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-}
-
-.start-button {
-  &:hover {
-    color: white;
-  }
-
-  --background: white;
-  color: #83ce27;
-  border: 3px solid #83ce27;
-  border-radius: 10px;
-  text-transform: uppercase !important;
-  letter-spacing: 2px;
-  font-size: 1.15em;
-  font-weight: bold;
-  width: fit-content;
-  top: 50%;
-  margin-top: 15%;
 }
 
 .blue-button {

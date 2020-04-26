@@ -1,0 +1,14 @@
+.home-lines {
+  &-bottom {
+    bottom: 0;
+  }
+
+  &-top {
+    top: 0;
+  }
+
+  max-height: 50vh;
+  object-fit: cover;
+  width: 100%;
+  position: absolute;
+}
