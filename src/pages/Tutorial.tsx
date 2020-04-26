@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router";
 
 import api from "../api";
 
-import TutorialLines from "../assets/tLines.svg";
+import TutorialLines from "../assets/tutorial.svg";
 
 interface Props extends RouteComponentProps {
   quiz: any;
@@ -44,17 +44,22 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
     <IonPage>
       <IonContent fullscreen>
         <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
-        <IonGrid className="tutorial-grid">
-          <IonRow className="ion-align-items-start tutorial-row">
-            <IonCol className="tutorial-title" size="12" size-sm>
-              <p>{header}</p>
+        <IonGrid className="welcome-content">
+          <IonRow className="tutorial-info">
+            <IonCol size="12" size-sm>
+              <h1>{header}</h1>
             </IonCol>
-            <IonCol size="12" className="t-col">
-              <div className = "tutorial-info" dangerouslySetInnerHTML={{ __html: body }} />
-              <p className ="action-call">Find the answers within the powerhouse! </p>
+            <IonCol size="12" size-sm>
+              <div dangerouslySetInnerHTML={{ __html: body }} />
             </IonCol>
-            <IonCol size="12" className = "tutorial-info t-col">
-              {`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}
+            <IonCol size="12" size-sm>
+              <p>{`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}</p>
+            </IonCol>
+            <IonCol size="12" size-sm>
+              <b>{prize}</b>
+            </IonCol>
+            <IonCol size="12" size-sm>
+              <p className="small"> Drawings are done monthly</p>
             </IonCol>
             <IonCol className="prize t-col" size="12" size-sm>
               {prize}

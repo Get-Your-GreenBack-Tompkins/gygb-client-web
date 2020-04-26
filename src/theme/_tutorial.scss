@@ -1,6 +1,6 @@
 .tutorial-lines {
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  display: flex;
   position: absolute;
   object-fit: cover;
   top: 0;
@@ -41,9 +41,6 @@
   --border-radius: 10px;
   --border-style: solid;
 
-  --padding-top: 10px;
-  --padding-bottom: 10px;
-
   text-transform: uppercase !important;
   letter-spacing: 2px;
   font-size: 1.15em;
@@ -63,47 +60,18 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
-.tutorial-info, div.tutorial-info em {
-    color: rgba(0, 0, 0, 0.7);
+.tutorial-info {
+  p,
+  b {
+    color: rgba(0, 0, 0, 0.8);
     letter-spacing: 0.02em;
     line-height: 27px;
-    font-size: 2.3vh;
-    font-style: normal;
-    font-weight: 300;
-}
-
-
-.small {
-  font-size: 2vh;
-  line-height: 23px;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.tutorial-emphasis p {
-  font-weight: bold;
-  color: #15384f;
-}
-
-.prize {
-  @media (min-width: 420px) {
-    font-size: 6vh;
-    color: #78AB41;
+    margin-bottom: 10%;
+    margin-top: 6%;
+    font-size: 1.02em;
   }
 }
 
-.prize{
-  font-size: 5vh;
-  color: #78AB41;
-  font-weight: bold;
-  font-style: normal;
-  font-size: 5.5vh;
-  line-height: auto;
-}
-
-.action-call{
-  color: rgba(21, 56, 79, 0.7);
-  font-weight: 600;
-  font-size: 2.5vh;
-  letter-spacing: 0.02em;
-  line-height: auto;
+.small {
+  font-size: 0.9em;
 }
