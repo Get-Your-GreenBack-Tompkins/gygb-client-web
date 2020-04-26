@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, IonLoading } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+
 import Quiz from "./pages/Quiz";
 import Question from "./pages/Question";
 import Incorrect from "./pages/Incorrect";
@@ -9,6 +11,8 @@ import Correct from "./pages/Correct";
 import Result from "./pages/Result";
 import SignUp from "./pages/SignUp";
 import End from "./pages/End";
+
+import api from "./api";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -31,9 +35,6 @@ import "./theme/variables.scss";
 
 /* Styling */
 import "./theme/style.scss";
-
-import api from "./api";
-import Thanks from "./pages/SignUp";
 
 const sendGetQuizRequest = async () => {
   const response = await api.get(`/quiz/web-client`);
@@ -67,11 +68,7 @@ export const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route
-            exact
-            path="/quiz"
-            render={props => <Quiz {...props} quiz={quiz} />}
-          />
+          <Route exact path="/quiz" render={props => <Quiz {...props} quiz={quiz} />} />
           <Route
             path="/quiz/question"
             render={props => (
@@ -117,22 +114,13 @@ export const App: React.FC = () => {
           />
           <Route
             path="/quiz/result"
-            render={props => (
-              <Result {...props} answerIDs={answerIDs} quiz={quiz} setRaffle={setRaffle} />
-            )}
+            render={props => <Result {...props} answerIDs={answerIDs} quiz={quiz} setRaffle={setRaffle} />}
           />
           <Route
             path="/quiz/signup"
-            render={props => (
-              <SignUp {...props} answerIDs={answerIDs} quiz={quiz} raffle={raffle} />
-            )}
+            render={props => <SignUp {...props} answerIDs={answerIDs} quiz={quiz} raffle={raffle} />}
           />
-          <Route
-            path="/quiz/end"
-            render={props => (
-              <End {...props} raffle={raffle} />
-            )}
-          />
+          <Route path="/quiz/end" render={props => <End {...props} raffle={raffle} />} />
           <Redirect exact from="/" to="/quiz" />
         </IonRouterOutlet>
       </IonReactRouter>

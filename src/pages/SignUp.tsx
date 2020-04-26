@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   IonPage,
   IonContent,
-  IonTitle,
   IonItem,
   IonInput,
   IonButton,
@@ -16,7 +15,6 @@ import {
 import { RouteComponentProps } from "react-router";
 import api from "../api";
 
-
 interface Props extends RouteComponentProps {
   answerIDs: Array<number>;
   quiz: any;
@@ -26,13 +24,21 @@ interface Props extends RouteComponentProps {
 const title = (raffle: boolean) => {
   if (raffle) {
     return "Enter To Win";
-  }
-  else {
+  } else {
     return "Sign Up";
   }
 };
 
-const postAll = (answerIDs: Array<number>, quiz: any, firstName: string, lastName: string, email: string, history: any, setShowAlert: Function, checked: Boolean) => {
+const postAll = (
+  answerIDs: Array<number>,
+  quiz: any,
+  firstName: string,
+  lastName: string,
+  email: string,
+  history: any,
+  setShowAlert: Function,
+  checked: Boolean
+) => {
   var obj: any = {};
   for (var i = 0; i < answerIDs.length; i++) {
     obj[quiz.questions[i].id] = answerIDs[i];
@@ -45,19 +51,23 @@ const postAll = (answerIDs: Array<number>, quiz: any, firstName: string, lastNam
       email: email,
       answers: obj
     })
-    .then(res => {
+    .then(() => {
       api
         .post(`/user`, {
           email: email,
           marketing: checked,
           source: "web"
         })
-        .then(result => {
+        .then(() => {
           history.push("/quiz/end");
         })
-        .catch(e => { history.push("/quiz/end"); })
+        .catch(() => {
+          history.push("/quiz/end");
+        });
     })
-    .catch(error => { setShowAlert(true); });
+    .catch(() => {
+      setShowAlert(true);
+    });
 };
 
 const postEmail = (email: string, history: any, setShowAlert: Function, checked: Boolean) => {
@@ -67,10 +77,12 @@ const postEmail = (email: string, history: any, setShowAlert: Function, checked:
       marketing: checked,
       source: "web"
     })
-    .then(res => {
+    .then(() => {
       history.push("/quiz/end");
     })
-    .catch(error => { setShowAlert(true); });
+    .catch(() => {
+      setShowAlert(true);
+    });
 };
 
 const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => {
@@ -84,7 +96,12 @@ const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => 
   }
 };
 
-const generateInput = (raffle: boolean, setFirstName: Function, setLastName: Function, setEmail: Function) => {
+const generateInput = (
+  raffle: boolean,
+  setFirstName: Function,
+  setLastName: Function,
+  setEmail: Function
+) => {
   if (raffle) {
     return (
       <div>
@@ -117,8 +134,7 @@ const generateInput = (raffle: boolean, setFirstName: Function, setLastName: Fun
         </IonItem>
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <IonItem>
         <IonInput
@@ -135,10 +151,17 @@ const generateInput = (raffle: boolean, setFirstName: Function, setLastName: Fun
 
 const generateButton = (raffle: boolean) => {
   if (raffle) {
-    return <IonButton expand="block" type="submit" className="blue-button">Enter Raffle</IonButton>;
-  }
-  else {
-    return <IonButton expand="block" type="submit" className="blue-button">Sign Up</IonButton>;
+    return (
+      <IonButton expand="block" type="submit" className="blue-button">
+        Enter Raffle
+      </IonButton>
+    );
+  } else {
+    return (
+      <IonButton expand="block" type="submit" className="blue-button">
+        Sign Up
+      </IonButton>
+    );
   }
 };
 
@@ -167,12 +190,12 @@ const displayEnterEmail = (
       >
         {generateInput(raffle, setFirstName, setLastName, setEmail)}
         {newsletter(raffle, checked, setChecked)}
-  We never spam. We’re here to serve  you! Our only purpose is to provide you with key information that can help you save money and live more environmentally.
+        We never spam. We’re here to serve you! Our only purpose is to provide you with key information that
+        can help you save money and live more environmentally.
         {generateButton(raffle)}
       </form>
     );
-  }
-  else {
+  } else {
     return (
       <form
         onSubmit={e => {
@@ -182,7 +205,8 @@ const displayEnterEmail = (
       >
         {generateInput(raffle, setFirstName, setLastName, setEmail)}
         {newsletter(raffle, checked, setChecked)}
-  We never spam. We’re here to serve  you! Our only purpose is to provide you with key information that can help you save money and live more environmentally.
+        We never spam. We’re here to serve you! Our only purpose is to provide you with key information that
+        can help you save money and live more environmentally.
         {generateButton(raffle)}
       </form>
     );
@@ -207,7 +231,21 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
           </IonRow>
           <IonRow>
             <IonCol>
-              {displayEnterEmail(answerIDs, quiz, email, setEmail, firstName, setFirstName, lastName, setLastName, history, setShowAlert, checked, setChecked, raffle)}
+              {displayEnterEmail(
+                answerIDs,
+                quiz,
+                email,
+                setEmail,
+                firstName,
+                setFirstName,
+                lastName,
+                setLastName,
+                history,
+                setShowAlert,
+                checked,
+                setChecked,
+                raffle
+              )}
             </IonCol>
           </IonRow>
           <IonAlert
