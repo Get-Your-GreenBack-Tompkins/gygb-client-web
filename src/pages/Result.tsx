@@ -34,12 +34,12 @@ const getNumCorrect = (answerIDs: Array<number>, quiz: any) => {
 
 const imageReturn = (numCorrect: any) => {
   if (numCorrect.correct === numCorrect.total) {
-    return <IonImg src={Confetti}></IonImg>;
+    return <IonImg className="result-img" src={Confetti}></IonImg>;
   } 
-  else if (numCorrect.correct > 0) {
-    return <IonImg src={HatsOff}></IonImg>;
+  else if (numCorrect.correct / numCorrect.total > 0.7) {
+    return <IonImg className="result-img" src={HatsOff}></IonImg>;
   } else {
-    return <IonImg src={House}></IonImg>;
+    return <IonImg className="result-img" src={House}></IonImg>;
   }
 };
 
@@ -66,11 +66,11 @@ const subtitle = (numCorrect: any) => {
 const generateButton = (numCorrect: any, setRaffle: Function) => {
   if (numCorrect.correct / numCorrect.total < 0.7) {
     setRaffle(false);
-    return <IonButton className="blue-button" routerLink="/quiz/signup">Learn More</IonButton>;
+    return <IonButton size = "large" className="blue-button" routerLink="/quiz/signup">Learn More</IonButton>;
   }
   else {
     setRaffle(true);
-    return <IonButton className="blue-button" routerLink="/quiz/signup">Enter Raffle</IonButton>;
+    return <IonButton size = "large" className="blue-button raffle-button" routerLink="/quiz/signup">Enter Raffle</IonButton>;
   }
 };
 
@@ -86,20 +86,23 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
-        {imageReturn(numCorrect)}
+      {imageReturn(numCorrect)}
         <IonGrid>
           <IonRow>
-            <IonCol>
+            <IonCol size = "12">
               <h1 className="title">{title(numCorrect)}</h1>
+              </IonCol>
+              <IonCol size ="12">
               <h3 className="subtitle">{subtitle(numCorrect)}</h3>
+            </IonCol>
+            <IonCol size ="12">
               {generateButton(numCorrect, setRaffle)}
             </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonButton className="blue-button" href="tinypowerhouse.org">Return Home</IonButton>
+
+            <IonCol size ="12">
+              <IonButton className="blue-button home-button" href="tinypowerhouse.org">Return Home</IonButton>
             </IonCol>
-          </IonRow>
+          </IonRow>        
         </IonGrid>
       </IonContent>
     </IonPage>

@@ -7,16 +7,23 @@ body {
 //QUIZ PAGE
 
 .title {
-  font-size: 2.25em;
   font-weight: bold;
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-size: 1.5em;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  justify-content: center;
 }
 
-ion-row {
+ion-row{
   justify-content: center;
   align-items: center;
+  // width: fit-content;
 }
+
 
 #root {
   margin: 0;
@@ -67,9 +74,12 @@ ion-row {
 .subtitle {
   top: 50% !important;
   width: 100%;
-  font-weight: bold;
+  font-size: 0.9em;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.03em;
   text-transform: uppercase !important;
-  letter-spacing: 1.5px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 //QUESTION PAGE
@@ -122,7 +132,7 @@ ion-justify-content-start {
   font-size: 1rem;
 }
 
-ion-button.answer-button {
+.answer-button {
   // Applies a background to an [ion-button]
   // TODO: Don't use opacity.
   --background: rgba(0, 0, 0, 0.8);
@@ -164,7 +174,7 @@ ion-button.answer-button {
   //   text-transform: uppercase;
   // }
 
-  ion-button.correct-button {
+  .correct-button {
     font-size: 2.1em;
   }
 
@@ -243,12 +253,6 @@ ion-button.answer-button {
   color: rgba(0, 0, 0, 0.6);
 }
 
-.raffle-button {
-  --background: #228ad3;
-  text-transform: uppercase !important;
-  letter-spacing: 2px;
-  width: fit-content;
-}
 
 //TUTORAIL PAGE
 .tutorial-lines {
@@ -278,5 +282,69 @@ ion-button.answer-button {
 
 .blue-button{
   --background: #228AD3;
-  color: red';
+  --padding-top: 12%;
+  --padding-bottom: 12%;
+  --border-radius: 10px;
+  --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  width: 75%;
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+  justify-content: center;
+
+}
+
+.raffle-button{
+  margin-top: 0%;
+  margin-bottom: 3%;
+}
+
+.home-button{
+ width: 60%;
+}
+
+.input-style{
+  --background: #F5F5F5;
+  border: 2px solid rgba(0, 0, 0, 0.13);
+  box-sizing: border-box;
+  border-radius:10px;
+  text-transform: uppercase;
+  margin-bottom: 10%;
+}
+ion-input{
+  color:black;
+}
+.sign-up{
+  margin-top: 15%;
+}
+
+.message{
+  margin-top: 10%;
+}
+
+.sign-title{
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-size: 2.25em;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.result-img{
+  display: flex;
+  width: 75%;
+  margin-left: 10%;
+  margin-top: 17%;
+}
+
+.sign-up-n{
+  font-weight: bold;
+  text-transform: uppercase !important;
+  width: fit-content;
+  font-size: 1em;
+  // letter-spacing: 0.05em;
+}
+
+
+.bluez-button{
+  margin-bottom: 10%;
 }
