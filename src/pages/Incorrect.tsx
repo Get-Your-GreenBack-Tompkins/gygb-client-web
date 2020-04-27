@@ -71,40 +71,23 @@ const Incorrect: React.FC<Props> = ({
       <IonContent fullscreen>
         <IonImg className="grid-lines" src={RedLines}></IonImg>
         <IonGrid className="line-grid vh-50">
-          <IonRow className="vh-25 incorrect-button-container ion-align-items-end">
+          <IonRow className="vh-25 incorrect-button-container ion-align-items-start"> 
             <IonCol size="12">
               <h1 className="title">Not Quite</h1>
               <p>
-                {(location && location.state && (location.state as any)["message"]) ||
-                  "That wasn't the right answer!"}
+                Here we will insert the reasoning why this<b className="wrong">answer</b>is incorrect.{" "}
               </p>
             </IonCol>
-          </IonRow>
-          <IonRow className="ion-justify-content-center ion-align-items-center">
-            <IonCol size="auto" className="correct">
-              <IonButton
-                size="large"
-                className="skip"
-                onClick={() => {
-                  setAnswerID(questionNum, answer);
-                  setAnswer(null);
-                  history.replace("/quiz/question");
-                }}
-              >
+         
+            <IonCol size= "auto" className="correct"> 
+              <IonButton size="large" className="skip" routerLink="/quiz/question">
                 Try Again
               </IonButton>
-            </IonCol>
-            <IonCol size="auto" className="correct">
-              {generateSkipButton(
-                questionNum,
-                setQuestionNum,
-                quiz,
-                answer,
-                setAnswerID,
-                history
-              )}
-            </IonCol>
-          </IonRow>
+            </IonCol> 
+            <IonCol size = "auto" className = "correct">
+              {generateSkipButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
+            </IonCol> 
+           </IonRow>
         </IonGrid>
       </IonContent>
     </IonPage>

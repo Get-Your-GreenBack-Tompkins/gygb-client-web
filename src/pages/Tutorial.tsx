@@ -44,9 +44,9 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
     <IonPage>
       <IonContent fullscreen>
         <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
-        <IonGrid className="welcome-content">
-          <IonRow className="tutorial-info">
-            <IonCol size="12" size-sm>
+        <IonGrid className="center-grid">
+          <IonRow className="tutorial-info ion-align-items-start">
+            <IonCol className="tutorial-title" size="12" size-sm>
               <h1>{header}</h1>
             </IonCol>
             <IonCol size="12" size-sm>
@@ -55,11 +55,11 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
             <IonCol size="12" size-sm>
               <p>{`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}</p>
             </IonCol>
-            <IonCol size="12" size-sm>
+            <IonCol className="tutorial-emphasis" size="12" size-sm>
               <b>{prize}</b>
             </IonCol>
-            <IonCol size="12" size-sm>
-              <p className="small"> Drawings are done monthly</p>
+            <IonCol size="12" className = "small" size-sm>
+              <p>Drawings are done monthly</p>
             </IonCol>
             <IonCol className="prize t-col" size="12" size-sm>
               {prize}
