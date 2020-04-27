@@ -26,6 +26,7 @@ const generateSkipButton = (
   if (questionNum === total) {
     return (
       <IonButton
+      size="large"
         className="skip"
         color="medium"
         onClick={() => setAnswerIDs(answerIDs.concat(answer))}
@@ -37,6 +38,7 @@ const generateSkipButton = (
   } else {
     return (
       <IonButton
+      size="large"
         className="skip"
         color="medium"
         onClick={() => {
@@ -64,25 +66,23 @@ const Incorrect: React.FC<Props> = ({
       <IonContent fullscreen>
         <IonImg className="grid-lines" src={RedLines}></IonImg>
         <IonGrid className="line-grid vh-50">
-          <IonRow className="vh-25 ion-align-items-end">
+          <IonRow className="vh-25 incorrect-button-container ion-align-items-start"> 
             <IonCol size="12">
               <h1 className="title">Not Quite</h1>
-
               <p>
-                Here we will insert the reasoning why this <b className="wrong">answer</b> is incorrect.{" "}
+                Here we will insert the reasoning why this<b className="wrong">answer</b>is incorrect.{" "}
               </p>
             </IonCol>
-          </IonRow>
-          <IonRow className="vh-25 incorrect-button-container ion-align-items-start">
-            <IonCol size="auto">
-              <IonButton className="skip" routerLink="/quiz/question">
+         
+            <IonCol size= "auto" className="correct"> 
+              <IonButton size="large" className="skip" routerLink="/quiz/question">
                 Try Again
               </IonButton>
-            </IonCol>
-            <IonCol size="auto">
+            </IonCol> 
+            <IonCol size = "auto" className = "correct">
               {generateSkipButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
-            </IonCol>
-          </IonRow>
+            </IonCol> 
+           </IonRow>
         </IonGrid>
       </IonContent>
     </IonPage>

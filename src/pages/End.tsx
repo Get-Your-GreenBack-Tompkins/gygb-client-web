@@ -1,7 +1,9 @@
 import React from "react";
 
-import { IonPage, IonContent, IonButton, IonCol, IonRow, IonGrid } from "@ionic/react";
+import { IonPage, IonContent, IonButton,IonImg, IonCol, IonRow, IonGrid } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
+
+import Checkmark from "../assets/checkMark.svg"; 
 
 interface Props extends RouteComponentProps {
   raffle: boolean;
@@ -19,12 +21,15 @@ const End: React.FC<Props> = ({ raffle }) => {
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
-        <IonGrid>
+        <IonGrid className="center-grid">
           <IonRow>
             <IonCol size="12">
-              <h1 className="title">Success!</h1>
+              <h1 className="title end-title">Success!</h1>
               <h3 className="subtitle">{subtitle(raffle)}</h3>
-              <IonButton className="blue-button" routerLink="/quiz">
+              </IonCol>
+              <IonCol>
+                <IonImg className ="end-img" src={Checkmark}></IonImg>
+              <IonButton size="large" className="blue-button end-button" routerLink="/quiz">
                 Try Again
               </IonButton>
             </IonCol>
@@ -32,7 +37,7 @@ const End: React.FC<Props> = ({ raffle }) => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton className="blue-button" href="tinypowerhouse.org">
+              <IonButton size="large" className="blue-button end-button" href="tinypowerhouse.org">
                 Return Home
               </IonButton>
             </IonCol>

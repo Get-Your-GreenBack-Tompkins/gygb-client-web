@@ -25,9 +25,9 @@ const getNumCorrect = (answerIDs: Array<number>, quiz: any) => {
 
 const imageReturn = (numCorrect: any) => {
   if (numCorrect.correct === numCorrect.total) {
-    return <IonImg src={Confetti}></IonImg>;
+    return <IonImg className ="result-img" src={Confetti}></IonImg>;
   } else if (numCorrect.correct / numCorrect.total > 0.7) {
-    return <IonImg src={HatsOff}></IonImg>;
+    return <IonImg className="result-img" src={HatsOff}></IonImg>;
   } else {
     return <IonImg className="result-img" src={House}></IonImg>;
   }
@@ -76,9 +76,11 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
-      {imageReturn(numCorrect)}
         <IonGrid>
           <IonRow>
+          <IonCol size = "12">
+          {imageReturn(numCorrect)}
+          </IonCol>
             <IonCol size = "12">
               <h1 className="title">{title(numCorrect)}</h1>
               </IonCol>
@@ -90,7 +92,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
             </IonCol>
 
             <IonCol size ="12">
-              <IonButton className="blue-button home-button" href="tinypowerhouse.org">Return Home</IonButton>
+              <IonButton className="blue-button" href="tinypowerhouse.org">Return Home</IonButton>
             </IonCol>
           </IonRow>        
         </IonGrid>

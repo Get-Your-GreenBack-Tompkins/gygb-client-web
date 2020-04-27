@@ -29,6 +29,7 @@ const generateContinueButton = (
   if (questionNum === total) {
     return (
       <IonButton
+        size="large"
         className="correct-button"
         onClick={() => {
           setAnswerIDs(answerIDs.concat(answer));
@@ -41,6 +42,7 @@ const generateContinueButton = (
   } else {
     return (
       <IonButton
+        size="large"
         className="correct-button"
         onClick={() => {
           setQuestionNum(questionNum + 1);

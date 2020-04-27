@@ -10,7 +10,6 @@
 
 .skip {
   width: fit-content;
-  height: 50px;
   font-size: 1.15em;
   letter-spacing: 2px;
   --background: #{$gygb-red};
@@ -19,9 +18,6 @@
   text-transform: uppercase !important;
 }
 
-// .skip{
-//   margin-top: 30%;
-// }
 
 .wrong {
   color: $gygb-red;
