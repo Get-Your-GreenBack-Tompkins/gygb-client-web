@@ -88,7 +88,7 @@ const postEmail = (email: string, history: any, setShowAlert: Function, checked:
 const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => {
   if (raffle) {
     return (
-      <IonItem>
+      <IonItem lines="none" className="sign-up-l">
         <IonLabel>Sign Up for Newsletter</IonLabel>
         <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
       </IonItem>
@@ -152,13 +152,13 @@ const generateInput = (
 const generateButton = (raffle: boolean) => {
   if (raffle) {
     return (
-      <IonButton expand="block" type="submit" className="blue-button">
+      <IonButton size="large" type="submit" className="blue-button">
         Enter Raffle
       </IonButton>
     );
   } else {
     return (
-      <IonButton expand="block" type="submit" className="blue-button">
+      <IonButton size="large" type="submit" className="blue-button">
         Sign Up
       </IonButton>
     );
@@ -188,10 +188,16 @@ const displayEnterEmail = (
           postEmail(email, history, setShowAlert, checked);
         }}
       >
+        <IonCol className="message" size="12">
+          <p> We never spam. We’re here to serve you! </p>
+          <p>
+            Our only purpose is to provide you with key information that can help you save money and live more
+            environmentally.
+          </p>
+        </IonCol>
+
         {generateInput(raffle, setFirstName, setLastName, setEmail)}
         {newsletter(raffle, checked, setChecked)}
-        We never spam. We’re here to serve you! Our only purpose is to provide you with key information that
-        can help you save money and live more environmentally.
         {generateButton(raffle)}
       </form>
     );
@@ -204,9 +210,17 @@ const displayEnterEmail = (
         }}
       >
         {generateInput(raffle, setFirstName, setLastName, setEmail)}
+
         {newsletter(raffle, checked, setChecked)}
-        We never spam. We’re here to serve you! Our only purpose is to provide you with key information that
-        can help you save money and live more environmentally.
+
+        <IonCol className="message" size="12">
+          <p> We never spam. We’re here to serve you! </p>
+          <p>
+            Our only purpose is to provide you with key information hat can help you save money and live more
+            environmentally.
+          </p>
+        </IonCol>
+
         {generateButton(raffle)}
       </form>
     );
@@ -222,15 +236,19 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
 
   return (
     <IonPage>
+      {/* <IonHeader>
+        <IonToolbar className = "yellow-banner">
+          <IonTitle className ="title" size="large">{title(raffle)}</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+         */}
       <IonContent fullscreen class="ion-padding">
         <IonGrid>
           <IonRow>
-            <IonCol>
+            <IonCol size="12" className="yellow-banner">
               <h1 className="title">{title(raffle)}</h1>
             </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
+            <IonCol size="12" className="raffle-info center-grid">
               {displayEnterEmail(
                 answerIDs,
                 quiz,

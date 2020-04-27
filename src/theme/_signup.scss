@@ -1,0 +1,17 @@
+.input-style{
+    --background: #F5F5F5;
+    border: 2px solid rgba(0, 0, 0, 0.13);
+    box-sizing: border-box;
+    border-radius:10px;
+    text-transform: uppercase;
+    margin-bottom: 10%;
+  }
+
+  .blue-button{
+    --background: #228AD3;
+    --background-hover: #95d0fa;
+    --border-radius: 10px;
+    --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase !important;
+    letter-spacing: 2px;
+  }
