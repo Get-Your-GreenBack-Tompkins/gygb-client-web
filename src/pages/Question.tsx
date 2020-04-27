@@ -81,7 +81,7 @@ const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, histo
             </IonCol>
 
             <IonCol size="auto">
-              <IonButton className="score"> 1/3 </IonButton>
+              <IonButton size="small" className="score">Completed:{metrics.completed}/{metrics.total}</IonButton>
             </IonCol>
           </IonRow>
 

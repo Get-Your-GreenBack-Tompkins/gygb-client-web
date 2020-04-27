@@ -20,7 +20,6 @@
 }
 
 .answer-container {
-  width: 75%;
   margin: 0.5rem;
   overflow-wrap: normal;
   overflow: hidden;
@@ -34,21 +33,33 @@
 .score {
   float: right;
   --background: #ffe552;
+  --backgroun-hover:#ffe552;
   --color: black;
+  --disabled: true;
 }
 
 .question-title {
-  font-size: 2.1em;
   width: -moz-fit-content;
   width: -webkit-fill-available;
   width: 100%;
   text-align: left;
 }
 
+.question-subtitle {
+  text-align: left;
+  font-size: 1.25em;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 16px 0;
+}
+
 .answer-text {
   vertical-align: middle;
+  display:flex;
+  justify-content: center;
+  width: 100%;
   line-height: 1.25rem;
-  font-size: 1rem;
+  // font-size: 1rem;
+  font-style: normal;
 }
 
 ion-button.answer-button {
