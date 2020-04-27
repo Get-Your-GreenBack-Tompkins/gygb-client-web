@@ -7,6 +7,7 @@
 @import "./question";
 @import "./quiz";
 @import "./tutorial";
+@import "./welcome";
 @import "./signup";
 @import "./result";
 
@@ -81,6 +82,12 @@ body {
   border: 2px solid rgba(0, 0, 0, 0.13);
   box-sizing: border-box;
   border-radius: 10px;
+}
+
+ion-input {
+  color: black;
+  border: 0px;
+  width: 50%;
 }
 
 ion-input:valid {

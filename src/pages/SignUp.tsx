@@ -184,22 +184,16 @@ const displayEnterEmail = (
         }}
       >
         <IonCol className="message" size="12">
-          <p>We never spam. We’re here to serve you!</p>
+          <p> We never spam. We’re here to serve you! </p>
           <p>
             Our only purpose is to provide you with key information that can help you save money and live more
             environmentally.
           </p>
         </IonCol>
 
-        <IonCol>{generateInput(raffle, setFirstName, setLastName, setEmail)}</IonCol>
-
-        <IonCol>{newsletter(raffle, checked, setChecked)}</IonCol>
-
-        <IonCol>
-          <p></p>
-        </IonCol>
-
-        <IonCol>{generateButton(raffle)}</IonCol>
+        {generateInput(raffle, setFirstName, setLastName, setEmail)}
+        {newsletter(raffle, checked, setChecked)}
+        {generateButton(raffle)}
       </form>
     );
   } else {
@@ -210,9 +204,9 @@ const displayEnterEmail = (
           postAll(answerIDs, quiz, firstName, lastName, email, history, setShowAlert, checked);
         }}
       >
-        <IonCol>{generateInput(raffle, setFirstName, setLastName, setEmail)}</IonCol>
+        {generateInput(raffle, setFirstName, setLastName, setEmail)}
 
-        <IonCol>{newsletter(raffle, checked, setChecked)}</IonCol>
+        {newsletter(raffle, checked, setChecked)}
 
         <IonCol className="message" size="12">
           <p> We never spam. We’re here to serve you! </p>
@@ -222,7 +216,7 @@ const displayEnterEmail = (
           </p>
         </IonCol>
 
-        <IonCol>{generateButton(raffle)}</IonCol>
+        {generateButton(raffle)}
       </form>
     );
   }
@@ -237,6 +231,12 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
 
   return (
     <IonPage>
+      {/* <IonHeader>
+        <IonToolbar className = "yellow-banner">
+          <IonTitle className ="title" size="large">{title(raffle)}</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+         */}
       <IonContent fullscreen class="ion-padding">
         <IonGrid className="center-grid">
           <IonRow>
