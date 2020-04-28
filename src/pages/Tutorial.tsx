@@ -12,17 +12,30 @@ const sendGetTutorialRequest = (quiz: any) => {
   return api.get(`/quiz/${quiz.id}/tutorial`);
 };
 
+const sendGetRaffleRequest = (quiz: any) => {
+  return api.get(`/quiz/${quiz.id}/raffle`);
+};
+
 const Quiz: React.FC<Props> = ({ quiz }) => {
 
   const [header, setHeader] = useState();
   const [body, setBody] = useState();
   const [totalQuestions, setTotalQuestions] = useState();
+  const [questionRequirement, setQuestionRequirement] = useState();
+  const [prize, setPrize] = useState();
 
   useEffect(() => {
     sendGetTutorialRequest(quiz).then(res => {
       setHeader(res.data.header);
       setBody(res.data.body);
       setTotalQuestions(res.data.totalQuestions);
+    });
+  }, [quiz]);
+
+  useEffect(() => {
+    sendGetRaffleRequest(quiz).then(res => {
+      setQuestionRequirement(res.data.questionRequirement);
+      setPrize(res.data.prize);
     });
   }, [quiz]);
 
@@ -39,8 +52,7 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
             </IonCol>
             <IonCol size="12" size-sm>
               <b>
-                Complete {String(Number(totalQuestions) * 0.6)} out {totalQuestions} questions to win FLIR
-                camera
+                Complete {questionRequirement} out {totalQuestions} questions to win {prize}
               </b>
             </IonCol>
           </IonRow>
