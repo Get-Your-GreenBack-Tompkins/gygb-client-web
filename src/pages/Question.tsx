@@ -19,10 +19,6 @@ interface Props extends RouteComponentProps {
   metrics: QuizMetrics;
 }
 
-// const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, history }) => {
-//   const sendGetAnswerRequest = (answerId: string) => {
-//     return api.get(`/quiz/web-client/question/${question.id}/verify-answer/${answerId}`);
-//   };
 const sendGetAnswerRequest = (question: any, answerId: string) => {
   return api.get(`/quiz/web-client/question/${question.id}/verify-answer/${answerId}`);
 };

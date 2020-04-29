@@ -61,13 +61,12 @@ const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, quiz, answer, a
     <IonPage>
       <IonContent fullscreen>
         <IonImg className="grid-lines" src={GreenLines}></IonImg>
-        <IonGrid className="line-grid">
+        <IonGrid className = "line-grid">
           <IonRow>
             <IonCol size="12">
               <h1 className="title">Correct</h1>
-
               <p>
-                Here we will insert the reasoning why this <b className="right">answer</b> is correct.{" "}
+              Here we will insert the reasoning why this <b className="right">answer</b> is correct.{" "}
               </p>
             </IonCol>
             <IonRow>

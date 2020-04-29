@@ -42,9 +42,9 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
 
   return (
     <IonPage>
-      <IonContent fullscreen class="ion-padding">
+      <IonContent fullscreen>
         <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
-      <IonGrid className="welcome-content">
+      <IonGrid className="tutorial-grid">
         <IonRow className = "tutorial-info ion-align-items-start">
             <IonCol className="tutorial-title" size="12" size-sm>
               <p>{header}</p>

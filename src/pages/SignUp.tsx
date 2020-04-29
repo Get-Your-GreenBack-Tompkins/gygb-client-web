@@ -91,7 +91,7 @@ const postEmail = (email: string, history: any, setShowAlert: Function, checked:
 const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => {
   if (raffle) {
     return (
-      <IonItem lines = "none" className = "sign-up-l">
+      <IonItem lines = "none" className = "sign-title">
         <IonLabel>Sign Up for Newsletter</IonLabel>
         <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
       </IonItem>
@@ -260,15 +260,14 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
         <IonToolbar className = "yellow-banner">
           <IonTitle className ="title" size="large">{title(raffle)}</IonTitle>
         </IonToolbar>
-      </IonHeader>
-         */}
+      </IonHeader> */}
+        
       <IonContent fullscreen class="ion-padding">
         <IonGrid className="center-grid">
 
           <IonRow>
-
             <IonCol size="12" className="yellow-banner">
-             <h1 className="title">{title(raffle)}</h1>
+              <h1 className="title">{title(raffle)}</h1>
             </IonCol>
         
               {displayEnterEmail(
