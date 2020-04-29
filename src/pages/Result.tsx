@@ -83,7 +83,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
-        <IonGrid>
+        <IonGrid className="center-grid">
           <IonRow>
           <IonCol size = "12">
           {imageReturn(numCorrect)}

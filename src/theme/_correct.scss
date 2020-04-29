@@ -47,6 +47,19 @@
   width: 100%;
 }
 
+.correctLines {
+  display: flex;
+  justify-content: center;
+}
+
+.center-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 .icon {
   min-width: 100%;
   min-height: 100%;

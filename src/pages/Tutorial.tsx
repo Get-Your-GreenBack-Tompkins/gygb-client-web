@@ -44,18 +44,18 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
     <IonPage>
       <IonContent fullscreen>
         <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
-        <IonGrid className="center-grid">
+        <IonGrid>
           <IonRow className="tutorial-info ion-align-items-start">
             <IonCol className="tutorial-title" size="12" size-sm>
               <h1>{header}</h1>
             </IonCol>
-            <IonCol size="12" size-sm>
+            <IonCol size="12">
               <div dangerouslySetInnerHTML={{ __html: body }} />
             </IonCol>
-            <IonCol size="12" size-sm>
+            <IonCol size="12">
               <p>{`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}</p>
             </IonCol>
-            <IonCol className="tutorial-emphasis" size="12" size-sm>
+            <IonCol className="tutorial-emphasis prize" size="12" size-sm>
               <b>{prize}</b>
             </IonCol>
             <IonCol size="12" className = "small" size-sm>

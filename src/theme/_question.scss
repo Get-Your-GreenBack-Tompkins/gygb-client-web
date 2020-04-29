@@ -38,6 +38,10 @@
   --disabled: true;
 }
 
+.question-title-row{
+  width: 100%;
+}
+
 .question-title {
   width: -moz-fit-content;
   width: -webkit-fill-available;
@@ -58,7 +62,6 @@
   justify-content: center;
   width: 100%;
   line-height: 1.25rem;
-  // font-size: 1rem;
   font-style: normal;
 }
 

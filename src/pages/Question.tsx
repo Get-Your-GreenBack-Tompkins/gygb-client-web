@@ -79,9 +79,8 @@ const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, histo
             <IonCol>
               <h3 className="title question-title">{createTitle()}</h3>
             </IonCol>
-
             <IonCol size="auto">
-              <IonButton size="small" className="score">Completed:{metrics.completed}/{metrics.total}</IonButton>
+              <IonButton size="small" className="score">Completed:{metrics.completed-1}/{metrics.total}</IonButton>
             </IonCol>
           </IonRow>
 
