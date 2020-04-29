@@ -14,7 +14,7 @@ interface QuizMetrics {
 
 interface Props extends RouteComponentProps {
   question: any;
-  answer: number;
+  answer: number | null;
   setAnswer: Function;
   metrics: QuizMetrics;
 }
@@ -27,9 +27,11 @@ const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, histo
   const [correct, setCorrect] = useState();
 
   useEffect(() => {
-    sendGetAnswerRequest(question, `${answer}`).then(res => {
-      setCorrect(res.data);
-    });
+    if (answer != null && question != null) {
+      sendGetAnswerRequest(question, `${answer}`).then(res => {
+        setCorrect(res.data);
+      });
+    }
   }, [question, answer]);
 
   useEffect(() => {
@@ -80,7 +82,9 @@ const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, histo
               <h3 className="title question-title">{createTitle()}</h3>
             </IonCol>
             <IonCol size="auto">
-              <IonButton size="small" className="score">Completed:{metrics.completed-1}/{metrics.total}</IonButton>
+              <IonButton size="small" className="score">
+                Completed: {metrics.completed - 1}/{metrics.total}
+              </IonButton>
             </IonCol>
           </IonRow>
 
