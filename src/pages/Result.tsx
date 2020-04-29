@@ -114,7 +114,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle, history }) => {
         </IonButton>
       );
     }
-  }, [numCorrect, setRaffle, history]);
+  }, [numCorrect, questionRequirement, setRaffle, history]);
 
   if (numCorrect == null || questionRequirement == null) {
     // TODO Loading state.
