@@ -9,6 +9,14 @@
   left: 0;
 }
 
+.tutorial-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
 .start-button {
   --background: white;
   --background-activity: #{$gygb-green};
@@ -32,7 +40,7 @@
   flex-direction: column;
 }
 
-.tutorial-title{
+.tutorial-title {
   font-size: 4vh;
   font-weight: bold;
   letter-spacing: 2px;
@@ -42,7 +50,7 @@
 .tutorial-info {
   p,
   b {
-    color: rgba(0,0,0,0.7);
+    color: rgba(0, 0, 0, 0.7);
     letter-spacing: 0.02em;
     line-height: 27px;
     font-size: 1.2em;
@@ -56,11 +64,11 @@
 
 .tutorial-emphasis p {
   font-weight: bold;
-  color: #15384F;
+  color: #15384f;
 }
 
-.prize{
-  @media (min-width: 420px){
+.prize {
+  @media (min-width: 420px) {
     font-size: 6vh;
   }
 }
