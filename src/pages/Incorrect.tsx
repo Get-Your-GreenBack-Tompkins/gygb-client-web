@@ -71,23 +71,23 @@ const Incorrect: React.FC<Props> = ({
       <IonContent fullscreen>
         <IonImg className="grid-lines" src={RedLines}></IonImg>
         <IonGrid className="line-grid vh-50">
-          <IonRow className="vh-25 incorrect-button-container ion-align-items-start"> 
+          <IonRow className="vh-25 incorrect-button-container ion-align-items-start">
             <IonCol size="12">
               <h1 className="title">Not Quite</h1>
               <p>
                 Here we will insert the reasoning why this<b className="wrong">answer</b>is incorrect.{" "}
               </p>
             </IonCol>
-         
-            <IonCol size= "auto" className="correct"> 
+
+            <IonCol size="auto" className="correct">
               <IonButton size="large" className="skip" routerLink="/quiz/question">
                 Try Again
               </IonButton>
-            </IonCol> 
-            <IonCol size = "auto" className = "correct">
+            </IonCol>
+            <IonCol size="auto" className="correct">
               {generateSkipButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
-            </IonCol> 
-           </IonRow>
+            </IonCol>
+          </IonRow>
         </IonGrid>
       </IonContent>
     </IonPage>

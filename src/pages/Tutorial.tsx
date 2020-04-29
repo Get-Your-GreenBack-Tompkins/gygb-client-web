@@ -44,7 +44,7 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
     <IonPage>
       <IonContent fullscreen>
         <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
-        <IonGrid>
+        <IonGrid className="tutorial-grid">
           <IonRow className="tutorial-info ion-align-items-start">
             <IonCol className="tutorial-title" size="12" size-sm>
               <h1>{header}</h1>
