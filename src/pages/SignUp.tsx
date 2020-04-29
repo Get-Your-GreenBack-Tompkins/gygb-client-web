@@ -158,7 +158,7 @@ const generateButton = (raffle: boolean) => {
     );
   } else {
     return (
-      <IonButton size="large" type="submit" className="blue-button">
+      <IonButton size="large" type="submit" className="sign-up-l blue-button">
         Sign Up
       </IonButton>
     );
@@ -189,16 +189,22 @@ const displayEnterEmail = (
         }}
       >
         <IonCol className="message" size="12">
-          <p> We never spam. We’re here to serve you! </p>
+          <p>We never spam. We’re here to serve you!</p>
           <p>
             Our only purpose is to provide you with key information that can help you save money and live more
             environmentally.
           </p>
         </IonCol>
 
-        {generateInput(raffle, setFirstName, setLastName, setEmail)}
-        {newsletter(raffle, checked, setChecked)}
-        {generateButton(raffle)}
+        <IonCol>{generateInput(raffle, setFirstName, setLastName, setEmail)}</IonCol>
+
+        <IonCol>{newsletter(raffle, checked, setChecked)}</IonCol>
+
+        <IonCol>
+          <p></p>
+        </IonCol>
+
+        <IonCol>{generateButton(raffle)}</IonCol>
       </form>
     );
   } else {
@@ -209,9 +215,9 @@ const displayEnterEmail = (
           postAll(answerIDs, quiz, firstName, lastName, email, history, setShowAlert, checked);
         }}
       >
-        {generateInput(raffle, setFirstName, setLastName, setEmail)}
+        <IonCol>{generateInput(raffle, setFirstName, setLastName, setEmail)}</IonCol>
 
-        {newsletter(raffle, checked, setChecked)}
+        <IonCol>{newsletter(raffle, checked, setChecked)}</IonCol>
 
         <IonCol className="message" size="12">
           <p> We never spam. We’re here to serve you! </p>
@@ -221,7 +227,7 @@ const displayEnterEmail = (
           </p>
         </IonCol>
 
-        {generateButton(raffle)}
+        <IonCol>{generateButton(raffle)}</IonCol>
       </form>
     );
   }
@@ -236,14 +242,8 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
 
   return (
     <IonPage>
-      {/* <IonHeader>
-        <IonToolbar className = "yellow-banner">
-          <IonTitle className ="title" size="large">{title(raffle)}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-         */}
       <IonContent fullscreen class="ion-padding">
-        <IonGrid>
+        <IonGrid className="center-grid">
           <IonRow>
             <IonCol size="12" className="yellow-banner">
               <h1 className="title">{title(raffle)}</h1>
@@ -266,6 +266,7 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
               )}
             </IonCol>
           </IonRow>
+
           <IonAlert
             isOpen={showAlert}
             onDidDismiss={() => setShowAlert(false)}
