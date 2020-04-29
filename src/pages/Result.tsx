@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { IonPage, IonContent, IonButton, IonCol, IonRow, IonImg, IonGrid } from "@ionic/react";
+import { IonPage, IonContent, IonButton, IonCol, IonRow, IonImg, IonGrid, IonLoading } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 import api from "../api";
 
@@ -13,9 +13,13 @@ interface Props extends RouteComponentProps {
   setRaffle: Function;
 }
 
-const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
+const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle, history }) => {
   const [numCorrect, setNumCorrect] = useState(null as { total: number; correct: number } | null);
   const [questionRequirement, setQuestionRequirement] = useState(null as number | null);
+
+  console.log(
+    `${!numCorrect || numCorrect.correct} / ${questionRequirement} (${!numCorrect || numCorrect.total})`
+  );
 
   const getNumCorrect = useCallback(() => {
     const obj = {} as { [key: string]: any };
@@ -62,7 +66,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
       return "";
     } else if (numCorrect.correct === numCorrect.total) {
       return "Congratulations";
-    } else if (numCorrect.correct > questionRequirement) {
+    } else if (numCorrect.correct >= questionRequirement) {
       return "Well Done";
     } else {
       return "You didn't get enough questions right";
@@ -74,7 +78,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
       return "";
     } else if (numCorrect.correct === numCorrect.total) {
       return "You got all questions right!";
-    } else if (numCorrect.correct > questionRequirement) {
+    } else if (numCorrect.correct >= questionRequirement) {
       return "You got " + numCorrect.correct + "/" + numCorrect.total + " questions correct!";
     } else {
       return "Not to worry, sign up for our e-newsletter to get energy tips and help every month";
@@ -82,29 +86,39 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
   }, [numCorrect, questionRequirement]);
 
   const generateButton = useCallback(() => {
-    if (!numCorrect) {
+    if (!numCorrect || questionRequirement == null) {
       setRaffle(false);
       return <IonButton>Loading...</IonButton>;
-    } else if (numCorrect.correct / numCorrect.total < 0.7) {
+    } else if (numCorrect.correct < questionRequirement) {
       setRaffle(false);
       return (
-        <IonButton className="blue-button" routerLink="/quiz/signup">
+        <IonButton
+          className="blue-button"
+          onClick={() => {
+            history.replace("/quiz/signup");
+          }}
+        >
           Learn More
         </IonButton>
       );
     } else {
       setRaffle(true);
       return (
-        <IonButton className="blue-button" routerLink="/quiz/signup">
+        <IonButton
+          className="blue-button"
+          onClick={() => {
+            history.replace("/quiz/signup");
+          }}
+        >
           Enter Raffle
         </IonButton>
       );
     }
-  }, [numCorrect, setRaffle]);
+  }, [numCorrect, setRaffle, history]);
 
   if (numCorrect == null || questionRequirement == null) {
     // TODO Loading state.
-    return <div />;
+    return <IonLoading isOpen={true} message="Checking your scores..."></IonLoading>;
   }
 
   return (

@@ -59,10 +59,10 @@ const postAll = (
           source: "web"
         })
         .then(() => {
-          history.push("/quiz/end");
+          history.replace("/quiz/end");
         })
         .catch(() => {
-          history.push("/quiz/end");
+          history.replace("/quiz/end");
         });
     })
     .catch(() => {
@@ -78,7 +78,7 @@ const postEmail = (email: string, history: any, setShowAlert: Function, checked:
       source: "web"
     })
     .then(() => {
-      history.push("/quiz/end");
+      history.replace("/quiz/end");
     })
     .catch(() => {
       setShowAlert(true);
