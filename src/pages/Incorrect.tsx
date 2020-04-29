@@ -75,17 +75,32 @@ const Incorrect: React.FC<Props> = ({
             <IonCol size="12">
               <h1 className="title">Not Quite</h1>
               <p>
-                Here we will insert the reasoning why this<b className="wrong">answer</b>is incorrect.{" "}
+                {(location && location.state && (location.state as any)["message"]) ||
+                  "That wasn't the right answer!"}
               </p>
             </IonCol>
 
             <IonCol size="auto" className="correct">
-              <IonButton size="large" className="skip" routerLink="/quiz/question">
+              <IonButton
+                size="large"
+                className="skip"
+                onClick={() => {
+                  setAnswer(null);
+                  history.replace("/quiz/question");
+                }}
+              >
                 Try Again
               </IonButton>
             </IonCol>
             <IonCol size="auto" className="correct">
-              {generateSkipButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
+              {generateSkipButton(
+                questionNum,
+                setQuestionNum,
+                quiz,
+                answer,
+                setAnswerID,
+                history
+              )}
             </IonCol>
           </IonRow>
         </IonGrid>

@@ -1,9 +1,9 @@
 import React from "react";
 
-import { IonPage, IonContent, IonButton,IonImg, IonCol, IonRow, IonGrid } from "@ionic/react";
+import { IonPage, IonContent, IonButton, IonImg, IonCol, IonRow, IonGrid } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 
-import Checkmark from "../assets/checkMark.svg"; 
+import Checkmark from "../assets/checkMark.svg";
 
 interface Props extends RouteComponentProps {
   raffle: boolean;
