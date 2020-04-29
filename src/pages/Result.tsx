@@ -56,11 +56,15 @@ const subtitle = (numCorrect: any) => {
 const generateButton = (numCorrect: any, setRaffle: Function) => {
   if (numCorrect.correct / numCorrect.total < 0.7) {
     setRaffle(false);
-    return <IonButton size = "large" className="blue-button" routerLink="/quiz/signup">Learn More</IonButton>;
+    return <IonButton size = "large" className="blue-button" routerLink="/quiz/signup">
+      Learn More
+    </IonButton>;
   }
   else {
     setRaffle(true);
-    return <IonButton size = "large" className="blue-button raffle-button" routerLink="/quiz/signup">Enter Raffle</IonButton>;
+    return <IonButton size = "large" className="blue-button raffle-button" routerLink="/quiz/signup">
+      Enter Raffle
+    </IonButton>;
   }
 };
 
@@ -71,7 +75,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
     getNumCorrect(answerIDs, quiz).then(res => {
       setNumCorrect(res.data);
     });
-  }, []);
+  }, [answerIDs, quiz]);
 
   return (
     <IonPage>
@@ -92,7 +96,9 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
             </IonCol>
 
             <IonCol size ="12">
-              <IonButton className="blue-button" href="tinypowerhouse.org">Return Home</IonButton>
+              <IonButton className="blue-button" href="tinypowerhouse.org">
+                Return Home
+              </IonButton>
             </IonCol>
           </IonRow>        
         </IonGrid>

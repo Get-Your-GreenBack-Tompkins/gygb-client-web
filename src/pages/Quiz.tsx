@@ -27,6 +27,7 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
           </IonCol>
           </IonRow>
       </IonGrid>
+      
     </IonPage>
   );
 };
