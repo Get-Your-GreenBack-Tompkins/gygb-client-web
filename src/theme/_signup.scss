@@ -23,12 +23,6 @@
   letter-spacing: 2px;
 }
 
-ion-input {
-  color: black;
-  border: 0px;
-  width: 50%;
-}
-
 ion-input:valid {
   color: $text-input-highlight-color-valid;
   --heighlght-color: $text-input-highlight-color-valid;
@@ -48,13 +42,6 @@ ion-input:valid {
   --heighlght-background: red;
 }
 
-ion-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 100%;
-}
 
 .message {
   font-style: normal;

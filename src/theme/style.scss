@@ -84,12 +84,6 @@ body {
   border-radius: 10px;
 }
 
-ion-input {
-  color: black;
-  border: 0px;
-  width: 50%;
-}
-
 ion-input:valid {
   color: $text-input-highlight-color-valid;
   --heighlght-color: $text-input-highlight-color-valid;
