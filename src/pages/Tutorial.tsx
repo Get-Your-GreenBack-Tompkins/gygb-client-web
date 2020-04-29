@@ -10,7 +10,7 @@ interface Props extends RouteComponentProps {
   quiz: any;
 }
 
-const Quiz: React.FC<Props> = ({ quiz }) => {
+const Quiz: React.FC<Props> = ({ quiz, history }) => {
   const sendGetTutorialRequest = useCallback(() => {
     return api.get(`/quiz/${quiz.id}/tutorial`);
   }, [quiz]);
@@ -64,7 +64,9 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton size="large" className="correct-button" routerLink="/quiz/question">
+              <IonButton size="large" className="correct-button" onClick={() => {
+                 history.replace("/quiz/question");
+              }}>
                 Start Quiz!
               </IonButton>
             </IonCol>

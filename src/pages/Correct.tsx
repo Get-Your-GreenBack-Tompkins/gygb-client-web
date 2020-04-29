@@ -1,7 +1,7 @@
 import React from "react";
 
 import { IonPage, IonButton, IonContent, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, withRouter, useLocation } from "react-router";
 
 import GreenLines from "../assets/greenLines.svg";
 
@@ -22,7 +22,8 @@ const generateContinueButton = (
   quiz: any,
   answer: number,
   answerIDs: Array<number>,
-  setAnswerIDs: Function
+  setAnswerIDs: Function,
+  history: any
 ) => {
   const total = quiz && quiz.questions.length;
   console.log(total);
@@ -33,8 +34,8 @@ const generateContinueButton = (
         className="correct-button"
         onClick={() => {
           setAnswerIDs(answerIDs.concat(answer));
+          history.replace("/quiz/result");
         }}
-        routerLink="/quiz/result"
       >
         Continue
       </IonButton>
@@ -47,8 +48,8 @@ const generateContinueButton = (
         onClick={() => {
           setQuestionNum(questionNum + 1);
           setAnswerIDs(answerIDs.concat(answer));
+          history.replace("/quiz/question");
         }}
-        routerLink="/quiz/question"
       >
         Continue
       </IonButton>
@@ -56,7 +57,16 @@ const generateContinueButton = (
   }
 };
 
-const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs }) => {
+const Correct: React.FC<Props> = ({
+  questionNum,
+  setQuestionNum,
+  quiz,
+  answer,
+  answerIDs,
+  setAnswerIDs,
+  history
+}) => {
+  const location = useLocation();
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -65,14 +75,20 @@ const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, quiz, answer, a
           <IonRow>
             <IonCol size="12">
               <h1 className="title">Correct</h1>
-              <p>
-                Here we will insert the reasoning why this <b className="right">answer</b> is correct.{" "}
-              </p>
+              <p>{(location && location.state && (location.state as any)["message"])  || "That was correct!"}</p>
             </IonCol>
           </IonRow>
           <IonRow className="ion-justify-content-center ion-align-items-center">
             <IonCol className="correct">
-              {generateContinueButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
+              {generateContinueButton(
+                questionNum,
+                setQuestionNum,
+                quiz,
+                answer,
+                answerIDs,
+                setAnswerIDs,
+                history
+              )}
             </IonCol>
           </IonRow>
         </IonGrid>
@@ -81,4 +97,4 @@ const Correct: React.FC<Props> = ({ questionNum, setQuestionNum, quiz, answer, a
   );
 };
 
-export default Correct;
+export default withRouter(Correct);

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { IonPage, IonButton, IonContent, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, withRouter, useLocation } from "react-router";
 
 import RedLines from "../assets/redLines.svg";
 
@@ -12,6 +12,7 @@ interface Props extends RouteComponentProps {
   quiz: any;
   answerIDs: Array<number>;
   setAnswerIDs: Function;
+  setAnswer: (answer: number | null) => void;
 }
 
 const generateSkipButton = (
@@ -20,7 +21,8 @@ const generateSkipButton = (
   quiz: any,
   answer: number,
   answerIDs: Array<number>,
-  setAnswerIDs: Function
+  setAnswerIDs: Function,
+  history: any
 ) => {
   const total = quiz && quiz.questions.length;
   if (questionNum === total) {
@@ -29,10 +31,12 @@ const generateSkipButton = (
         size="large"
         className="skip"
         color="medium"
-        onClick={() => setAnswerIDs(answerIDs.concat(answer))}
-        routerLink="/quiz/result"
+        onClick={() => {
+          setAnswerIDs(answerIDs.concat(answer));
+          history.replace("/quiz/result");
+        }}
       >
-        Skip
+        Finish
       </IonButton>
     );
   } else {
@@ -44,8 +48,8 @@ const generateSkipButton = (
         onClick={() => {
           setQuestionNum(questionNum + 1);
           setAnswerIDs(answerIDs.concat(answer));
+          history.replace("/quiz/question");
         }}
-        routerLink="/quiz/question"
       >
         Skip
       </IonButton>
@@ -59,8 +63,12 @@ const Incorrect: React.FC<Props> = ({
   answer,
   quiz,
   answerIDs,
-  setAnswerIDs
+  setAnswerIDs,
+  setAnswer,
+  history
 }) => {
+  const location = useLocation();
+
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -70,17 +78,33 @@ const Incorrect: React.FC<Props> = ({
             <IonCol size="12">
               <h1 className="title">Not Quite</h1>
               <p>
-                Here we will insert the reasoning why this<b className="wrong">answer</b>is incorrect.{" "}
+                {(location && location.state && (location.state as any)["message"]) ||
+                  "That wasn't the right answer!"}
               </p>
             </IonCol>
 
             <IonCol size="auto" className="correct">
-              <IonButton size="large" className="skip" routerLink="/quiz/question">
+              <IonButton
+                size="large"
+                className="skip"
+                onClick={() => {
+                  setAnswer(null);
+                  history.replace("/quiz/question");
+                }}
+              >
                 Try Again
               </IonButton>
             </IonCol>
             <IonCol size="auto" className="correct">
-              {generateSkipButton(questionNum, setQuestionNum, quiz, answer, answerIDs, setAnswerIDs)}
+              {generateSkipButton(
+                questionNum,
+                setQuestionNum,
+                quiz,
+                answer,
+                answerIDs,
+                setAnswerIDs,
+                history
+              )}
             </IonCol>
           </IonRow>
         </IonGrid>
@@ -89,4 +113,4 @@ const Incorrect: React.FC<Props> = ({
   );
 };
 
-export default Incorrect;
+export default withRouter(Incorrect);
