@@ -1,38 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
-
-
-//QUIZ PAGE
-
-// .sign-up-button{
-//   position: absolute;
-//   bottom: 0;
-
-// }
-ion-row{
-  justify-content: center;
-  align-items: center;
-}
-
-
-#root {
-  margin: 0;
-  padding: 0;
-}
-
-.home-lines {
-  &-bottom {
-    bottom: 0;
-  }
-
-  &-top {
-    top: 0;
-  }
-
-  max-height: 50vh;
-  object-fit: cover;
-  width: 100%;
-  position: absolute;
-}
 @import "./theme-variables.scss";
 
 @import "./correct";
@@ -40,9 +6,9 @@ ion-row{
 @import "./question";
 @import "./quiz";
 @import "./tutorial";
-@import "./welcome";
 @import "./signup";
 @import "./result";
+
 
 body {
   font-family: "Montserrat", "sans-serif";
@@ -50,13 +16,6 @@ body {
 
 .h-100 {
   height: 100%;
-}
-
-.logo {
-  z-index: 100;
-  top: 55%;
-  align-self: center;
-  margin-top: 55%;
 }
 
 .subtitle {
@@ -86,13 +45,6 @@ ion-justify-content-start {
   height: 25vh;
 }
 
-
-//CORRECT PAGE
-.correctLines {
-  display: flex;
-  justify-content: center;
-}
-
 @media only screen and (min-width: 700px) {
   .correctLines {
     display: flex;
@@ -108,88 +60,8 @@ ion-justify-content-start {
 }
 }
 
-// .raffle-button{
-//   margin-top: 0%;
-//   margin-bottom: 3%;
-// }
-
-.yellow-banner{
-  background: #FFE552;
-  padding: 10px;
-}
-
-
-.input-style{
-  --background: #F5F5F5;
-  --highlight-height: 5px;
-  --heighlght-color: primary;
-  border: 2px solid rgba(0, 0, 0, 0.13);
-  box-sizing: border-box;
-  border-radius:10px;
-}
-
-ion-input{
-  color:black;
-  border: 0px;
-  width: 50%;
-}
-
-ion-input:valid{
-  color: $text-input-highlight-color-valid;
-  --heighlght-color: $text-input-highlight-color-valid;
-}
-
-ion-input:invalid{
-  color: $text-input-highlight-color-invalid;
-  --heighlght-color: $text-input-highlight-color-invalid;
-}
-
 .item-native{
   width: 50%;
-}
-
-.sign-up{
- display: flex;
- flex-grow: 1;
- flex-shrink:1;
- flex-direction: column;
- justify-content: space-around;
- height: 28vh;
-}
-
-// .message{
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-evenly;
-// }
-
-// .sign-title{
-//   letter-spacing: 0.13em;
-//   text-transform: uppercase;
-//   font-size: 2.25em;
-//   font-weight: bold;
-//   justify-content: center;
-// }
-// .end-button{
-//   width: 75%;
-// }
-.result-img{
-  object-fit: contain;
-  height: 50vh;
-}
-.end-title{
-  font-size: 50px;
-}
-.end-img{
-  object-fit: contain;
-  height: 20vh;
-}
-.sign-up-l{
-  display: flex;
-  flex-grow: 1;
-  font-weight: bold;
-  text-transform: uppercase;
-  justify-content: space-evenly;
 }
 
 .center-grid{
@@ -200,4 +72,6 @@ ion-input:invalid{
   height: 100%;
 }
 
-
+ion-row{
+  justify-content: center;
+}

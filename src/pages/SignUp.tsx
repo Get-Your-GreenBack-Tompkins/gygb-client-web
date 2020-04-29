@@ -161,7 +161,7 @@ const generateButton = (raffle: boolean) => {
     );
   } else {
     return (
-      <IonButton size="large" type="submit" className="blue-button">
+      <IonButton size="large" type="submit" className="sign-up-l blue-button">
         Sign Up
       </IonButton>
     );
@@ -197,9 +197,22 @@ const displayEnterEmail = (
                  and live more environmentally.</p>
             </IonCol>
           
-            {generateInput(raffle, setFirstName, setLastName, setEmail)}
-            {newsletter(raffle, checked, setChecked)}
-            {generateButton(raffle)}
+
+            <IonCol>
+              {generateInput(raffle, setFirstName, setLastName, setEmail)}
+            </IonCol>
+            
+            <IonCol>
+             {newsletter(raffle, checked, setChecked)}
+            </IonCol>
+
+            <IonCol>
+            <p></p>
+            </IonCol>
+          
+            <IonCol>
+              {generateButton(raffle)}
+            </IonCol>
       </form>
     );
   } else {
@@ -210,17 +223,24 @@ const displayEnterEmail = (
           postAll(answerIDs, quiz, firstName, lastName, email, history, setShowAlert, checked);
         }}
       >
-        {generateInput(raffle, setFirstName, setLastName, setEmail)}
-          
-          {newsletter(raffle, checked, setChecked)}
-        
-        <IonCol className="message" size="12">
-              <p>  We never spam. We’re here to serve you! </p>
-              <p>Our only purpose is to provide you with key information hat can help you save money
-                 and live more environmentally.</p>
-            </IonCol>
+        <IonCol>
+         {generateInput(raffle, setFirstName, setLastName, setEmail)}
+        </IonCol>
 
+        <IonCol>
+          {newsletter(raffle, checked, setChecked)}
+        </IonCol>
+
+        <IonCol className="message" size="12">
+          <p> We never spam. We’re here to serve you! </p>
+          <p>Our only purpose is to provide you with key information hat can help you save money
+            and live more environmentally.</p>
+        </IonCol>
+          
+        <IonCol>
           {generateButton(raffle)}
+        </IonCol>
+
       </form>
     );
   }
@@ -243,13 +263,14 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
       </IonHeader>
          */}
       <IonContent fullscreen class="ion-padding">
-        <IonGrid>
+        <IonGrid className="center-grid">
+
           <IonRow>
+
             <IonCol size="12" className="yellow-banner">
-               <h1 className="title">{title(raffle)}</h1>
+             <h1 className="title">{title(raffle)}</h1>
             </IonCol>
         
-            <IonCol size="12" className="raffle-info center-grid">
               {displayEnterEmail(
                 answerIDs,
                 quiz,
@@ -265,7 +286,7 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
                 setChecked,
                 raffle
               )}
-            </IonCol>
+
           </IonRow>
           
           <IonAlert

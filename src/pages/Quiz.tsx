@@ -16,19 +16,16 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
       <IonImg className="home-lines home-lines-top" src={Top}></IonImg>
       <IonImg className="home-lines home-lines-bottom" src={Bottom}></IonImg>
 
-      <IonGrid className="welcome-content">
+      <IonGrid className="welcome-content center-grid">
         <IonRow>
-          <IonCol className="col">
+          <IonCol size="12">
             <IonImg className="logo" src={Logo} alt="Powerhouse"></IonImg>
             <h1 className="subtitle">{quiz && quiz.name}</h1>
+            <IonButton size="large" className="start-button" routerLink="/quiz/tutorial">
+              Enter Quiz
+            </IonButton>
           </IonCol>
-        </IonRow>
-
-        <IonRow>
-          <IonButton size="large" className="start-button" routerLink="/quiz/tutorial">
-            Enter Quiz
-          </IonButton>
-        </IonRow>
+          </IonRow>
       </IonGrid>
     </IonPage>
   );

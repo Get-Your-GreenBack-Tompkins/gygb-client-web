@@ -30,21 +30,21 @@ const Quiz: React.FC<Props> = ({ quiz }) => {
     <IonPage>
       <IonContent fullscreen>
         <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
-        <IonGrid className="center-grid">
+        <IonGrid>
           <IonRow className = "tutorial-info ion-align-items-start">
             <IonCol size="12" size-sm>
               <h1 className="tutorial-title"> Thanks for coming!</h1>
             </IonCol>
-            <IonCol size="12" size-sm>
+            <IonCol size="12">
               <p>Test your knowledge of how to make your home more energy efficient, pollution free and comfortable--and save money.</p>
             </IonCol>
-            <IonCol className ="tutorial-emphasis">
+            <IonCol size="12" className ="tutorial-emphasis">
               <p>Find the answers in the Powerhouse!</p>
             </IonCol>
-            <IonCol size="12" size-sm>
+            <IonCol size="12">
               <p> Get {String(Number(totalQuestions) * 0.6)} out of {totalQuestions} questions and you could win a..</p>
             </IonCol>
-            <IonCol className ="tutorial-emphasis" size="12" size-sm>
+            <IonCol className ="tutorial-emphasis prize" size="12" size-sm>
               {/* <p>{quiz.raffle.prize}</p>*/}<p>Lux Geo Thermostat</p> 
             </IonCol>
             <IonCol size="12" className = "small" size-sm>
