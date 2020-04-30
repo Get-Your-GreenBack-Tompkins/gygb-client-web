@@ -41,6 +41,9 @@
   --border-radius: 10px;
   --border-style: solid;
 
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+
   text-transform: uppercase !important;
   letter-spacing: 2px;
   font-size: 1.15em;
@@ -52,7 +55,7 @@
 .tutorial-title {
   font-style: normal;
   font-weight: 600;
-  font-size: 1em;
+  font-size: 2.4vh;
   line-height: auto;
   align-items: center;
   text-align: center;
@@ -64,14 +67,14 @@
     color: rgba(0, 0, 0, 0.7);
     letter-spacing: 0.02em;
     line-height: 27px;
-    // font-size: 1.2em;
+    font-size: 2.3vh;
     font-style: normal;
     font-weight: 300;
 }
 
 
 .small {
-  font-size: 0.8em;
+  font-size: 2vh;
   line-height: 23px;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -93,13 +96,14 @@
   color: #78AB41;
   font-weight: bold;
   font-style: normal;
+  font-size: 5.5vh;
   line-height: auto;
 }
 
 .action-call{
   color: rgba(21, 56, 79, 0.7);
   font-weight: 600;
-  font-size: 1.03em;
+  font-size: 2.5vh;
   letter-spacing: 0.02em;
   line-height: auto;
 }
