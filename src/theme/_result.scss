@@ -30,4 +30,43 @@
 .result-img {
     object-fit: contain;
     height: 50vh;
+    margin-top: -8%;
 }
+
+.result-subtitle{
+    top: 50% !important;
+    width: 100%;
+    font-size: 2.5vh;
+    line-height: auto;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase !important;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: normal;
+}
+
+.result-button{
+    --background: #76c6ff;
+  --background-hover: #95d0fa;
+    width: fit-content;
+  --border-radius: 10px;
+  --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase !important;
+  font-size: 2.35vh;
+  letter-spacing: 0.04em;
+}
+
+.gradient{
+    position: relative;
+    object-fit:contain;
+    z-index: -1;
+}
+
+.raffle-button {
+    --background: #228ad3;
+    --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase !important;
+    font-size: 2.67vh;
+    letter-spacing: 2px;
+    width: fit-content;
+  }
