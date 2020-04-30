@@ -27,14 +27,13 @@ const End: React.FC<Props> = ({ raffle, history }) => {
               <h1 className="end-title">Success!</h1>
             </IonCol>
             <IonCol>
-              <h3 className="subtitle end-sub">{subtitle(raffle)}</h3>
+              <h3 className="end-sub">{subtitle(raffle)}</h3>
             </IonCol>
             <IonCol size="12">
               <IonImg className="end-img" src={Checkmark}></IonImg>
             </IonCol>
             <IonCol>
               <IonButton
-                size="large"
                 className="blue-button end-button"
                 onClick={() => {
                   history.replace("/quiz");
@@ -46,7 +45,7 @@ const End: React.FC<Props> = ({ raffle, history }) => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton size="large" className="blue-button end-button" href="tinypowerhouse.org">
+              <IonButton className="blue-button end-button" href="tinypowerhouse.org">
                 Return Home
               </IonButton>
             </IonCol>

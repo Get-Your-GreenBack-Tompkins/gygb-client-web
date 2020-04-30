@@ -23,9 +23,13 @@ interface Props extends RouteComponentProps {
 
 const title = (raffle: boolean) => {
   if (raffle) {
-    return "Enter To Win";
+    return <IonCol size="12" className="yellow-banner">
+      <h1 className="title">Enter to win</h1>
+    </IonCol>;
   } else {
-    return "Sign Up";
+    return <IonCol size="12" className="yellow-banner sp">
+    <h1 className="title">"Sign Up"</h1>
+    </IonCol>;
   }
 };
 
@@ -152,7 +156,7 @@ const generateInput = (
 const generateButton = (raffle: boolean) => {
   if (raffle) {
     return (
-      <IonButton size="large" type="submit" className="blue-button">
+      <IonButton size="large" type="submit" className="sign-up-button">
         Enter Raffle
       </IonButton>
     );
@@ -241,12 +245,13 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
 
   return (
     <IonPage>
-      <IonContent fullscreen class="ion-padding">
+      <IonContent fullscreen>
+        
           <IonGrid className="signup-grid">
-          <IonRow>
-          <IonCol size="12" className="yellow-banner">
-          <h1 className="title">{title(raffle)}</h1>
-        </IonCol>
+          <IonRow className="yb-holder">
+              {title(raffle)}
+        </IonRow>
+        <IonRow>
               {displayEnterEmail(
                 answerIDs,
                 quiz,

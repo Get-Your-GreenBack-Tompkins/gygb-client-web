@@ -25,6 +25,14 @@
   }
 }
 
+.ic-title {
+  font-size: 7.2vw;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
 .correctLines {
   display: flex;
   justify-content: center;
@@ -32,7 +40,7 @@
 
 .skip {
   width: fit-content;
-  font-size: 1.15em;
+  font-size: 2.65vh;
   letter-spacing: 2px;
   --background: #{$gygb-red};
   --background-hover: #{$gygb-light-red};
@@ -56,7 +64,8 @@
 .correct-button {
   --background: #{$gygb-green};
   --background-hover: #a2e94c;
-  font-size: 1.1em;
+  width: fit-content;
+  font-size: 2.65vh;
   letter-spacing: 2px;
   text-transform: uppercase !important;
   font-weight: bold;
