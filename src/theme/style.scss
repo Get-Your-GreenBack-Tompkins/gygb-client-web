@@ -34,37 +34,11 @@ body {
   height: 100%;
 }
 
-
-// .img-title {
-//   font-weight: bold;
-//   letter-spacing: 2.5px;
-//   text-transform: uppercase !important;
-//   top: 25%;
-// }
-
-.raffle-button {
-  --background: #228ad3;
-  text-transform: uppercase !important;
-  letter-spacing: 2px;
-  width: fit-content;
-}
-
-.blue-button {
-  --background: #228ad3;
-  --background-hover: #95d0fa;
-  --border-radius: 10px;
-  --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-  text-transform: uppercase !important;
-  letter-spacing: 2px;
-}
-
 @media only screen and (min-width: 700px) {
   .correctLines {
     display: flex;
   }
 }
-
-
 
 .input-style {
   --background: #f5f5f5;
@@ -86,11 +60,6 @@ body {
   flex-direction: column;
   justify-content: space-around;
   height: 28vh;
-}
-
-.result-img {
-  object-fit: contain;
-  height: 50vh;
 }
 
 .end-title {
