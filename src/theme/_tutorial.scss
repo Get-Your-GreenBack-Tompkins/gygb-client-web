@@ -1,30 +1,109 @@
 .tutorial-lines {
-  min-height: 100%;
+  height: 100%;
   width: 100%;
   position: absolute;
+  object-fit: cover;
   top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
-.start-button {
-  --background: white;
+.tutorial-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 5%;
+}
+
+.tutorial-row{
+  justify-content: space-evenly;
+}
+
+.t-col{
+  margin: 0.5%;
+}
+
+.tutorial-button {
+  --background: #{$gygb-green};
   --background-activity: #{$gygb-green};
   --background-focused: #{$gygb-green};
-  --background-hover: #{$gygb-green};
+  --background-hover: white;
 
-  --color: #{$gygb-green};
-  --color-activated: white;
-  --color-focused: white;
-  --color-hover: white;
+  --color: white;
+  --color-activated:#{$gygb-green};
+  --color-focused: #{$gygb-green};
+  --color-hover: #{$gygb-green};
 
-  --border-color: #{$gygb-green};
+  --border-color: white;
   --border-radius: 10px;
-  --border-style: solid; 
+  --border-style: solid;
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
 
   text-transform: uppercase !important;
   letter-spacing: 2px;
   font-size: 1.15em;
   font-weight: bold;
-  width: fit-content;
-  top: 50%;
-  margin-top: 15%;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.tutorial-title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.4vh;
+  line-height: auto;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.tutorial-info, div.tutorial-info em {
+    color: rgba(0, 0, 0, 0.7);
+    letter-spacing: 0.02em;
+    line-height: 27px;
+    font-size: 2.3vh;
+    font-style: normal;
+    font-weight: 300;
+}
+
+
+.small {
+  font-size: 2vh;
+  line-height: 23px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.tutorial-emphasis p {
+  font-weight: bold;
+  color: #15384f;
+}
+
+.prize {
+  @media (min-width: 420px) {
+    font-size: 6vh;
+    color: #78AB41;
+  }
+}
+
+.prize{
+  font-size: 5vh;
+  color: #78AB41;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 5.5vh;
+  line-height: auto;
+}
+
+.action-call{
+  color: rgba(21, 56, 79, 0.7);
+  font-weight: 600;
+  font-size: 2.5vh;
+  letter-spacing: 0.02em;
+  line-height: auto;
 }

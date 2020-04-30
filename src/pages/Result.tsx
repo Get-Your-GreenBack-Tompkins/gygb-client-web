@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { IonPage, IonContent, IonButton, IonCol, IonRow, IonImg, IonGrid } from "@ionic/react";
+import React, { useState, useEffect, useCallback } from "react";
+import { IonPage, IonContent, IonButton, IonCol, IonRow, IonImg, IonGrid, IonLoading } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 import api from "../api";
 
@@ -13,88 +13,127 @@ interface Props extends RouteComponentProps {
   setRaffle: Function;
 }
 
-const getNumCorrect = (answerIDs: Array<number>, quiz: any) => {
-  var obj: any = {};
-  for (var i = 0; i < answerIDs.length; i++) {
-    obj[quiz.questions[i].id] = answerIDs[i];
-  }
-  return api.post(`/quiz/web-client/verify/`, {
-    answers: obj
-  });
-};
+const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle, history }) => {
+  const [numCorrect, setNumCorrect] = useState(null as { total: number; correct: number } | null);
+  const [questionRequirement, setQuestionRequirement] = useState(null as number | null);
 
-const imageReturn = (numCorrect: any) => {
-  if (numCorrect.correct === numCorrect.total) {
-    return <IonImg src={Confetti}></IonImg>;
-  } else if (numCorrect.correct > 0) {
-    return <IonImg src={HatsOff}></IonImg>;
-  } else {
-    return <IonImg src={House}></IonImg>;
-  }
-};
+  console.log(
+    `${!numCorrect || numCorrect.correct} / ${questionRequirement} (${!numCorrect || numCorrect.total})`
+  );
 
-const title = (numCorrect: any) => {
-  if (numCorrect.correct === numCorrect.total) {
-    return "Congratulations";
-  } else if (numCorrect.correct / numCorrect.total > 0.7) {
-    return "Well Done";
-  } else {
-    return "You didn't get enough questions right";
-  }
-};
+  const getNumCorrect = useCallback(() => {
+    const obj = {} as { [key: string]: any };
 
-const subtitle = (numCorrect: any) => {
-  if (numCorrect.correct === numCorrect.total) {
-    return "You got all questions right!";
-  } else if (numCorrect.correct / numCorrect.total > 0.7) {
-    return "You got " + numCorrect.correct + "/" + numCorrect.total + " questions correct!";
-  } else {
-    return "Not to worry, sign up for our e-newsletter to get energy tips and help every month";
-  }
-};
+    for (let i = 0; i < answerIDs.length; i++) {
+      obj[quiz.questions[i].id] = answerIDs[i];
+    }
 
-const generateButton = (numCorrect: any, setRaffle: Function) => {
-  if (numCorrect.correct / numCorrect.total < 0.7) {
-    setRaffle(false);
-    return (
-      <IonButton className="blue-button" routerLink="/quiz/signup">
-        Learn More
-      </IonButton>
-    );
-  } else {
-    setRaffle(true);
-    return (
-      <IonButton className="blue-button" routerLink="/quiz/signup">
-        Enter Raffle
-      </IonButton>
-    );
-  }
-};
-
-const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle }) => {
-  const [numCorrect, setNumCorrect] = useState(0);
-
-  useEffect(() => {
-    getNumCorrect(answerIDs, quiz).then(res => {
-      setNumCorrect(res.data);
+    return api.post(`/quiz/web-client/verify/`, {
+      answers: obj
     });
   }, [answerIDs, quiz]);
+
+  const sendGetRaffleRequest = useCallback(() => {
+    return api.get(`/quiz/${quiz.id}/raffle`);
+  }, [quiz]);
+
+  useEffect(() => {
+    sendGetRaffleRequest().then(res => {
+      setQuestionRequirement(res.data.questionRequirement);
+    });
+  }, [sendGetRaffleRequest]);
+
+  useEffect(() => {
+    getNumCorrect().then(res => {
+      setNumCorrect(res.data);
+    });
+  }, [getNumCorrect]);
+
+  const imageReturn = useCallback(() => {
+    if (!numCorrect || questionRequirement === null) {
+      return "";
+    } else if (numCorrect.correct === numCorrect.total) {
+      return <IonImg className="result-img" src={Confetti}></IonImg>;
+    } else if (numCorrect.correct >= questionRequirement) {
+      return <IonImg className="result-img" src={HatsOff}></IonImg>;
+    } else {
+      return <IonImg src={House}></IonImg>;
+    }
+  }, [numCorrect, questionRequirement]);
+
+  const title = useCallback(() => {
+    if (!numCorrect || questionRequirement === null) {
+      return "";
+    } else if (numCorrect.correct === numCorrect.total) {
+      return "Congratulations";
+    } else if (numCorrect.correct >= questionRequirement) {
+      return "Well Done";
+    } else {
+      return "You didn't get enough questions right";
+    }
+  }, [numCorrect, questionRequirement]);
+
+  const subtitle = useCallback(() => {
+    if (!numCorrect || questionRequirement === null) {
+      return "";
+    } else if (numCorrect.correct === numCorrect.total) {
+      return "You got all questions right!";
+    } else if (numCorrect.correct >= questionRequirement) {
+      return "You got " + numCorrect.correct + "/" + numCorrect.total + " questions correct!";
+    } else {
+      return "Not to worry, sign up for our e-newsletter to get energy tips and help every month";
+    }
+  }, [numCorrect, questionRequirement]);
+
+  const generateButton = useCallback(() => {
+    if (!numCorrect || questionRequirement == null) {
+      setRaffle(false);
+      return <IonButton>Loading...</IonButton>;
+    } else if (numCorrect.correct < questionRequirement) {
+      setRaffle(false);
+      return (
+        <IonButton
+          className="blue-button"
+          onClick={() => {
+            history.replace("/quiz/signup");
+          }}
+        >
+          Learn More
+        </IonButton>
+      );
+    } else {
+      setRaffle(true);
+      return (
+        <IonButton
+          className="blue-button"
+          onClick={() => {
+            history.replace("/quiz/signup");
+          }}
+        >
+          Enter Raffle
+        </IonButton>
+      );
+    }
+  }, [numCorrect, questionRequirement, setRaffle, history]);
+
+  if (numCorrect == null || questionRequirement == null) {
+    // TODO Loading state.
+    return <IonLoading isOpen={true} message="Checking your scores..."></IonLoading>;
+  }
 
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
-        {imageReturn(numCorrect)}
-        <IonGrid>
+        <IonGrid className="center-grid">
           <IonRow>
-            <IonCol>
-              <h1 className="title">{title(numCorrect)}</h1>
-              <h3 className="subtitle">{subtitle(numCorrect)}</h3>
-              {generateButton(numCorrect, setRaffle)}
+            <IonCol size="12">{imageReturn()}</IonCol>
+            <IonCol size="12">
+              <h1 className="title">{title()}</h1>
+              <h3 className="subtitle">{subtitle()}</h3>
+              {generateButton()}
             </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonButton className="blue-button" href="tinypowerhouse.org">
+            <IonCol size="12">
+              <IonButton className="blue-button" href="https://tinypowerhouse.org">
                 Return Home
               </IonButton>
             </IonCol>

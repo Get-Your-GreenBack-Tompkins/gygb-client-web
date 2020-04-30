@@ -44,10 +44,11 @@ const sendGetQuizRequest = async () => {
 };
 
 export const App: React.FC = () => {
+  const [started, setStarted] = useState(false);
   const [questionNum, setQuestionNum] = useState(1);
   const [question, setQuestion] = useState();
   const [quiz, setQuiz] = React.useState();
-  const [answer, setAnswer] = React.useState(0);
+  const [answer, setAnswer] = React.useState(0 as number | null);
   const [answerIDs, setAnswerIDs] = React.useState([]);
   const [raffle, setRaffle] = React.useState(false);
 
@@ -58,6 +59,7 @@ export const App: React.FC = () => {
   useEffect(() => {
     if (quiz) {
       setQuestion(quiz.questions[questionNum - 1]);
+      setAnswer(null);
     }
   }, [quiz, questionNum]);
 
@@ -69,64 +71,96 @@ export const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/quiz" render={props => <Quiz {...props} quiz={quiz} />} />
+          <Route exact path="/quiz" render={props => <Quiz {...props} started={started} setStarted={setStarted} quiz={quiz} />} />
           <Route
             exact
             path="/quiz/tutorial"
-            render={props => <Tutorial {...props} quiz={quiz} />}
+            render={props => (!started ? <Redirect to="/quiz" /> : <Tutorial {...props} quiz={quiz} />)}
           />
           <Route
             path="/quiz/question"
-            render={props => (
-              <Question
-                {...props}
-                metrics={{
-                  total: quiz.questions.length,
-                  completed: questionNum
-                }}
-                question={question}
-                answer={answer}
-                setAnswer={setAnswer}
-              />
-            )}
+            render={props =>
+              !started ? (
+                <Redirect to="/quiz" />
+              ) : (
+                <Question
+                  {...props}
+                  metrics={{
+                    total: quiz.questions.length,
+                    completed: questionNum
+                  }}
+                  question={question}
+                  answer={answer}
+                  setAnswer={setAnswer}
+                />
+              )
+            }
           />
           <Route
             path="/quiz/incorrect"
-            render={props => (
-              <Incorrect
-                {...props}
-                answer={answer}
-                quiz={quiz}
-                questionNum={questionNum}
-                setQuestionNum={setQuestionNum}
-                answerIDs={answerIDs}
-                setAnswerIDs={setAnswerIDs}
-              />
-            )}
+            render={props =>
+              !started ? (
+                <Redirect to="/quiz" />
+              ) : answer != null ? (
+                <Incorrect
+                  {...props}
+                  answer={answer}
+                  quiz={quiz}
+                  questionNum={questionNum}
+                  setQuestionNum={setQuestionNum}
+                  setAnswer={setAnswer}
+                  answerIDs={answerIDs}
+                  setAnswerIDs={setAnswerIDs}
+                />
+              ) : (
+                <div />
+              )
+            }
           />
           <Route
             path="/quiz/correct"
-            render={props => (
-              <Correct
-                {...props}
-                questionNum={questionNum}
-                setQuestionNum={setQuestionNum}
-                quiz={quiz}
-                answer={answer}
-                answerIDs={answerIDs}
-                setAnswerIDs={setAnswerIDs}
-              />
-            )}
+            render={props =>
+              !started ? (
+                <Redirect to="/quiz" />
+              ) : answer != null ? (
+                <Correct
+                  {...props}
+                  questionNum={questionNum}
+                  setQuestionNum={setQuestionNum}
+                  quiz={quiz}
+                  answer={answer}
+                  answerIDs={answerIDs}
+                  setAnswerIDs={setAnswerIDs}
+                />
+              ) : (
+                <div />
+              )
+            }
           />
           <Route
             path="/quiz/result"
-            render={props => <Result {...props} answerIDs={answerIDs} quiz={quiz} setRaffle={setRaffle} />}
+            render={props =>
+              !started ? (
+                <Redirect to="/quiz" />
+              ) : (
+                <Result {...props} answerIDs={answerIDs} quiz={quiz} setRaffle={setRaffle} />
+              )
+            }
           />
           <Route
             path="/quiz/signup"
-            render={props => <SignUp {...props} answerIDs={answerIDs} quiz={quiz} raffle={raffle} />}
+            render={props =>
+              !started ? (
+                <Redirect to="/quiz" />
+              ) : (
+                <SignUp {...props} answerIDs={answerIDs} quiz={quiz} raffle={raffle} />
+              )
+            }
           />
-          <Route path="/quiz/end" render={props => <End {...props} raffle={raffle} />} />
+          <Route
+            path="/quiz/end"
+            render={props => (!started ? <Redirect to="/quiz" /> : <End {...props} raffle={raffle} />)}
+          />
           <Redirect exact from="/" to="/quiz" />
         </IonRouterOutlet>
       </IonReactRouter>

@@ -1,0 +1,41 @@
+@media only screen and (min-width: 750px) {
+    .title {
+        font-size: 3vw;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 460px){
+    .title {
+        font-size: 7vw;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 0;
+    }
+}
+
+.center-grid {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+ 
+.blue-button{
+    --background: #228AD3;
+    --background-hover: #95d0fa;
+    --border-radius: 10px;
+    --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase !important;
+    letter-spacing: 2px;
+}
+
+.result-img{
+    object-fit: contain;
+    height: 50vh;
+}

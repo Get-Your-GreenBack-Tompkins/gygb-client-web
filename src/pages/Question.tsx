@@ -14,7 +14,7 @@ interface QuizMetrics {
 
 interface Props extends RouteComponentProps {
   question: any;
-  answer: number;
+  answer: number | null;
   setAnswer: Function;
   metrics: QuizMetrics;
 }
@@ -23,27 +23,38 @@ const sendGetAnswerRequest = (question: any, answerId: string) => {
   return api.get(`/quiz/web-client/question/${question.id}/verify-answer/${answerId}`);
 };
 
+export interface AnswerResponse {
+  message: string;
+  correct: boolean;
+  answerId: string;
+  questionId: string;
+}
+
 const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, history }) => {
-  const [correct, setCorrect] = useState();
+  const [answerResponse, setAnswerResponse] = useState(null as AnswerResponse | null);
 
   useEffect(() => {
-    sendGetAnswerRequest(question, `${answer}`).then(res => {
-      setCorrect(res.data);
-    });
+    if (answer != null && question != null) {
+      sendGetAnswerRequest(question, `${answer}`).then(res => {
+        setAnswerResponse(res.data);
+      });
+    }
   }, [question, answer]);
 
   useEffect(() => {
-    let correctPath = "/quiz/correct";
-    let incorrectPath = "/quiz/incorrect";
-
-    if (correct) {
-      if (correct.correct) {
-        history.push(correctPath);
+    console.log(answerResponse);
+    if (answerResponse) {
+      if (answerResponse.correct) {
+        history.replace("/quiz/correct", {
+          message: answerResponse.message
+        });
       } else {
-        history.push(incorrectPath);
+        history.replace("/quiz/incorrect", {
+          message: answerResponse.message
+        });
       }
     }
-  }, [correct, history]);
+  }, [answerResponse, history]);
 
   function createTitle() {
     return question.header;
@@ -79,9 +90,10 @@ const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, histo
             <IonCol>
               <h3 className="title question-title">{createTitle()}</h3>
             </IonCol>
-
             <IonCol size="auto">
-              <IonButton className="score"> 1/3 </IonButton>
+              <IonButton size="small" className="score">
+                Completed: {metrics.completed - 1}/{metrics.total}
+              </IonButton>
             </IonCol>
           </IonRow>
 

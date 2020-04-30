@@ -1,7 +1,9 @@
 import React from "react";
 
-import { IonPage, IonContent, IonButton, IonCol, IonRow, IonGrid } from "@ionic/react";
+import { IonPage, IonContent, IonButton, IonImg, IonCol, IonRow, IonGrid } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
+
+import Checkmark from "../assets/checkMark.svg";
 
 interface Props extends RouteComponentProps {
   raffle: boolean;
@@ -15,23 +17,36 @@ const subtitle = (raffle: boolean) => {
   }
 };
 
-const End: React.FC<Props> = ({ raffle }) => {
+const End: React.FC<Props> = ({ raffle, history }) => {
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
-        <IonGrid>
+        <IonGrid className="center-grid">
           <IonRow>
+            <IonCol size="12">
+              <h1 className="end-title">Success!</h1>
+            </IonCol>
             <IonCol>
-              <h1 className="title">Success!</h1>
-              <h3 className="subtitle">{subtitle(raffle)}</h3>
-              <IonButton className="blue-button" routerLink="/quiz">
+              <h3 className="subtitle end-sub">{subtitle(raffle)}</h3>
+            </IonCol>
+            <IonCol size="12">
+              <IonImg className="end-img" src={Checkmark}></IonImg>
+            </IonCol>
+            <IonCol>
+              <IonButton
+                size="large"
+                className="blue-button end-button"
+                onClick={() => {
+                  history.replace("/quiz");
+                }}
+              >
                 Try Again
               </IonButton>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton className="blue-button" href="tinypowerhouse.org">
+              <IonButton size="large" className="blue-button end-button" href="tinypowerhouse.org">
                 Return Home
               </IonButton>
             </IonCol>
