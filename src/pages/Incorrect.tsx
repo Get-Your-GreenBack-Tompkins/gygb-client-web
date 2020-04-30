@@ -10,8 +10,7 @@ interface Props extends RouteComponentProps {
   setQuestionNum: Function;
   answer: number;
   quiz: any;
-  answerIDs: Array<number>;
-  setAnswerIDs: Function;
+  setAnswerID: (questionNum: number, answerId: number) => void,
   setAnswer: (answer: number | null) => void;
 }
 
@@ -20,8 +19,7 @@ const generateSkipButton = (
   setQuestionNum: Function,
   quiz: any,
   answer: number,
-  answerIDs: Array<number>,
-  setAnswerIDs: Function,
+  setAnswerID: (questionNum: number, answerId: number) => void,
   history: any
 ) => {
   const total = quiz && quiz.questions.length;
@@ -32,7 +30,7 @@ const generateSkipButton = (
         className="skip"
         color="medium"
         onClick={() => {
-          setAnswerIDs(answerIDs.concat(answer));
+          setAnswerID(questionNum, answer);
           history.replace("/quiz/result");
         }}
       >
@@ -46,8 +44,8 @@ const generateSkipButton = (
         className="skip"
         color="medium"
         onClick={() => {
+          setAnswerID(questionNum, answer);
           setQuestionNum(questionNum + 1);
-          setAnswerIDs(answerIDs.concat(answer));
           history.replace("/quiz/question");
         }}
       >
@@ -62,8 +60,7 @@ const Incorrect: React.FC<Props> = ({
   setQuestionNum,
   answer,
   quiz,
-  answerIDs,
-  setAnswerIDs,
+  setAnswerID,
   setAnswer,
   history
 }) => {
@@ -89,6 +86,7 @@ const Incorrect: React.FC<Props> = ({
                 size="large"
                 className="skip"
                 onClick={() => {
+                  setAnswerID(questionNum, answer);
                   setAnswer(null);
                   history.replace("/quiz/question");
                 }}
@@ -102,8 +100,7 @@ const Incorrect: React.FC<Props> = ({
                 setQuestionNum,
                 quiz,
                 answer,
-                answerIDs,
-                setAnswerIDs,
+                setAnswerID,
                 history
               )}
             </IonCol>
