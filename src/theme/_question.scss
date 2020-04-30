@@ -21,6 +21,7 @@
 
 .answer-container {
   margin: 0.5rem;
+  padding: 0.5rem;
   overflow-wrap: normal;
   overflow: hidden;
   word-break: break-word;
@@ -33,12 +34,12 @@
 .score {
   float: right;
   --background: #ffe552;
-  --backgroun-hover:#ffe552;
+  --backgroun-hover: #ffe552;
   --color: black;
   --disabled: true;
 }
 
-.question-title-row{
+.question-title-row {
   width: 100%;
 }
 
@@ -58,7 +59,7 @@
 
 .answer-text {
   vertical-align: middle;
-  display:flex;
+  display: flex;
   justify-content: center;
   width: 100%;
   line-height: 1.25rem;

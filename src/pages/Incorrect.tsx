@@ -74,7 +74,7 @@ const Incorrect: React.FC<Props> = ({
       <IonContent fullscreen>
         <IonImg className="grid-lines" src={RedLines}></IonImg>
         <IonGrid className="line-grid vh-50">
-          <IonRow className="vh-25 incorrect-button-container ion-align-items-start">
+          <IonRow className="vh-25 incorrect-button-container ion-align-items-end">
             <IonCol size="12">
               <h1 className="title">Not Quite</h1>
               <p>
@@ -82,7 +82,8 @@ const Incorrect: React.FC<Props> = ({
                   "That wasn't the right answer!"}
               </p>
             </IonCol>
-
+          </IonRow>
+          <IonRow className="ion-justify-content-center ion-align-items-center">
             <IonCol size="auto" className="correct">
               <IonButton
                 size="large"

@@ -53,8 +53,19 @@ export const App: React.FC = () => {
   const [raffle, setRaffle] = React.useState(false);
 
   useEffect(() => {
-    sendGetQuizRequest().then(quiz => setQuiz(quiz));
-  }, []);
+    if (!started) {
+      sendGetQuizRequest()
+        .then(quiz => {
+          setQuestionNum(1);
+          setAnswer(null);
+          setRaffle(false);
+          setQuiz(quiz);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }, [started]);
 
   useEffect(() => {
     if (quiz) {
@@ -71,7 +82,11 @@ export const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/quiz" render={props => <Quiz {...props} started={started} setStarted={setStarted} quiz={quiz} />} />
+          <Route
+            exact
+            path="/quiz"
+            render={props => <Quiz {...props} started={started} setStarted={setStarted} quiz={quiz} />}
+          />
           <Route
             exact
             path="/quiz/tutorial"
@@ -159,7 +174,9 @@ export const App: React.FC = () => {
           />
           <Route
             path="/quiz/end"
-            render={props => (!started ? <Redirect to="/quiz" /> : <End {...props} raffle={raffle} />)}
+            render={props =>
+              !started ? <Redirect to="/quiz" /> : <End {...props} setStarted={setStarted} raffle={raffle} />
+            }
           />
           <Redirect exact from="/" to="/quiz" />
         </IonRouterOutlet>
