@@ -64,29 +64,65 @@
   letter-spacing: 2px;
   font-size: 1.15em;
   font-weight: bold;
-  margin-top: 15%;
+  
+  z-index: 100;
+  bottom:0;
+  align-self: center;
+  margin-top: 10%;
+
   flex-direction: column;
+  justify-content: space-evenly;
+
+
+  @media(min-height:600px) and (max-width: 500px){
+    margin-top: 20%;
+    min-height: 8vh;
+    min-width: 6vw;
+    margin-bottom: -55%;
+  }
+
+  @media(max-height: 600px){
+    margin-top: 15%;
+  }
 }
 
-.logo {
+.logo{
   z-index: 100;
-  top: 55%;
+  top: 53%;
   align-self: center;
   object-fit: cover;
   display: flex;
   flex-grow: 1;
+  flex-shrink: 1;
   flex-direction: column;
   justify-content: space-evenly;
+
+  @media (min-height: 600px) and (max-width: 500px){
+    min-width: 92vw;
+  }
 }
+
+
+
 
 .subtitle {
   top: 50% !important;
   width: 100%;
-  font-size: 0.9em;
+  font-size: 3.1vh;
   line-height: 16px;
   text-align: center;
   letter-spacing: 0.04em;
   text-transform: uppercase !important;
   color: rgba(0, 0, 0, 0.6);
   font-weight: normal;
+}
+
+.quiz{
+  font-weight: 540;
+}
+
+@media(min-width: 460px){
+  .subtitle{
+    font-size: 4vw;
+  }
 }

@@ -8,6 +8,28 @@
   }
 }
 
+.grid-lines {
+  @media (min-width: 576px) {
+    display: none;
+  }
+}
+
+.line-grid {
+  @media (max-width: 576px) {
+    padding: 2vh 7.5vw;
+  }
+
+  @media (min-width: 576px) {
+    margin-top: 25vh;
+    margin-bottom: 25vh;
+  }
+}
+
+.correctLines {
+  display: flex;
+  justify-content: center;
+}
+
 .skip {
   width: fit-content;
   font-size: 1.15em;
@@ -47,7 +69,4 @@
   width: 100%;
 }
 
-.correctLines {
-  display: flex;
-  justify-content: center;
-}
+
