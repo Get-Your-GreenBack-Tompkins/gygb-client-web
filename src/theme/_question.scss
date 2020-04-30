@@ -37,7 +37,12 @@
 .answer-button {
   height: 100%;
   padding: 6px;
+  @media (min-height:600px) and (max-width: 420px){
+    margin-bottom: 6px;
+    padding: 2px;
+  }
 }
+
 
 .answer-container {
   margin: 0.5rem;
