@@ -33,9 +33,10 @@ const End: React.FC<Props> = ({ raffle, history, setStarted }) => {
             <IonCol size="12">
               <IonImg className="end-img" src={Checkmark}></IonImg>
             </IonCol>
-            <IonCol>
+            <IonRow className="ion-justify-content-center ion-align-items-center">
+            <IonCol size="12">
               <IonButton
-                className="blue-button end-button"
+                className="end-button"
                 onClick={() => {
                   setStarted(false);
                   history.replace("/quiz");
@@ -44,8 +45,9 @@ const End: React.FC<Props> = ({ raffle, history, setStarted }) => {
                 Try Again
               </IonButton>
             </IonCol>
+            </IonRow>
           </IonRow>
-          <IonRow>
+          <IonRow className="ion-justify-content-center ion-align-items-center">
             <IonCol>
               <IonButton size="large" className="blue-button end-button" href="https://tinypowerhouse.org">
                 Return Home
