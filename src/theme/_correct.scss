@@ -13,14 +13,14 @@
   font-size: 1.15em;
   letter-spacing: 2px;
   --background: #{$gygb-red};
-  --background: #{$gygb-light-red};
   --background-hover: #{$gygb-light-red};
   --background-activated: #{$gygb-light-red};
   text-transform: uppercase !important;
+  align-items: center;
 }
 
-.incorrect-button-container {
-  margin-top: 10px;
+.q-response{
+  font-size: 2.6vh;
 }
 
 .wrong {
@@ -42,7 +42,7 @@
 }
 
 .correct {
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
   width: 100%;
 }
@@ -50,20 +50,4 @@
 .correctLines {
   display: flex;
   justify-content: center;
-}
-
-.center-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.icon {
-  min-width: 100%;
-  min-height: 100%;
-  position: fixed;
-  top: 50;
-  left: 50;
 }

@@ -88,8 +88,8 @@ const postEmail = (email: string, history: any, setShowAlert: Function, checked:
 const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => {
   if (raffle) {
     return (
-      <IonItem lines="none" className="sign-up-l">
-        <IonLabel>Sign Up for Newsletter</IonLabel>
+      <IonItem lines="none">
+        <IonLabel className="sign-up-l">Sign Up for Newsletter</IonLabel>
         <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
       </IonItem>
     );
@@ -190,8 +190,7 @@ const displayEnterEmail = (
       >
         <IonCol className="message" size="12">
           <p>We never spam. We’re here to serve you!</p>
-          <p>
-            Our only purpose is to provide you with key information that can help you save money and live more
+          <p>Our only purpose is to provide you with key information that can help you save money and live more
             environmentally.
           </p>
         </IonCol>
@@ -220,7 +219,7 @@ const displayEnterEmail = (
         <IonCol>{newsletter(raffle, checked, setChecked)}</IonCol>
 
         <IonCol className="message" size="12">
-          <p> We never spam. We’re here to serve you! </p>
+          <p> We never spam. We’re here to serve you!</p>
           <p>
             Our only purpose is to provide you with key information hat can help you save money and live more
             environmentally.
@@ -243,12 +242,11 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
-        <IonGrid className="center-grid">
+          <IonGrid className="signup-grid">
           <IonRow>
-            <IonCol size="12" className="yellow-banner">
-              <h1 className="title">{title(raffle)}</h1>
-            </IonCol>
-            <IonCol size="12" className="raffle-info center-grid">
+          <IonCol size="12" className="yellow-banner">
+          <h1 className="title">{title(raffle)}</h1>
+        </IonCol>
               {displayEnterEmail(
                 answerIDs,
                 quiz,
@@ -264,7 +262,6 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
                 setChecked,
                 raffle
               )}
-            </IonCol>
           </IonRow>
 
           <IonAlert
