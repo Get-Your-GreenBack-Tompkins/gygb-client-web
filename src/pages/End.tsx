@@ -33,7 +33,6 @@ const End: React.FC<Props> = ({ raffle, history, setStarted }) => {
             <IonCol size="12">
               <IonImg className="end-img" src={Checkmark}></IonImg>
             </IonCol>
-            <IonRow className="ion-justify-content-center ion-align-items-center">
             <IonCol size="12">
               <IonButton
                 className="end-button"
@@ -45,7 +44,6 @@ const End: React.FC<Props> = ({ raffle, history, setStarted }) => {
                 Try Again
               </IonButton>
             </IonCol>
-            </IonRow>
           </IonRow>
           <IonRow className="ion-justify-content-center ion-align-items-center">
             <IonCol>
