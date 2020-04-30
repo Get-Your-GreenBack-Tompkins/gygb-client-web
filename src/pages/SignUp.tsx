@@ -28,7 +28,7 @@ const title = (raffle: boolean) => {
     </IonCol>;
   } else {
     return <IonCol size="12" className="yellow-banner sp">
-    <h1 className="title">"Sign Up"</h1>
+    <h1 className="title">Sign Up</h1>
     </IonCol>;
   }
 };
@@ -88,7 +88,7 @@ const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => 
   if (raffle) {
     return (
       <IonItem lines="none">
-        <IonLabel className="sign-up-l">Sign Up for Newsletter</IonLabel>
+        <IonLabel>Sign Up for Newsletter</IonLabel>
         <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
       </IonItem>
     );
@@ -139,6 +139,7 @@ const generateInput = (
         <IonInput
           placeholder="email@domain.com"
           type="email"
+          className="only-email"
           onIonChange={event => {
             setEmail(event.detail.value);
           }}
@@ -157,7 +158,7 @@ const generateButton = (raffle: boolean) => {
     );
   } else {
     return (
-      <IonButton size="large" type="submit" className="sign-up-l blue-button">
+      <IonButton size="large" type="submit" className="sign-up-button">
         Sign Up
       </IonButton>
     );
