@@ -32,9 +32,10 @@ const End: React.FC<Props> = ({ raffle, history }) => {
             <IonCol size="12">
               <IonImg className="end-img" src={Checkmark}></IonImg>
             </IonCol>
-            <IonCol>
+            <IonRow className="ion-justify-content-center ion-align-items-center">
+            <IonCol size="12">
               <IonButton
-                className="blue-button end-button"
+                className="end-button"
                 onClick={() => {
                   history.replace("/quiz");
                 }}
@@ -42,13 +43,12 @@ const End: React.FC<Props> = ({ raffle, history }) => {
                 Try Again
               </IonButton>
             </IonCol>
+            </IonRow>
           </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonButton className="blue-button end-button" href="tinypowerhouse.org">
+          <IonRow className="ion-justify-content-center ion-align-items-center">
+              <IonButton className="end-button" href="tinypowerhouse.org">
                 Return Home
               </IonButton>
-            </IonCol>
           </IonRow>
         </IonGrid>
       </IonContent>

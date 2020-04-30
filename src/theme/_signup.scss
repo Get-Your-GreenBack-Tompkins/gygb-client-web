@@ -67,16 +67,19 @@
   margin-bottom: 1.2vh;
 }
 
-ion-input{
-  font-size: 3vh;
+.only-email{
+  font-size: 2.5vh;
+  text-align: center;
 }
 
 .sign-up-button{
   --background: #228ad3;
   --background-hover: #95d0fa;
   --border-radius: 10px;
+  font-size: 2.65vh;
   --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
   text-transform: uppercase !important;
   letter-spacing: 2px;
   margin-top: 10%;
+  width: 50vw;
 }
