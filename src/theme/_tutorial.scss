@@ -13,22 +13,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 100%;
+  padding: 5%;
 }
 
-.start-button {
-  --background: white;
+.tutorial-row{
+  justify-content: space-evenly;
+}
+
+.t-col{
+  margin: 0.5%;
+}
+
+.tutorial-button {
+  --background: #{$gygb-green};
   --background-activity: #{$gygb-green};
   --background-focused: #{$gygb-green};
-  --background-hover: #{$gygb-green};
+  --background-hover: white;
 
-  --color: #{$gygb-green};
-  --color-activated: white;
-  --color-focused: white;
-  --color-hover: white;
+  --color: white;
+  --color-activated:#{$gygb-green};
+  --color-focused: #{$gygb-green};
+  --color-hover: #{$gygb-green};
 
-  --border-color: #{$gygb-green};
+  --border-color: white;
   --border-radius: 10px;
   --border-style: solid;
 
@@ -36,30 +45,35 @@
   letter-spacing: 2px;
   font-size: 1.15em;
   font-weight: bold;
-  margin-top: 15%;
   flex-direction: column;
+  margin-bottom: 5%;
 }
 
 .tutorial-title {
-  font-size: 4vh;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1em;
+  line-height: auto;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.tutorial-info {
-  p,
-  b {
+.tutorial-info, div.tutorial-info em {
     color: rgba(0, 0, 0, 0.7);
     letter-spacing: 0.02em;
     line-height: 27px;
-    font-size: 1.2em;
-    margin: 1%;
-  }
+    // font-size: 1.2em;
+    font-style: normal;
+    font-weight: 300;
 }
+
 
 .small {
   font-size: 0.8em;
+  line-height: 23px;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .tutorial-emphasis p {
@@ -70,5 +84,22 @@
 .prize {
   @media (min-width: 420px) {
     font-size: 6vh;
+    color: #78AB41;
   }
+}
+
+.prize{
+  font-size: 5vh;
+  color: #78AB41;
+  font-weight: bold;
+  font-style: normal;
+  line-height: auto;
+}
+
+.action-call{
+  color: rgba(21, 56, 79, 0.7);
+  font-weight: 600;
+  font-size: 1.03em;
+  letter-spacing: 0.02em;
+  line-height: auto;
 }

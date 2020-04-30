@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router";
 
 import api from "../api";
 
-import TutorialLines from "../assets/tutorial.svg";
+import TutorialLines from "../assets/tLines.svg";
 
 interface Props extends RouteComponentProps {
   quiz: any;
@@ -45,26 +45,26 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
       <IonContent fullscreen>
         <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
         <IonGrid className="tutorial-grid">
-          <IonRow className="tutorial-info ion-align-items-start">
+          <IonRow className="ion-align-items-start tutorial-row">
             <IonCol className="tutorial-title" size="12" size-sm>
-              <h1>{header}</h1>
+              <p>{header}</p>
             </IonCol>
-            <IonCol size="12">
-              <div dangerouslySetInnerHTML={{ __html: body }} />
+            <IonCol size="12" className="t-col">
+              <div className = "tutorial-info" dangerouslySetInnerHTML={{ __html: body }} />
+              <p className ="action-call">Find the answers within the powerhouse! </p>
             </IonCol>
-            <IonCol size="12">
-              <p>{`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}</p>
+            <IonCol size="12" className = "tutorial-info t-col">
+              {`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}
             </IonCol>
-            <IonCol className="tutorial-emphasis prize" size="12" size-sm>
-              <b>{prize}</b>
+            <IonCol className="prize t-col" size="12" size-sm>
+              {prize}
             </IonCol>
             <IonCol size="12" className = "small" size-sm>
               <p>Drawings are done monthly</p>
             </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonButton size="large" className="correct-button" onClick={() => {
+         
+            <IonCol size="12">
+              <IonButton size="large" className="tutorial-button" onClick={() => {
                  history.replace("/quiz/question");
               }}>
                 Start Quiz!
