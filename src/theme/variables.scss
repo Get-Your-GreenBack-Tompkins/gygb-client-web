@@ -10,8 +10,14 @@ http://ionicframework.com/docs/theming/ */
   text-align: center;
 }
 
+:host {
+  --ion-default-font: "Montserrat", "Helvetica Neue", sans-serif;
+}
+
 /** Ionic CSS Variables **/
 :root {
+  --ion-font-family: "Montserrat", "Helvetica Neue", sans-serif;
+
   /** primary **/
   --ion-color-primary: #228AD3;
   --ion-color-primary-rgb: 56, 128, 255;
