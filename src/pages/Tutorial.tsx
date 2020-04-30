@@ -43,17 +43,20 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
         <IonGrid className="tutorial-grid">
+        
           <IonRow className="ion-align-items-start tutorial-row">
+          <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
             <IonCol className="tutorial-title" size="12" size-sm>
               <p>{header}</p>
             </IonCol>
-            <IonCol size="12" className="t-col">
+            <IonCol size="9" className="t-col">
               <div className = "tutorial-info" dangerouslySetInnerHTML={{ __html: body }} />
+            </IonCol>
+            <IonCol size="10" className="t-col">
               <p className ="action-call">Find the answers within the powerhouse! </p>
             </IonCol>
-            <IonCol size="12" className = "tutorial-info t-col">
+            <IonCol size="9" className = "tutorial-info t-col">
               {`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}
             </IonCol>
             <IonCol className="prize t-col" size="12" size-sm>

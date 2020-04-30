@@ -3,7 +3,6 @@
   width: 100%;
   position: absolute;
   object-fit: cover;
-  top: 0;
   bottom: 0;
   right: 0;
   left: 0;
@@ -19,6 +18,7 @@
 }
 
 .tutorial-row{
+  min-height: fit-content;
   justify-content: space-evenly;
 }
 
@@ -55,28 +55,37 @@
 
 .tutorial-title {
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 2.4vh;
   line-height: auto;
   align-items: center;
   text-align: center;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   color: rgba(0, 0, 0, 0.7);
+
+  @media (max-height: 440px){
+    font-size: 2.4vw;
+  }
 }
 
 .tutorial-info, div.tutorial-info em {
     color: rgba(0, 0, 0, 0.7);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
     line-height: 27px;
     font-size: 2.3vh;
     font-style: normal;
     font-weight: 300;
+
+    @media (max-height: 440px){
+      font-size: 2.3vw;
+    }
 }
 
 
 .small {
   font-size: 2vh;
   line-height: 23px;
+  letter-spacing: 0.035em;
   color: rgba(0, 0, 0, 0.7);
 }
 
@@ -93,7 +102,7 @@
 }
 
 .prize{
-  font-size: 5vh;
+  font-size: 5vw;
   color: #78AB41;
   font-weight: bold;
   font-style: normal;
@@ -105,6 +114,7 @@
   color: rgba(21, 56, 79, 0.7);
   font-weight: 600;
   font-size: 2.4vh;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   line-height: auto;
 }
+
