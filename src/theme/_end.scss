@@ -1,3 +1,4 @@
+
 .end-title {
   font-size: 45px;
   font-weight: bold;
@@ -9,6 +10,19 @@
   height: 20vh;
 }
 
+.subtitle {
+  top: 50% !important;
+  width: 100%;
+  font-size: 0.9em;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase !important;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: normal;
+}
+
+
 .end-sub {
   line-height: 24px;
   display: flex;
@@ -16,3 +30,4 @@
   text-align: center;
   letter-spacing: 0.04em;
 }
+
