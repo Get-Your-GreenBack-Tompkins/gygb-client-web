@@ -80,7 +80,7 @@ const Incorrect: React.FC<Props> = ({
               </p>
             </IonCol>
 
-            <IonCol size="auto" className="correct">
+            <IonCol size="12" className="correct">
               <IonButton
                 size="large"
                 className="skip"
@@ -91,8 +91,6 @@ const Incorrect: React.FC<Props> = ({
               >
                 Try Again
               </IonButton>
-            </IonCol>
-            <IonCol size="auto" className="correct">
               {generateSkipButton(
                 questionNum,
                 setQuestionNum,
@@ -102,6 +100,7 @@ const Incorrect: React.FC<Props> = ({
                 history
               )}
             </IonCol>
+            
           </IonRow>
         </IonGrid>
       </IonContent>
