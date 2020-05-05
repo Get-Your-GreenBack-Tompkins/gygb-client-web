@@ -58,7 +58,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle, history }) => {
     } else if (numCorrect.correct >= questionRequirement) {
       return <IonImg className="result-img" src={HatsOff}></IonImg>;
     } else {
-      return <IonImg src={House}></IonImg>;
+      return <IonImg className="result-img" src={House}></IonImg>;
     }
   }, [numCorrect, questionRequirement]);
 

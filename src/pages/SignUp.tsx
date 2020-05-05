@@ -111,8 +111,10 @@ const generateInput = (
       <div>
         <IonItem>
           <IonInput
+            required
             placeholder="First Name"
             type="text"
+            className = "input-style"
             onIonChange={event => {
               setFirstName(event.detail.value);
             }}
@@ -120,8 +122,10 @@ const generateInput = (
         </IonItem>
         <IonItem>
           <IonInput
+            required
             placeholder="Last Name"
             type="text"
+            className = "input-style"
             onIonChange={event => {
               setLastName(event.detail.value);
             }}
@@ -129,7 +133,9 @@ const generateInput = (
         </IonItem>
         <IonItem>
           <IonInput
+            required
             placeholder="email@domain.com"
+            className = "input-style"
             type="email"
             onIonChange={event => {
               setEmail(event.detail.value);
@@ -142,6 +148,7 @@ const generateInput = (
     return (
       <IonItem>
         <IonInput
+          required
           placeholder="email@domain.com"
           type="email"
           className="only-email"
@@ -247,7 +254,6 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        
           <IonGrid className="signup-grid">
           <IonRow className="yb-holder">
               {title(raffle)}
