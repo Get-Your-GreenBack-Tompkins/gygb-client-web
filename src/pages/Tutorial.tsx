@@ -44,24 +44,30 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
     <IonPage>
       <IonContent fullscreen>
         <IonGrid className="tutorial-grid">
-        
           <IonRow className="ion-align-items-start tutorial-row">
+
           <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
+
             <IonCol className="tutorial-title" size="12" size-sm>
               <p>{header}</p>
             </IonCol>
+
             <IonCol size="9" className="t-col">
               <div className = "tutorial-info" dangerouslySetInnerHTML={{ __html: body }} />
             </IonCol>
+
             <IonCol size="10" className="t-col">
               <p className ="action-call">Find the answers within the powerhouse! </p>
             </IonCol>
+
             <IonCol size="9" className = "tutorial-info t-col">
               {`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}
             </IonCol>
+
             <IonCol className="prize t-col" size="12" size-sm>
               {prize}
             </IonCol>
+
             <IonCol size="12" className = "small" size-sm>
               <p>Drawings are done monthly</p>
             </IonCol>
@@ -72,13 +78,12 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
               <p>Drawings are done monthly</p>
             </IonCol>
          
-            <IonCol size="12">
-              <IonButton size="large" className="tutorial-button" onClick={() => {
-                 history.replace("/quiz/question");
-              }}>
-                Start Quiz!
-              </IonButton>
-            </IonCol>
+            <IonButton size="large" className="tutorial-button" onClick={() => {
+              history.replace("/quiz/question");
+            }}>
+            Start Quiz!
+            </IonButton>
+
           </IonRow>
         </IonGrid>
       </IonContent>
