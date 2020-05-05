@@ -1,3 +1,13 @@
+@media only screen and (max-width: 460px){
+  .title {
+      font-size: 7vw;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0;
+  }
+}
+
 .yellow-banner {
   background: #ffe552;
   min-width: 100%;
@@ -30,21 +40,32 @@
 
 .sc-md-h-ion-label, .item-input{
   max-width: 100%;
+  font-size: 1.15em; 
+  
 }
 
 .input-style {
   --background: #f5f5f5;
   --highlight-height: 5px;
   --highlight-color: primary;
-  font-size: 1.15em;
   border: 2px solid rgba(0, 0, 0, 0.13);
   --box-sizing: border-box;
   border-radius: 10px;
-  margin-top: 4%;
+  margin: 5%;
+  font-size: 1.15em; 
 }
 
+.inputy-style:invalid{
+  border: 2px solid red;
+  --highlight-color: red;
+}
+
+.inputy-style:valid{
+  border: 2px solid green;
+  --highlight-color: green;
+}
 .sign-up {
-  display: flex;
+  // display: flex;
   flex-direction: column;
   flex-grow: 1;
   font-weight: bold;
