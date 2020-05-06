@@ -7,6 +7,7 @@ import Checkmark from "../assets/checkMark.svg";
 
 interface Props extends RouteComponentProps {
   raffle: boolean;
+  setStarted: (started: boolean) => void;
 }
 
 const subtitle = (raffle: boolean) => {
@@ -17,7 +18,7 @@ const subtitle = (raffle: boolean) => {
   }
 };
 
-const End: React.FC<Props> = ({ raffle, history }) => {
+const End: React.FC<Props> = ({ raffle, history, setStarted }) => {
   return (
     <IonPage>
       <IonContent fullscreen class="ion-padding">
@@ -36,6 +37,7 @@ const End: React.FC<Props> = ({ raffle, history }) => {
               <IonButton
                 className="end-button"
                 onClick={() => {
+                  setStarted(false);
                   history.replace("/quiz");
                 }}
               >

@@ -16,7 +16,7 @@ import { RouteComponentProps } from "react-router";
 import api from "../api";
 
 interface Props extends RouteComponentProps {
-  answerIDs: Array<number>;
+  answerIDs: { [key: string]: number };
   quiz: any;
   raffle: boolean;
 }
@@ -34,7 +34,7 @@ const title = (raffle: boolean) => {
 };
 
 const postAll = (
-  answerIDs: Array<number>,
+  answerIDs: { [key: string]: number },
   quiz: any,
   firstName: string,
   lastName: string,
@@ -43,17 +43,12 @@ const postAll = (
   setShowAlert: Function,
   checked: Boolean
 ) => {
-  var obj: any = {};
-  for (var i = 0; i < answerIDs.length; i++) {
-    obj[quiz.questions[i].id] = answerIDs[i];
-  }
-  //console.log(obj);
   api
     .post(`/quiz/web-client/raffle/enter`, {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      answers: obj
+      answers: { ...answerIDs }
     })
     .then(() => {
       api
@@ -178,7 +173,7 @@ const generateButton = (raffle: boolean) => {
 };
 
 const displayEnterEmail = (
-  answerIDs: Array<number>,
+  answerIDs: { [key: string]: number },
   quiz: any,
   firstName: string,
   setFirstName: Function,

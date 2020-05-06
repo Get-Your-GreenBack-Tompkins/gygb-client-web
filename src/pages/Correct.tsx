@@ -12,8 +12,7 @@ interface Props extends RouteComponentProps {
   setQuestionNum: Function;
   quiz: any;
   answer: number;
-  answerIDs: Array<number>;
-  setAnswerIDs: Function;
+  setAnswerID: (questionNum: number, answerId: number) => void;
 }
 
 const generateContinueButton = (
@@ -21,8 +20,7 @@ const generateContinueButton = (
   setQuestionNum: Function,
   quiz: any,
   answer: number,
-  answerIDs: Array<number>,
-  setAnswerIDs: Function,
+  setAnswerID: (questionNum: number, answerId: number) => void,
   history: any
 ) => {
   const total = quiz && quiz.questions.length;
@@ -30,9 +28,10 @@ const generateContinueButton = (
   if (questionNum === total) {
     return (
       <IonButton
+        size="large"
         className="correct-button"
         onClick={() => {
-          setAnswerIDs(answerIDs.concat(answer));
+          setAnswerID(questionNum, answer);
           history.replace("/quiz/result");
         }}
       >
@@ -46,7 +45,7 @@ const generateContinueButton = (
         className="correct-button"
         onClick={() => {
           setQuestionNum(questionNum + 1);
-          setAnswerIDs(answerIDs.concat(answer));
+          setAnswerID(questionNum, answer);
           history.replace("/quiz/question");
         }}
       >
@@ -61,8 +60,7 @@ const Correct: React.FC<Props> = ({
   setQuestionNum,
   quiz,
   answer,
-  answerIDs,
-  setAnswerIDs,
+  setAnswerID,
   history
 }) => {
   const location = useLocation();
@@ -85,8 +83,7 @@ const Correct: React.FC<Props> = ({
                 setQuestionNum,
                 quiz,
                 answer,
-                answerIDs,
-                setAnswerIDs,
+                setAnswerID,
                 history
               )}
           </IonRow>

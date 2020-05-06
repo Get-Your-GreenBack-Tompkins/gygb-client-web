@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonRouterOutlet, IonLoading } from "@ionic/react";
@@ -49,12 +49,40 @@ export const App: React.FC = () => {
   const [question, setQuestion] = useState();
   const [quiz, setQuiz] = React.useState();
   const [answer, setAnswer] = React.useState(0 as number | null);
-  const [answerIDs, setAnswerIDs] = React.useState([]);
+  const [answerIDs, setAnswerIDs] = React.useState({} as { [key: string]: any });
   const [raffle, setRaffle] = React.useState(false);
 
+  const setAnswerID = useCallback(
+    (questionNum: number, answerId: number) => {
+      if (quiz.questions[questionNum - 1]) {
+        const questionId = quiz.questions[questionNum - 1].id;
+
+        if (!(questionId in answerIDs)) {
+          answerIDs[questionId] = answerId;
+
+          console.log(answerIDs);
+
+          setAnswerIDs({ ...answerIDs });
+        }
+      }
+    },
+    [answerIDs, quiz]
+  );
+
   useEffect(() => {
-    sendGetQuizRequest().then(quiz => setQuiz(quiz));
-  }, []);
+    if (!started) {
+      sendGetQuizRequest()
+        .then(quiz => {
+          setQuestionNum(1);
+          setAnswer(null);
+          setRaffle(false);
+          setQuiz(quiz);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }, [started]);
 
   useEffect(() => {
     if (quiz) {
@@ -71,7 +99,11 @@ export const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route exact path="/quiz" render={props => <Quiz {...props} started={started} setStarted={setStarted} quiz={quiz} />} />
+          <Route
+            exact
+            path="/quiz"
+            render={props => <Quiz {...props} started={started} setStarted={setStarted} quiz={quiz} />}
+          />
           <Route
             exact
             path="/quiz/tutorial"
@@ -109,8 +141,7 @@ export const App: React.FC = () => {
                   questionNum={questionNum}
                   setQuestionNum={setQuestionNum}
                   setAnswer={setAnswer}
-                  answerIDs={answerIDs}
-                  setAnswerIDs={setAnswerIDs}
+                  setAnswerID={setAnswerID}
                 />
               ) : (
                 <div />
@@ -129,8 +160,7 @@ export const App: React.FC = () => {
                   setQuestionNum={setQuestionNum}
                   quiz={quiz}
                   answer={answer}
-                  answerIDs={answerIDs}
-                  setAnswerIDs={setAnswerIDs}
+                  setAnswerID={setAnswerID}
                 />
               ) : (
                 <div />
@@ -159,7 +189,9 @@ export const App: React.FC = () => {
           />
           <Route
             path="/quiz/end"
-            render={props => (!started ? <Redirect to="/quiz" /> : <End {...props} raffle={raffle} />)}
+            render={props =>
+              !started ? <Redirect to="/quiz" /> : <End {...props} setStarted={setStarted} raffle={raffle} />
+            }
           />
           <Redirect exact from="/" to="/quiz" />
         </IonRouterOutlet>

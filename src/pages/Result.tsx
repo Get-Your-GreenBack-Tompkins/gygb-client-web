@@ -9,7 +9,7 @@ import House from "../assets/house.svg";
 import BGradient from "../assets/blueGradient.svg";
 
 interface Props extends RouteComponentProps {
-  answerIDs: Array<number>;
+  answerIDs: { [key: string]: number };
   quiz: any;
   setRaffle: Function;
 }
@@ -23,16 +23,10 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle, history }) => {
   );
 
   const getNumCorrect = useCallback(() => {
-    const obj = {} as { [key: string]: any };
-
-    for (let i = 0; i < answerIDs.length; i++) {
-      obj[quiz.questions[i].id] = answerIDs[i];
-    }
-
     return api.post(`/quiz/web-client/verify/`, {
-      answers: obj
+      answers: {...answerIDs}
     });
-  }, [answerIDs, quiz]);
+  }, [answerIDs]);
 
   const sendGetRaffleRequest = useCallback(() => {
     return api.get(`/quiz/${quiz.id}/raffle`);
