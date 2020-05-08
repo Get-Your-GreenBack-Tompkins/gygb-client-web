@@ -40,6 +40,25 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
     });
   }, [sendGetRaffleRequest]);
 
+  const generateRaffleContent = (questionRequirement: undefined, totalQuestions: undefined, prize: undefined) => {
+    if (questionRequirement != null && prize != null) {
+      return (
+        <>
+        <IonCol size="12" className = "tutorial-info t-col">
+          {`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}
+        </IonCol>
+        <IonCol className="prize t-col" size="12" size-sm>
+          {prize}
+        </IonCol>
+        <IonCol size="12" className = "small" size-sm>
+          <p>Drawings are done monthly</p>
+        </IonCol>
+        </>
+      );
+    }
+  };
+
+
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -53,16 +72,9 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
               <div className = "tutorial-info" dangerouslySetInnerHTML={{ __html: body }} />
               <p className ="action-call">Find the answers within the powerhouse! </p>
             </IonCol>
-            <IonCol size="12" className = "tutorial-info t-col">
-              {`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}
-            </IonCol>
-            <IonCol className="prize t-col" size="12" size-sm>
-              {prize}
-            </IonCol>
-            <IonCol size="12" className = "small" size-sm>
-              <p>Drawings are done monthly</p>
-            </IonCol>
-         
+
+            {generateRaffleContent(questionRequirement, totalQuestions, prize)}
+            
             <IonCol size="12">
               <IonButton size="large" className="tutorial-button" onClick={() => {
                  history.replace("/quiz/question");
