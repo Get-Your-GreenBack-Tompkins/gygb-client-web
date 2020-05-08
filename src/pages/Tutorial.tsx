@@ -40,59 +40,49 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
     });
   }, [sendGetRaffleRequest]);
 
+  const generateRaffleContent = (questionRequirement: undefined, totalQuestions: undefined, prize: undefined) => {
+    if (questionRequirement != null && prize != null) {
+      return (
+        <>
+        <IonCol size="12" className = "tutorial-info t-col">
+          {`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}
+        </IonCol>
+        <IonCol className="prize t-col" size="12" size-sm>
+          {prize}
+        </IonCol>
+        <IonCol size="12" className = "small" size-sm>
+          <p>Drawings are done monthly</p>
+        </IonCol>
+        </>
+      );
+    }
+  };
+
+
   return (
     <IonPage>
       <IonContent fullscreen>
       <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
         <IonGrid className="tutorial-grid">
-            <IonRow>
-              <IonCol className="tutorial-title" size="12" size-sm>
-                <p>{header}</p>
-              </IonCol>
-            </IonRow>
+          <IonRow className="ion-align-items-start tutorial-row">
+            <IonCol className="tutorial-title" size="12" size-sm>
+              <p>{header}</p>
+            </IonCol>
+            <IonCol size="12" className="t-col">
+              <div className = "tutorial-info" dangerouslySetInnerHTML={{ __html: body }} />
+              <p className ="action-call">Find the answers within the powerhouse! </p>
+            </IonCol>
 
-            <IonRow className = "tutorial-row">
-              <IonCol size="10" className="t-col">
-                <div className = "tutorial-info x" dangerouslySetInnerHTML={{ __html: body }} />
-              </IonCol>
-            </IonRow>
-
-            <IonRow>
-              <IonCol size="12" className="t-col">
-                <p className ="action-call">Find the answers within the powerhouse! </p>
-              </IonCol>
-            </IonRow>
-
-            <IonRow className = "tutorial-row">
-              <IonCol size="9" className = "tutorial-info t-col">
-                {`Get ${questionRequirement} out of ${totalQuestions} questions and you could win a..`}
-              </IonCol>
-            </IonRow>
+            {generateRaffleContent(questionRequirement, totalQuestions, prize)}
             
-            <IonRow>
-              <IonCol className="prize t-col" size="12" size-sm>
-                {prize}
-              </IonCol>
-            </IonRow>
-
-            <IonRow>
-              <IonCol size="12" className = "small" size-sm>
-                <p>Drawings are done monthly</p>
-              </IonCol>
-            </IonRow>
-
-            <IonRow>
-              <IonCol size="12" className = "termslink" size-sm>
-                <p>By pressing start you agree to our</p> <a href = "https://www.tinypowerhouse.org/"> terms and agreements</a>
-              </IonCol>
-            </IonRow>
-            
-            <IonButton size="large" className="tutorial-button" onClick={() => {
-              history.replace("/quiz/question");
-            }}>
-            Start Quiz!
-            </IonButton>
-
+            <IonCol size="12">
+              <IonButton size="large" className="tutorial-button" onClick={() => {
+                 history.replace("/quiz/question");
+              }}>
+                Start Quiz!
+              </IonButton>
+            </IonCol>
+          </IonRow>
         </IonGrid>
       </IonContent>
     </IonPage>
