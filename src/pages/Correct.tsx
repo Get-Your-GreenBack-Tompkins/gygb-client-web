@@ -74,7 +74,7 @@ const Correct: React.FC<Props> = ({
               <h1 className="ic-title">Correct</h1>
             </IonCol>
             <IonCol size="12" className="q-response">
-              <p>{(location && location.state && (location.state as any)["message"])  || "That was correct!"}</p>
+              <p className = "correctP">{(location && location.state && (location.state as any)["message"])  || "That was correct!"}</p>
             </IonCol>
           </IonRow>
           <IonRow className="ion-justify-content-center ion-align-items-center">
