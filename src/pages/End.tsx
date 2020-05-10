@@ -41,7 +41,7 @@ const End: React.FC<Props> = ({ raffle, history, setStarted }) => {
                   history.replace("/quiz");
                 }}
               >
-                Try Again
+                Restart Quiz
               </IonButton>
             </IonCol>
           </IonRow>
