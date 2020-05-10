@@ -12,27 +12,61 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 100%;
   padding: 5%;
 
-  @media screen and (orientation:landscape) {
-    padding: 0;
-  }
+@media screen and (orientation:landscape) and (max-height:430px) {
+    padding: 15%;
+
+    .tutorial-grid{
+      justify-content: space-evenly;
+    }
+
+    .tutorial-info, div.tutorial-info em {
+      letter-spacing: 0.03em;
+      line-height: 2.3vw;
+      font-size: 1.5vw;
+      font-weight: 200;
+      // margin: 0 10% 3% 10%;
+    }
+
+    .action-call{
+      font-size: 1.5vw;
+      // margin-bottom: 3%;
+    }
+
+    .small p {
+      font-size: 1.5vw;
+      line-height: 23px;
+      letter-spacing: 0.03em;
+      // margin-bottom: 3%;
+     }
+
+     .termslink p{
+       font-size: 1.5vw;
+       letter-spacing: 0.03em;
+     }
+
+     .termslink a{
+      font-size: 1.5vw;
+      letter-spacing: 0.03em;
+     }
+
+     .tutorial-button{
+       margin-top: 3%;
+       margin-bottom: 5%;
+       min-width: 5vh;
+       min-height: 12vh;
+     }
+
+    }
   
 }
 
 .tutorial-row{
   min-height: fit-content;
   justify-content: space-evenly;
-}
-
-.t-col{
-  margin: 0.5%;
-  @media screen and (orientation:landscape) {
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-  }
 }
 
 .tutorial-button {
@@ -56,16 +90,13 @@
   font-weight: bold;
   
   z-index: 100;
-  bottom:0;
+  margin-bottom:18%;
   align-self: center;
-  // margin-top: 10%;
 
   flex-direction: column;
   justify-content: space-evenly;
 
-
   @media(min-height:600px) and (max-width: 500px){
-    margin-top: 10%;
     min-height: 8vh;
     min-width: 6vw;
   }
@@ -73,29 +104,12 @@
   @media(max-height: 600px){
     margin-top: 2%;
   }
-
-  @media screen and (orientation:landscape) {
-    margin-top: 0;
-  }
-  
 }
-
-//   --padding-top: 8px;
-//   --padding-bottom: 8px;
-
-//   text-transform: uppercase !important;
-//   letter-spacing: 2px;
-//   line-height: 37px;
-//   font-size: 2.67vh;
-//   font-weight: 700;
-//   flex-direction: column;
-//   margin-bottom: 5%;
-// }
-
+  
 .tutorial-title {
   font-style: normal;
   font-weight: 500;
-  font-size: 2.4vh;
+  font-size: 2.3vh;
   line-height: auto;
   align-items: center;
   text-align: center;
@@ -110,7 +124,6 @@
 .tutorial-info, div.tutorial-info em {
     color: rgba(0, 0, 0, 0.7);
     letter-spacing: 0.04em;
-    line-height: 10px;
     font-size: 2.3vh;
     font-style: normal;
     font-weight: 300;
@@ -122,8 +135,8 @@
 
 .small p{
   margin: 0;
-  font-size: 1.8vh;
-  line-height: 23px;
+  font-size: 2.2vh;
+  line-height: 20px;
   letter-spacing: 0.035em;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -150,11 +163,16 @@
 }
 
 .termslink{
-  font-size: 1.5vh;
-  p{
-  margin: 0;
-  margin-top: -0.5vh;
-  }
+  font-size: 1.8vh;
+    p{
+      margin: 0;
+      margin-top: 1vh;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    a{
+      font-size: 1.8vh;
+    }
 }
 
 .action-call{
@@ -163,8 +181,46 @@
   font-size: 2.4vh;
   letter-spacing: 0.04em;
   line-height: auto;
+  margin: 0 3% 0 3%;
 
   @media screen and (orientation:landscape) {
     font-size: 2.3vw;
   }
+}
+
+@media screen and (min-width: 700px) and (min-height: 700px){
+
+  .tutorial-grid{
+    justify-content: space-evenly;
+  }
+  
+  .termslink p{
+    font-size: 1.25em;
+    font-style: normal;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .termslink a{
+    font-size: 1.25em;
+  }
+
+  em{
+    max-width: 60%;
+  }
+  .tutorial-info p{
+    font-size: 1.25em;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .action-call{
+    font-size: 2.3vh;
+    margin: 0;
+  }
+  
+  .tutorial-button{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    min-width: 5vh;
+    min-height: 8vh;
+  }
+
 }
