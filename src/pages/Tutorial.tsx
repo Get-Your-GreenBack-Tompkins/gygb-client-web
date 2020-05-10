@@ -71,6 +71,10 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
             <IonCol size="12" className = "small" size-sm>
               <p>Drawings are done monthly</p>
             </IonCol>
+
+            <IonCol size="8" className = "termslink" size-sm>
+              <p>By pressing start you agree to our</p> <a href = "https://www.tinypowerhouse.org/"> terms and agreements</a>
+            </IonCol>
          
             <IonButton size="large" className="tutorial-button" onClick={() => {
               history.replace("/quiz/question");

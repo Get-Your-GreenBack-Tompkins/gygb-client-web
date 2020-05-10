@@ -24,7 +24,7 @@ interface Props extends RouteComponentProps {
 const title = (raffle: boolean) => {
   if (raffle) {
     return <IonCol size="12" className="yellow-banner">
-      <h1 className="title">Enter to win</h1>
+      <h1 className="title su">Enter to win</h1>
     </IonCol>;
   } else {
     return <IonCol size="12" className="yellow-banner sp">
@@ -87,10 +87,12 @@ const postEmail = (email: string, history: any, setShowAlert: Function, checked:
 const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => {
   if (raffle) {
     return (
-      <IonItem lines="none">
-        <IonLabel>Sign Up for Newsletter</IonLabel>
-        <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
-      </IonItem>
+      <IonCol size ='12'>
+        <IonItem className='inputs checkbox sign-up-newsletter' lines="none">
+          <IonLabel>Sign Up for Newsletter</IonLabel>
+          <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
+        </IonItem>
+      </IonCol>
     );
   }
 };
@@ -103,34 +105,31 @@ const generateInput = (
 ) => {
   if (raffle) {
     return (
-      <div>
-        <IonItem>
+      <div className = "inputs">
+        <IonItem className = "input-style">
           <IonInput
             required
             placeholder="First Name"
             type="text"
-            className = "input-style"
             onIonChange={event => {
               setFirstName(event.detail.value);
             }}
           ></IonInput>
         </IonItem>
-        <IonItem>
+        <IonItem className = "input-style">
           <IonInput
             required
             placeholder="Last Name"
             type="text"
-            className = "input-style"
             onIonChange={event => {
               setLastName(event.detail.value);
             }}
           ></IonInput>
         </IonItem>
-        <IonItem>
+        <IonItem className = "input-style">
           <IonInput
             required
             placeholder="email@domain.com"
-            className = "input-style"
             type="email"
             onIonChange={event => {
               setEmail(event.detail.value);
@@ -141,7 +140,7 @@ const generateInput = (
     );
   } else {
     return (
-      <IonItem>
+      <IonItem className = "input-style">
         <IonInput
           required
           placeholder="email@domain.com"
@@ -159,15 +158,19 @@ const generateInput = (
 const generateButton = (raffle: boolean) => {
   if (raffle) {
     return (
+      <IonCol size='12' no-padding>
       <IonButton size="large" type="submit" className="sign-up-button">
         Enter Raffle
       </IonButton>
+      </IonCol>
     );
   } else {
     return (
+      <IonCol size="12">
       <IonButton size="large" type="submit" className="sign-up-button">
         Sign Up
       </IonButton>
+      </IonCol>
     );
   }
 };
@@ -211,30 +214,42 @@ const displayEnterEmail = (
         </IonCol>
 
         <IonCol>{generateButton(raffle)}</IonCol>
+
+        <IonCol size="12" className="correct">
+          <IonButton className="result-button" href="https://tinypowerhouse.org">
+            Return Home
+          </IonButton>
+        </IonCol>
       </form>
     );
   } else {
     return (
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          postAll(answerIDs, quiz, firstName, lastName, email, history, setShowAlert, checked);
-        }}
-      >
-        <IonCol>{generateInput(raffle, setFirstName, setLastName, setEmail)}</IonCol>
+      <IonRow className = "main">
+      <IonCol size ="12">
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            postAll(answerIDs, quiz, firstName, lastName, email, history, setShowAlert, checked);
+          }}
+        >
+          {generateInput(raffle, setFirstName, setLastName, setEmail)}
 
-        <IonCol>{newsletter(raffle, checked, setChecked)}</IonCol>
+          <IonRow className="newsletter">{newsletter(raffle, checked, setChecked)}</IonRow>
 
-        <IonCol className="message" size="12">
-          <p> We never spam. We’re here to serve you!</p>
-          <p>
-            Our only purpose is to provide you with key information hat can help you save money and live more
-            environmentally.
-          </p>
-        </IonCol>
+          <IonRow>
+          <IonCol className="message" size="12">
+            <p> We never spam. We’re here to serve you!</p>
+            <p>
+              Our only purpose is to provide you with key information hat can help you save money and live more
+              environmentally.
+            </p>
+          </IonCol>
+          </IonRow>
 
-        <IonCol>{generateButton(raffle)}</IonCol>
-      </form>
+          <IonRow><IonCol>{generateButton(raffle)}</IonCol></IonRow>
+        </form>
+      </IonCol>
+      </IonRow>
     );
   }
 };
@@ -253,7 +268,7 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
           <IonRow className="yb-holder">
               {title(raffle)}
         </IonRow>
-        <IonRow>
+
               {displayEnterEmail(
                 answerIDs,
                 quiz,
@@ -269,7 +284,6 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
                 setChecked,
                 raffle
               )}
-          </IonRow>
 
           <IonAlert
             isOpen={showAlert}
