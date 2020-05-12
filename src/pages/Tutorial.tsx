@@ -53,7 +53,7 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
 
             <IonRow className = "tutorial-row">
               <IonCol size="10" className="t-col">
-                <div className = "tutorial-info" dangerouslySetInnerHTML={{ __html: body }} />
+                <div className = "tutorial-info x" dangerouslySetInnerHTML={{ __html: body }} />
               </IonCol>
             </IonRow>
 

@@ -74,7 +74,7 @@ const Incorrect: React.FC<Props> = ({
           <IonRow className="vh-25 incorrect-button-container ion-align-items-start">
             <IonCol size="12">
               <h1 className="ic-title">Not Quite</h1>
-              <p>
+              <p className = "correctP">
                 {(location && location.state && (location.state as any)["message"]) ||
                   "That wasn't the right answer!"}
               </p>

@@ -1,12 +1,17 @@
 @media only screen and (min-width: 700px) {
   ion-button.correct-button {
-    font-size: 2.1em;
+    font-size: 1.8em;
+  }
+
+  ion-button.skip{
+    font-size: 1.8em;
   }
 }
 
 @media (min-width: 639px) {
   .correctP {
-    font-size: 4.1vh;
+    font-size: 3vh;
+    padding: 0 5% 0 5%;
   }
 }
 
@@ -19,6 +24,7 @@
 .line-grid {
   @media (max-width: 576px) {
     padding: 2vh 7.5vw;
+    margin-top: -6%;
   }
 
   @media (min-width: 576px) {
@@ -28,7 +34,7 @@
 }
 
 .ic-title {
-  font-size: 7.2vw;
+  font-size: 7vw;
   font-weight: bold;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -49,6 +55,9 @@
   --background-activated: #{$gygb-light-red};
   text-transform: uppercase !important;
   align-items: center;
+  font-weight: bold;
+  transition-duration: 0.4s;
+  margin-right:3%;
 }
 
 .q-response{
@@ -68,7 +77,7 @@
 
 .correct-button {
   --background: #{$gygb-green};
-  --background-hover: #a2e94c;
+  --background-hover: #A2ED47;
   width: fit-content;
   font-size: 2.65vh;
   letter-spacing: 2px;
