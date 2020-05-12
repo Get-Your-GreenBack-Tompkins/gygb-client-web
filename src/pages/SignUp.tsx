@@ -23,14 +23,19 @@ interface Props extends RouteComponentProps {
 
 const title = (raffle: boolean) => {
   if (raffle) {
-    return <IonCol size="12" className="yellow-banner">
+    return( 
+    
+    <IonCol size="12" className="yellow-banner">
       <h1 className="title su">Enter to win</h1>
-    </IonCol>;
-  } else {
-    return <IonCol size="12" className="yellow-banner sp">
-    <h1 className="title">Sign Up</h1>
-    </IonCol>;
-  }
+    </IonCol>
+    
+    )} else {
+    return( 
+    <IonCol size="12" className="yellow-banner sp">
+    <h1 className="title su">Sign Up</h1>
+    </IonCol>
+
+    )}
 };
 
 const postAll = (
@@ -87,12 +92,14 @@ const postEmail = (email: string, history: any, setShowAlert: Function, checked:
 const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => {
   if (raffle) {
     return (
+      <IonRow>
       <IonCol size ='12'>
         <IonItem className='inputs checkbox sign-up-newsletter' lines="none">
           <IonLabel>Sign Up for Newsletter</IonLabel>
           <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
         </IonItem>
       </IonCol>
+    </IonRow>
     );
   }
 };
@@ -105,6 +112,8 @@ const generateInput = (
 ) => {
   if (raffle) {
     return (
+      <IonRow className= "tutorial-row">
+         <IonCol>
       <div className = "inputs">
         <IonItem className = "input-style">
           <IonInput
@@ -137,9 +146,12 @@ const generateInput = (
           ></IonInput>
         </IonItem>
       </div>
+      </IonCol>
+      </IonRow>
     );
   } else {
     return (
+      <div className = "inputs">
       <IonItem className = "input-style">
         <IonInput
           required
@@ -151,6 +163,7 @@ const generateInput = (
           }}
         ></IonInput>
       </IonItem>
+      </div>
     );
   }
 };
@@ -224,8 +237,8 @@ const displayEnterEmail = (
     );
   } else {
     return (
-      <IonRow className = "main">
-      <IonCol size ="12">
+      // <IonRow className = "main">
+      // <IonCol size ="12">
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -234,10 +247,13 @@ const displayEnterEmail = (
         >
           {generateInput(raffle, setFirstName, setLastName, setEmail)}
 
-          <IonRow className="newsletter">{newsletter(raffle, checked, setChecked)}</IonRow>
+          {/* <IonRow className="newsletter">
+          </IonRow> */}
 
-          <IonRow>
-          <IonCol className="message" size="12">
+          {newsletter(raffle, checked, setChecked)}
+
+          <IonRow className = "tutorial-row">
+          <IonCol className="message" size="10">
             <p> We never spam. We’re here to serve you!</p>
             <p>
               Our only purpose is to provide you with key information hat can help you save money and live more
@@ -246,10 +262,19 @@ const displayEnterEmail = (
           </IonCol>
           </IonRow>
 
-          <IonRow><IonCol>{generateButton(raffle)}</IonCol></IonRow>
+          
+          <IonRow className = "su-buttons-holder tutorial-row">
+            {generateButton(raffle)}
+            <IonCol size="12" className="correct">
+              <IonButton color = "medium" className="return-button" href="https://tinypowerhouse.org">
+                Return Home
+              </IonButton>
+            </IonCol>
+          </IonRow>
+
         </form>
-      </IonCol>
-      </IonRow>
+      // </IonCol>
+      // </IonRow>
     );
   }
 };
@@ -265,9 +290,9 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
     <IonPage>
       <IonContent fullscreen>
           <IonGrid className="signup-grid">
-          <IonRow className="yb-holder">
-              {title(raffle)}
-        </IonRow>
+          <IonRow className="yb-holder tutorial-row">
+            {title(raffle)}
+          </IonRow>
 
               {displayEnterEmail(
                 answerIDs,

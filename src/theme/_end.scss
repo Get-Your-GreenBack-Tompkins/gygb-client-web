@@ -1,7 +1,8 @@
 .end-title {
-  font-size: 45px;
+  font-size: 7vw;
   font-weight: bold;
   text-transform: uppercase;
+  letter-spacing: 0.15em;
 }
 
 .end-img {
@@ -29,9 +30,10 @@
   text-align: center;
   letter-spacing: 0.04em;
   top: 50% !important;
-  width: 100%;
-  font-size: 2.3vh;
-  color: rgba(0, 0, 0, 0.6);
+  width: fit-content;
+  margin-bottom: 6vh;
+  font-size: 2.4vh;
+  color: rgba(0, 0, 0, 0.7);
   font-weight: normal;
 }
 
@@ -42,9 +44,30 @@
   --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
   transition-duration: 0.4s;
 
-  width: 100%;
   font-size: 2.65vh;
   letter-spacing: 2px;
   text-transform: uppercase !important;
-  font-weight: bold;
+
+
+  @media(max-height:840px) and (max-width: 450px){
+    min-height: 8vh;
+    min-width: 80%;
+    margin-bottom: 4%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  ion-button.end-button {
+    font-size: 3.2vh;
+  }
+  .end-sub{
+    font-size: 3vh;
+    margin-bottom: 4vh;
+  }
+
+  .end-button{
+    margin-top: 3vh;
+    width: 60%;
+  }
+
 }
