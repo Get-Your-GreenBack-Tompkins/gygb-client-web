@@ -151,7 +151,7 @@ const generateInput = (
     );
   } else {
     return (
-      <div className = "inputs">
+      <div className = "siu inputs">
       <IonItem className = "input-style">
         <IonInput
           required
@@ -218,27 +218,26 @@ const displayEnterEmail = (
           </p>
         </IonCol>
 
-        <IonCol>{generateInput(raffle, setFirstName, setLastName, setEmail)}</IonCol>
+        <IonRow className= "tutorial-row">
+          <IonCol>{generateInput(raffle, setFirstName, setLastName, setEmail)}</IonCol>
+        </IonRow>
 
-        <IonCol>{newsletter(raffle, checked, setChecked)}</IonCol>
+        {/* <IonCol>{newsletter(raffle, checked, setChecked)}</IonCol> */}
 
-        <IonCol>
-          <p></p>
-        </IonCol>
 
-        <IonCol>{generateButton(raffle)}</IonCol>
+        <IonRow className = "su-buttons-holder tutorial-row">
+            {generateButton(raffle)}
+            <IonCol size="12" className="correct">
+              <IonButton color = "medium" className="return-button" href="https://tinypowerhouse.org">
+                Return Home
+              </IonButton>
+            </IonCol>
+          </IonRow>
 
-        <IonCol size="12" className="correct">
-          <IonButton className="result-button" href="https://tinypowerhouse.org">
-            Return Home
-          </IonButton>
-        </IonCol>
       </form>
     );
   } else {
     return (
-      // <IonRow className = "main">
-      // <IonCol size ="12">
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -246,9 +245,6 @@ const displayEnterEmail = (
           }}
         >
           {generateInput(raffle, setFirstName, setLastName, setEmail)}
-
-          {/* <IonRow className="newsletter">
-          </IonRow> */}
 
           {newsletter(raffle, checked, setChecked)}
 
@@ -273,8 +269,6 @@ const displayEnterEmail = (
           </IonRow>
 
         </form>
-      // </IonCol>
-      // </IonRow>
     );
   }
 };
