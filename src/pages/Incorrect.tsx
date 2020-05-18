@@ -71,17 +71,16 @@ const Incorrect: React.FC<Props> = ({
       <IonContent fullscreen>
         <IonImg className="grid-lines" src={RedLines}></IonImg>
         <IonGrid className="line-grid vh-50">
-          <IonRow className="vh-25 incorrect-button-container ion-align-items-end">
+          <IonRow className="vh-25 incorrect-button-container ion-align-items-start">
             <IonCol size="12">
-              <h1 className="title">Not Quite</h1>
-              <p>
+              <h1 className="ic-title">Not Quite</h1>
+              <p className = "correctP">
                 {(location && location.state && (location.state as any)["message"]) ||
                   "That wasn't the right answer!"}
               </p>
             </IonCol>
-          </IonRow>
-          <IonRow className="ion-justify-content-center ion-align-items-center">
-            <IonCol size="auto" className="correct">
+
+            <IonCol size="12" className="correct">
               <IonButton
                 size="large"
                 className="skip"
@@ -93,8 +92,6 @@ const Incorrect: React.FC<Props> = ({
               >
                 Try Again
               </IonButton>
-            </IonCol>
-            <IonCol size="auto" className="correct">
               {generateSkipButton(
                 questionNum,
                 setQuestionNum,

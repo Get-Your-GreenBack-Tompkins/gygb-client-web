@@ -71,12 +71,13 @@ const Correct: React.FC<Props> = ({
         <IonGrid className="line-grid">
           <IonRow>
             <IonCol size="12">
-              <h1 className="title">Correct</h1>
-              <p>{(location && location.state && (location.state as any)["message"])  || "That was correct!"}</p>
+              <h1 className="ic-title">Correct</h1>
+            </IonCol>
+            <IonCol size="12" className="q-response">
+              <p className = "correctP">{(location && location.state && (location.state as any)["message"])  || "That was correct!"}</p>
             </IonCol>
           </IonRow>
           <IonRow className="ion-justify-content-center ion-align-items-center">
-            <IonCol className="correct">
               {generateContinueButton(
                 questionNum,
                 setQuestionNum,
@@ -85,7 +86,6 @@ const Correct: React.FC<Props> = ({
                 setAnswerID,
                 history
               )}
-            </IonCol>
           </IonRow>
         </IonGrid>
       </IonContent>

@@ -1,31 +1,13 @@
 @media only screen and (min-width: 750px) {
-    .title {
+    .result-title {
         font-size: 3vw;
         font-weight: bold;
         letter-spacing: 2px;
-        text-transform: uppercase;
+        text-transform: uppercase !important;
         margin: 0;
     }
 }
 
-@media only screen and (max-width: 460px){
-    .title {
-        font-size: 7vw;
-        font-weight: bold;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin: 0;
-    }
-}
-
-.center-grid {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
- 
 .blue-button{
     --background: #228AD3;
     --background-hover: #95d0fa;
@@ -35,7 +17,120 @@
     letter-spacing: 2px;
 }
 
-.result-img{
+.result-img img{
     object-fit: contain;
     height: 50vh;
+    margin-top: -8%;
+
+    @media (max-height: 450px){
+        height: 40vh;
+    }
+
+    @media (min-height: 850px) and (min-width: 500px){
+        margin: 0;
+        margin-bottom: 3vh;
+    }
+}
+
+.result-subtitle{
+    top: 50% !important;
+    width: 100%;
+    font-size: 2.5vh;
+    line-height: auto;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase !important;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: normal;
+
+    @media only screen and (max-width: 410px){
+        font-size: 2.3vh;
+    }
+    @media (max-height: 450px){
+        font-size: 2.6vh;
+        margin-top: -0.6vh;
+    }
+
+}
+
+.result-button{
+  --background: #228AD3;
+  --border-radius: 10px;
+  --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+ 
+  text-transform: uppercase !important;
+  font-size: 2.25vh;
+  letter-spacing: 2px;
+  min-height: 6vh;
+
+  @media only screen and (max-height: 460px){
+    max-height: 5vh;
+    margin-top: -0.6vh;
+  }
+
+    @media only screen and (min-width: 500px){
+      font-size: 2.4vh;
+    }
+
+    @media (min-height: 850px) and (min-width: 500px){
+        margin: 0;
+        margin-top: 2.5vh;
+    }
+
+}
+
+.gradient{
+    position: relative;
+    object-fit:contain;
+    z-index: -1;
+}
+
+.raffle-button {
+    --background: #228ad3;
+    --box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    --border-radius: 10px;
+    --background-hover: #41a1e6;
+    transition-duration: 0.4s;
+  
+    font-size: 2.65vh;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    min-height: 7vh;
+    margin-top: 3vh;
+
+    @media only screen and (max-height: 430px){
+        height: 5vh;
+    }
+    
+    @media only screen and (min-width: 500px){
+        font-size: 3.3vh;
+    }
+
+    @media (min-height: 850px) and (min-width: 500px){
+        height: 7vh;
+        margin: 0;
+        margin-top: 3vh;
+    }
+  }
+
+  .result-title {
+    font-size: 7vw;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase !important;
+    margin: 0;
+
+    @media only screen and (max-height: 460px){
+        font-size: 3.8vw;
+    }
+
+    @media only screen and (min-width: 500px){
+        font-size: 3.2vw;
+    }
+
+    @media (min-height: 850px) and (min-width: 500px){
+        font-size: 7vw;
+        margin: 0;
+    }
+     
 }

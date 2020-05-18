@@ -6,6 +6,7 @@ import api from "../api";
 import Confetti from "../assets/confetti.svg";
 import HatsOff from "../assets/hatsoff.svg";
 import House from "../assets/house.svg";
+import BGradient from "../assets/blueGradient.svg";
 
 interface Props extends RouteComponentProps {
   answerIDs: { [key: string]: number };
@@ -99,7 +100,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle, history }) => {
       setRaffle(true);
       return (
         <IonButton
-          className="blue-button"
+          className="raffle-button"
           onClick={() => {
             history.replace("/quiz/signup");
           }}
@@ -120,18 +121,32 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle, history }) => {
       <IonContent fullscreen class="ion-padding">
         <IonGrid className="center-grid">
           <IonRow>
-            <IonCol size="12">{imageReturn()}</IonCol>
-            <IonCol size="12">
-              <h1 className="title">{title()}</h1>
-              <h3 className="subtitle">{subtitle()}</h3>
-              {generateButton()}
-            </IonCol>
-            <IonCol size="12">
-              <IonButton className="blue-button" href="https://tinypowerhouse.org">
-                Return Home
-              </IonButton>
+              <IonCol size="12">
+                  {imageReturn()}
+              </IonCol>
+            </IonRow>
+
+            <IonRow>
+              <IonCol size="12">
+                <h1 className="result-title">{title()}</h1>
+              </IonCol>
+            </IonRow>
+
+            <IonRow>
+              <IonCol size="12" className = "correct">
+                <h3 className="result-subtitle">{subtitle()}</h3>
+                {generateButton()}
+              </IonCol>
+            </IonRow>
+
+            <IonRow>
+              <IonCol size="12" className="correct">
+                <IonButton color = "medium" className="result-button" href="https://tinypowerhouse.org">
+                  Return Home
+                </IonButton>
             </IonCol>
           </IonRow>
+
         </IonGrid>
       </IonContent>
     </IonPage>

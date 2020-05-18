@@ -3,7 +3,6 @@
   width: 100%;
   position: absolute;
   object-fit: cover;
-  top: 0;
   bottom: 0;
   right: 0;
   left: 0;
@@ -13,23 +12,67 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 100%;
   padding: 5%;
+
+@media screen and (orientation:landscape) and (max-height:430px) {
+    padding: 15%;
+
+    .tutorial-grid{
+      justify-content: space-evenly;
+    }
+
+    .tutorial-info, div.tutorial-info em {
+      letter-spacing: 0.03em;
+      line-height: 2.3vw;
+      font-size: 1.5vw;
+      font-weight: 200;
+      // margin: 0 10% 3% 10%;
+    }
+
+    .action-call{
+      font-size: 1.5vw;
+      // margin-bottom: 3%;
+    }
+
+    .small p {
+      font-size: 1.5vw;
+      line-height: 23px;
+      letter-spacing: 0.03em;
+      // margin-bottom: 3%;
+     }
+
+     .termslink p{
+       font-size: 1.5vw;
+       letter-spacing: 0.03em;
+     }
+
+     .termslink a{
+      font-size: 1.5vw;
+      letter-spacing: 0.03em;
+     }
+
+     .tutorial-button{
+       margin-top: 3%;
+       margin-bottom: 5%;
+       min-width: 5vh;
+       min-height: 12vh;
+     }
+
+    }
+  
 }
 
 .tutorial-row{
+  min-height: fit-content;
   justify-content: space-evenly;
-}
-
-.t-col{
-  margin: 0.5%;
 }
 
 .tutorial-button {
   --background: #{$gygb-green};
-  --background-activity: #{$gygb-green};
-  --background-focused: #{$gygb-green};
+  --background-activity: white;
+  --background-focused: white;
   --background-hover: white;
 
   --color: white;
@@ -48,34 +91,61 @@
   letter-spacing: 2px;
   font-size: 1.15em;
   font-weight: bold;
+  
+  z-index: 100;
+  margin-bottom:18%;
+  align-self: center;
+
   flex-direction: column;
-  margin-bottom: 5%;
+  justify-content: space-evenly;
+
+  @media(min-height:600px) and (max-width: 500px){
+    min-height: 8vh;
+    min-width: 6vw;
+  }
+
+  @media(max-height: 600px){
+    margin-top: 2%;
+  }
 }
 
+.tutorial-button:hover{
+  --border-color: #{$gygb-green};
+}
+
+  
 .tutorial-title {
   font-style: normal;
-  font-weight: 600;
-  font-size: 2.4vh;
+  font-weight: 500;
+  font-size: 2.3vh;
   line-height: auto;
   align-items: center;
   text-align: center;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   color: rgba(0, 0, 0, 0.7);
+
+  @media (max-height: 440px){
+    font-size: 2.4vw;
+  }
 }
 
 .tutorial-info, div.tutorial-info em {
     color: rgba(0, 0, 0, 0.7);
-    letter-spacing: 0.02em;
-    line-height: 27px;
+    letter-spacing: 0.04em;
     font-size: 2.3vh;
     font-style: normal;
     font-weight: 300;
+
+    @media (max-height: 440px){
+      font-size: 2.3vw;
+    }
 }
 
-
-.small {
-  font-size: 2vh;
-  line-height: 23px;
+.small p{
+  margin: 0;
+  font-size: 2.2vh;
+  line-height: 20px;
+  letter-spacing: 0.035em;
   color: rgba(0, 0, 0, 0.7);
 }
 
@@ -92,7 +162,7 @@
 }
 
 .prize{
-  font-size: 5vh;
+  font-size: 5vw;
   color: #78AB41;
   font-weight: bold;
   font-style: normal;
@@ -100,10 +170,76 @@
   line-height: auto;
 }
 
+.termslink{
+  font-size: 1.8vh;
+    p{
+      margin: 0;
+      margin-top: 1vh;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    a{
+      font-size: 1.8vh;
+    }
+}
+
 .action-call{
   color: rgba(21, 56, 79, 0.7);
   font-weight: 600;
-  font-size: 2.5vh;
-  letter-spacing: 0.02em;
+  font-size: 2.4vh;
+  letter-spacing: 0.04em;
   line-height: auto;
+  margin: 0 3% 0 3%;
+
+  @media screen and (orientation:landscape) {
+    font-size: 2.3vw;
+  }
+}
+
+@media screen and (min-width: 700px) and (min-height: 635px){
+
+  .tutorial-grid{
+    justify-content: space-evenly;
+  }
+  
+  .termslink p{
+    font-size: 1.25em;
+    font-style: normal;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .termslink a{
+    font-size: 1.25em;
+  }
+
+  .x{
+    padding-left: 3%;
+    padding-right: 3%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .tutorial-info p{
+    font-size: 1.55em;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .action-call{
+    font-size: 2.3vh;
+    margin: 0;
+  }
+  
+  .tutorial-button{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    min-width: 5vh;
+    min-height: 8vh;
+  }
+
+}
+
+@media screen and (min-width: 900px){
+  .x{
+    padding-left: 25%;
+    padding-right: 25%;
+  }
 }

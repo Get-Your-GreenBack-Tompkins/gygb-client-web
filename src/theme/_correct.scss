@@ -1,26 +1,70 @@
 @media only screen and (min-width: 700px) {
   ion-button.correct-button {
-    font-size: 2.1em;
+    font-size: 1.8em;
   }
 
-  p {
-    font-size: 1.5em;
+  ion-button.skip{
+    font-size: 1.8em;
   }
+}
+
+@media (min-width: 639px) {
+  .correctP {
+    font-size: 3vh;
+    padding: 0 5% 0 5%;
+  }
+}
+
+.grid-lines {
+  @media (min-width: 576px) {
+    display: none;
+  }
+}
+
+.line-grid {
+  @media (max-width: 576px) {
+    padding: 2vh 7.5vw;
+    margin-top: -6%;
+  }
+
+  @media (min-width: 576px) {
+    margin-top: 25vh;
+    margin-bottom: 25vh;
+  }
+}
+
+.ic-title {
+  font-size: 7vw;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.correctLines {
+  display: flex;
+  justify-content: center;
 }
 
 .skip {
   width: fit-content;
-  font-size: 1.15em;
+  font-size: 2.65vh;
   letter-spacing: 2px;
   --background: #{$gygb-red};
-  --background: #{$gygb-light-red};
   --background-hover: #{$gygb-light-red};
   --background-activated: #{$gygb-light-red};
   text-transform: uppercase !important;
+  align-items: center;
+  font-weight: bold;
+  transition-duration: 0.4s;
+  margin-right:3%;
 }
 
-.incorrect-button-container {
-  margin-top: 10px;
+.q-response{
+  font-size: 2.3vh;
+  justify-content: center;
+  align-self:center;
+  text-align: center;
 }
 
 .wrong {
@@ -33,8 +77,9 @@
 
 .correct-button {
   --background: #{$gygb-green};
-  --background-hover: #a2e94c;
-  font-size: 1.1em;
+  --background-hover: #A2ED47;
+  width: fit-content;
+  font-size: 2.65vh;
   letter-spacing: 2px;
   text-transform: uppercase !important;
   font-weight: bold;
@@ -42,28 +87,8 @@
 }
 
 .correct {
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
   width: 100%;
 }
 
-.correctLines {
-  display: flex;
-  justify-content: center;
-}
-
-.center-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.icon {
-  min-width: 100%;
-  min-height: 100%;
-  position: fixed;
-  top: 50;
-  left: 50;
-}

@@ -18,11 +18,11 @@ const Quiz: React.FC<Props> = ({ quiz, history, setStarted }) => {
       <IonImg className="home-lines home-lines-top" src={Top}></IonImg>
       <IonImg className="home-lines home-lines-bottom" src={Bottom}></IonImg>
 
-      <IonGrid className="welcome-content center-grid">
+      <IonGrid className="center-grid">
         <IonRow>
           <IonCol size="12">
             <IonImg className="logo" src={Logo} alt="Powerhouse"></IonImg>
-            <h1 className="subtitle">{quiz && quiz.name}</h1>
+            <h1 className="quiz subtitle">{quiz && quiz.name}</h1>
             <IonButton
               size="large"
               className="start-button"
