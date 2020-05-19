@@ -21,8 +21,8 @@ const subtitle = (raffle: boolean) => {
 const End: React.FC<Props> = ({ raffle, history, setStarted }) => {
   return (
     <IonPage>
-    <IonContent fullscreen class="ion-padding">
-      <IonGrid className="center-grid">
+      <IonContent fullscreen class="ion-padding">
+        <IonGrid className="center-grid">
           <IonRow>
             <IonCol size="12">
               <h1 className="end-title">Success!</h1>
@@ -44,9 +44,9 @@ const End: React.FC<Props> = ({ raffle, history, setStarted }) => {
           <IonRow>
             <IonCol size="12">
               <IonButton
-              size = "large"
-              color = "medium"
-              className="end-button"
+                size="large"
+                color="medium"
+                className="end-button"
                 onClick={() => {
                   setStarted(false);
                   history.replace("/quiz");
@@ -56,17 +56,16 @@ const End: React.FC<Props> = ({ raffle, history, setStarted }) => {
               </IonButton>
             </IonCol>
           </IonRow>
-          <IonRow className="ion-justify-content-center ion-align-items-center">
+          <IonRow>
             <IonCol>
-              <IonButton size="large" className="blue-button end-button" href="https://tinypowerhouse.org">
+              <IonButton size="large" className="end-button" href="https://tinypowerhouse.org">
                 Return Home
               </IonButton>
             </IonCol>
-            </IonRow>
-            
-      </IonGrid>
-    </IonContent>
-  </IonPage>
+          </IonRow>
+        </IonGrid>
+      </IonContent>
+    </IonPage>
   );
 };
 

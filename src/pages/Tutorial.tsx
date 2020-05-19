@@ -75,7 +75,7 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
       <IonContent fullscreen>
         <IonImg className="tutorial-lines" src={TutorialLines}></IonImg>
         <IonGrid className="tutorial-grid">
-          <IonRow className="ion-align-items-start tutorial-row">
+          <IonRow className="tutorial-row">
             <IonCol className="tutorial-title" size-sm>
               <p>{header}</p>
             </IonCol>
@@ -100,6 +100,8 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
               <p>By pressing start you agree to our</p>
               <a href="https://www.tinypowerhouse.org/"> terms and agreements</a>
             </IonCol>
+          </IonRow>
+          <IonRow>
             <IonCol>
               <IonButton
                 size="large"
