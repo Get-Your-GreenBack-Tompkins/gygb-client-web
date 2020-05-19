@@ -28,6 +28,7 @@ const generateContinueButton = (
   if (questionNum === total) {
     return (
       <IonButton
+        size="large"
         className="correct-button"
         onClick={() => {
           setAnswerID(questionNum, answer);

@@ -101,7 +101,6 @@ const Incorrect: React.FC<Props> = ({
                 history
               )}
             </IonCol>
-            
           </IonRow>
         </IonGrid>
       </IonContent>
