@@ -6,7 +6,6 @@ import api from "../api";
 import Confetti from "../assets/confetti.svg";
 import HatsOff from "../assets/hatsoff.svg";
 import House from "../assets/house.svg";
-import BGradient from "../assets/blueGradient.svg";
 
 interface Props extends RouteComponentProps {
   answerIDs: { [key: string]: number };
