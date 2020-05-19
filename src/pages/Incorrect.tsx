@@ -85,6 +85,7 @@ const Incorrect: React.FC<Props> = ({
                 size="large"
                 className="skip"
                 onClick={() => {
+                  setAnswerID(questionNum, answer);
                   setAnswer(null);
                   history.replace("/quiz/question");
                 }}
