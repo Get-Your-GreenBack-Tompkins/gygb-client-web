@@ -88,7 +88,7 @@ const Question: React.FC<Props> = ({ question, answer, setAnswer, metrics, histo
           </IonRow>
           <IonRow className="question-title-row ion-justify-content-start">
             <IonCol>
-              <h3 className="title question-title">{createTitle()}</h3>
+              <h3 className="question-title">{createTitle()}</h3>
             </IonCol>
             <IonCol size="auto">
               <IonButton size="small" className="score">
