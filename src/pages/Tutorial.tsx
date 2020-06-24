@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { IonPage, IonButton, IonContent, IonImg, IonRow, IonGrid, IonCol } from "@ionic/react";
+import { AxiosError } from "axios";
+import { IonPage, IonButton, IonContent, IonImg, IonRow, IonGrid, IonCol, IonSpinner } from "@ionic/react";
 import { RouteComponentProps } from "react-router";
 
 import api from "../api";
@@ -11,34 +12,63 @@ interface Props extends RouteComponentProps {
 }
 
 const Quiz: React.FC<Props> = ({ quiz, history }) => {
-  const sendGetTutorialRequest = useCallback(() => {
-    return api.get(`/quiz/${quiz.id}/tutorial`);
-  }, [quiz]);
-
-  const sendGetRaffleRequest = useCallback(() => {
-    return api.get(`/quiz/${quiz.id}/raffle`);
+  const sendQuizRequests = useCallback(() => {
+    return {
+      tutorial: api.get(`/quiz/${quiz.id}/tutorial`),
+      raffle: api.get(`/quiz/${quiz.id}/raffle`)
+    };
   }, [quiz]);
 
   const [header, setHeader] = useState("");
   const [body, setBody] = useState("");
+  const [tos, setToS] = useState<string | null>(null);
   const [totalQuestions, setTotalQuestions] = useState<number | null>(null);
   const [questionRequirement, setQuestionRequirement] = useState<number | null>(null);
   const [prize, setPrize] = useState<string | null>(null);
 
   useEffect(() => {
-    sendGetTutorialRequest().then(res => {
-      setHeader(res.data.header);
-      setBody(res.data.body);
-      setTotalQuestions(res.data.totalQuestions);
-    });
-  }, [sendGetTutorialRequest]);
+    const { tutorial, raffle } = sendQuizRequests();
+
+    function isFulfilled<T>(result: PromiseSettledResult<T>): result is PromiseFulfilledResult<T> {
+      return result.status === "fulfilled";
+    }
+
+    function handleRaffleError(error: any) {
+      const axiosError = error as AxiosError;
+
+      if (axiosError.isAxiosError && error.code === "404") {
+        console.debug("No raffle found!");
+      } else {
+        console.error(error);
+      }
+    }
+
+    Promise.allSettled([tutorial, raffle])
+      .then(([tutorialRequest, raffleRequest]) => {
+        if (isFulfilled(tutorialRequest)) {
+          const { value } = tutorialRequest;
+
+          setHeader(value.data.header);
+          setBody(value.data.body);
+          setTotalQuestions(value.data.totalQuestions);
+        }
+
+        if (isFulfilled(raffleRequest)) {
+          const { value } = raffleRequest;
+          setPrize(value.data.prize);
+          setQuestionRequirement(value.data.questionRequirement);
+        } else {
+          handleRaffleError(raffleRequest.reason)
+        }
+      })
+      .catch(err => void handleRaffleError(err));
+  }, [sendQuizRequests]);
 
   useEffect(() => {
-    sendGetRaffleRequest().then(res => {
-      setPrize(res.data.prize);
-      setQuestionRequirement(res.data.questionRequirement);
+    api.get(`/tos/quiz`).then(res => {
+      setToS(res.data.link);
     });
-  }, [sendGetRaffleRequest]);
+  }, []);
 
   const generateRaffleContent = (
     questionRequirement: number | null,
@@ -70,6 +100,22 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
     }
   };
 
+  if (header == null || body == null || tos == null) {
+    return (
+      <IonPage>
+        <IonContent fullscreen>
+          <IonGrid className="h-100">
+            <IonRow className="h-100 ion-align-items-center ">
+              <IonCol>
+                <IonSpinner />
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </IonContent>
+      </IonPage>
+    );
+  }
+
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -97,8 +143,9 @@ const Quiz: React.FC<Props> = ({ quiz, history }) => {
 
           <IonRow>
             <IonCol size="12" className="termslink" size-sm>
-              <p>By pressing start you agree to our</p>
-              <a href="https://www.tinypowerhouse.org/"> terms and agreements</a>
+              <p>
+                By pressing start you agree to our <a href={tos}>privacy policy and terms of service</a>.
+              </p>
             </IonCol>
           </IonRow>
           <IonRow>

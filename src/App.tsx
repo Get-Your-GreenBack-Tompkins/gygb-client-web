@@ -46,11 +46,11 @@ const sendGetQuizRequest = async () => {
 export const App: React.FC = () => {
   const [started, setStarted] = useState(false);
   const [questionNum, setQuestionNum] = useState(1);
-  const [question, setQuestion] = useState();
-  const [quiz, setQuiz] = React.useState();
-  const [answer, setAnswer] = React.useState(0 as number | null);
-  const [answerIDs, setAnswerIDs] = React.useState({} as { [key: string]: any });
-  const [raffle, setRaffle] = React.useState(false);
+  const [question, setQuestion] = useState<any>(null);
+  const [quiz, setQuiz] = useState<any>(null);
+  const [answer, setAnswer] = useState(0 as number | null);
+  const [answerIDs, setAnswerIDs] = useState({} as { [key: string]: any });
+  const [raffle, setRaffle] = useState(false);
 
   const setAnswerID = useCallback(
     (questionNum: number, answerId: number) => {
