@@ -222,9 +222,6 @@ const displayEnterEmail = (
           <IonCol>{generateInput(raffle, setFirstName, setLastName, setEmail)}</IonCol>
         </IonRow>
 
-        {/* <IonCol>{newsletter(raffle, checked, setChecked)}</IonCol> */}
-
-
         <IonRow className = "su-buttons-holder tutorial-row">
             {generateButton(raffle)}
             <IonCol size="12" className="correct">
@@ -252,7 +249,7 @@ const displayEnterEmail = (
           <IonCol className="message" size="10">
             <p> We never spam. We’re here to serve you!</p>
             <p>
-              Our only purpose is to provide you with key information hat can help you save money and live more
+              Our only purpose is to provide you with key information that can help you save money and live more
               environmentally.
             </p>
           </IonCol>
