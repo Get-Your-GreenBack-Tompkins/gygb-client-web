@@ -274,9 +274,9 @@ const displayEnterEmail = (
 };
 
 const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [email, setEmail] = useState();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [checked, setChecked] = useState(false);
 
