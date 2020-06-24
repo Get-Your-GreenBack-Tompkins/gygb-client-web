@@ -249,8 +249,7 @@ const displayEnterEmail = (
           <IonCol className="message" size="10">
             <p> We never spam. We’re here to serve you!</p>
             <p>
-              Our only purpose is to provide you with key information that can help you save money and live more
-              environmentally.
+              Our only goal is to provide you with key information that can help you save money and the environment!
             </p>
           </IonCol>
           </IonRow>
