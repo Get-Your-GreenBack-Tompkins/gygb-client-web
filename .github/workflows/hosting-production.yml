@@ -1,9 +1,8 @@
 name: CI
 
 on:
- push:
-    branches:
-      - production
+  release:
+      types: [published]
 
 jobs:
   build:
