@@ -57,13 +57,13 @@ export const App: React.FC = () => {
       if (quiz.questions[questionNum - 1]) {
         const questionId = quiz.questions[questionNum - 1].id;
 
-        if (!(questionId in answerIDs)) {
-          answerIDs[questionId] = answerId;
+        // TODO: Allow answer overwriting to be configurable...
+        //       ... for now just disable the guard.
+        // if (!(questionId in answerIDs)) {
+        answerIDs[questionId] = answerId;
 
-          console.log(answerIDs);
-
-          setAnswerIDs({ ...answerIDs });
-        }
+        setAnswerIDs({ ...answerIDs });
+        // }
       }
     },
     [answerIDs, quiz]
