@@ -69,6 +69,10 @@ export const App: React.FC = () => {
     [answerIDs, quiz]
   );
 
+  const reset = useCallback(() => {
+    setAnswerIDs({});
+  }, []);
+
   useEffect(() => {
     if (!started) {
       sendGetQuizRequest()
@@ -102,7 +106,7 @@ export const App: React.FC = () => {
           <Route
             exact
             path="/quiz"
-            render={props => <Quiz {...props} started={started} setStarted={setStarted} quiz={quiz} />}
+            render={props => <Quiz {...props} started={started} reset={reset} setStarted={setStarted} quiz={quiz} />}
           />
           <Route
             exact

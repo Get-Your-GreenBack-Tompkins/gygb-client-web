@@ -8,11 +8,12 @@ import Top from "../assets/toplines.svg";
 
 interface Props extends RouteComponentProps {
   quiz: any;
+  reset: () => void;
   started: boolean;
   setStarted: (started: boolean) => void;
 }
 
-const Quiz: React.FC<Props> = ({ quiz, history, setStarted }) => {
+const Quiz: React.FC<Props> = ({ quiz, history, reset, setStarted }) => {
   return (
     <IonPage>
       <IonImg className="home-lines home-lines-top" src={Top}></IonImg>
@@ -27,6 +28,7 @@ const Quiz: React.FC<Props> = ({ quiz, history, setStarted }) => {
               size="large"
               className="start-button"
               onClick={() => {
+                reset();
                 setStarted(true);
                 history.push("/quiz/tutorial");
               }}
