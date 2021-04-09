@@ -27,7 +27,7 @@ body {
 }
 
 .center-grid {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -40,10 +40,6 @@ body {
   }
 }
 
-.item-native {
-  width: 50%;
-}
-
 .sign-up {
   display: flex;
   flex-grow: 1;
@@ -52,4 +48,3 @@ body {
   justify-content: space-around;
   height: 28vh;
 }
-

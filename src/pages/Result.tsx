@@ -23,7 +23,7 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle, history }) => {
 
   const getNumCorrect = useCallback(() => {
     return api.post(`/quiz/web-client/verify/`, {
-      answers: {...answerIDs}
+      answers: { ...answerIDs }
     });
   }, [answerIDs]);
 
@@ -120,29 +120,29 @@ const Result: React.FC<Props> = ({ answerIDs, quiz, setRaffle, history }) => {
       <IonContent fullscreen class="ion-padding">
         <IonGrid className="center-grid">
           <IonRow>
-              <IonCol size="12">
-                  {imageReturn()}
-              </IonCol>
-            </IonRow>
+            <IonCol size="12">
+              {imageReturn()}
+            </IonCol>
+          </IonRow>
 
-            <IonRow>
-              <IonCol size="12">
-                <h1 className="result-title">{title()}</h1>
-              </IonCol>
-            </IonRow>
+          <IonRow>
+            <IonCol size="12">
+              <h1 className="result-title">{title()}</h1>
+            </IonCol>
+          </IonRow>
 
-            <IonRow>
-              <IonCol size="12" className = "correct">
-                <h3 className="result-subtitle">{subtitle()}</h3>
-                {generateButton()}
-              </IonCol>
-            </IonRow>
+          <IonRow>
+            <IonCol size="12" className="correct">
+              <h3 className="result-subtitle">{subtitle()}</h3>
+              {generateButton()}
+            </IonCol>
+          </IonRow>
 
-            <IonRow>
-              <IonCol size="12" className="correct">
-                <IonButton color = "medium" className="result-button" href="https://tinypowerhouse.org">
-                  Return Home
-                </IonButton>
+          <IonRow>
+            <IonCol size="12" className="correct">
+              <IonButton color="medium" className="result-button" href="https://tinypowerhouse.org">
+                Return Home
+              </IonButton>
             </IonCol>
           </IonRow>
 

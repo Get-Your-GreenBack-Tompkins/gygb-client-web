@@ -9,6 +9,7 @@ import {
   IonLabel,
   IonCheckbox,
   IonCol,
+  IonList,
   IonRow,
   IonGrid
 } from "@ionic/react";
@@ -23,19 +24,21 @@ interface Props extends RouteComponentProps {
 
 const title = (raffle: boolean) => {
   if (raffle) {
-    return( 
-    
-    <IonCol size="12" className="yellow-banner">
-      <h1 className="title su">Enter to win</h1>
-    </IonCol>
-    
-    )} else {
-    return( 
-    <IonCol size="12" className="yellow-banner sp">
-    <h1 className="title su">Sign Up</h1>
-    </IonCol>
+    return (
 
-    )}
+      <IonCol size="12" className="yellow-banner">
+        <h1 className="title su">Enter to win</h1>
+      </IonCol>
+
+    )
+  } else {
+    return (
+      <IonCol size="12" className="yellow-banner sp">
+        <h1 className="title su">Sign Up</h1>
+      </IonCol>
+
+    )
+  }
 };
 
 const postAll = (
@@ -93,13 +96,13 @@ const newsletter = (raffle: boolean, checked: boolean, setChecked: Function) => 
   if (raffle) {
     return (
       <IonRow>
-      <IonCol size ='12'>
-        <IonItem className='inputs checkbox sign-up-newsletter' lines="none">
-          <IonLabel>Sign Up for Newsletter</IonLabel>
-          <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
-        </IonItem>
-      </IonCol>
-    </IonRow>
+        <IonCol size='12'>
+          <IonItem className="checkbox sign-up-newsletter" lines="none">
+            <IonLabel>Sign Up for Our Newsletter</IonLabel>
+            <IonCheckbox checked={checked} slot="start" onIonChange={e => setChecked(e.detail.checked)} />
+          </IonItem>
+        </IonCol>
+      </IonRow>
     );
   }
 };
@@ -112,57 +115,58 @@ const generateInput = (
 ) => {
   if (raffle) {
     return (
-      <IonRow className= "tutorial-row">
-         <IonCol>
-      <div className = "inputs">
-        <IonItem className = "input-style">
-          <IonInput
-            required
-            placeholder="First Name"
-            type="text"
-            onIonChange={event => {
-              setFirstName(event.detail.value);
-            }}
-          ></IonInput>
-        </IonItem>
-        <IonItem className = "input-style">
-          <IonInput
-            required
-            placeholder="Last Name"
-            type="text"
-            onIonChange={event => {
-              setLastName(event.detail.value);
-            }}
-          ></IonInput>
-        </IonItem>
-        <IonItem className = "input-style">
+      <IonRow className="tutorial-row">
+        <IonCol>
+          <IonList>
+            <IonItem className="input-style">
+              <IonLabel>First Name</IonLabel>
+              <IonInput
+                required
+                type="text"
+                onIonChange={event => {
+                  setFirstName(event.detail.value);
+                }}
+              ></IonInput>
+            </IonItem>
+            <IonItem className="input-style">
+              <IonLabel>Last Name</IonLabel>
+              <IonInput
+                required
+                type="text"
+                onIonChange={event => {
+                  setLastName(event.detail.value);
+                }}
+              ></IonInput>
+            </IonItem>
+            <IonItem className="input-style">
+              <IonLabel>Email Address</IonLabel>
+              <IonInput
+                required
+                placeholder="email@domain.com"
+                type="email"
+                onIonChange={event => {
+                  setEmail(event.detail.value);
+                }}
+              ></IonInput>
+            </IonItem>
+          </IonList>
+        </IonCol>
+      </IonRow>
+    );
+  } else {
+    return (
+      <div className="siu inputs">
+        <IonItem className="input-style">
           <IonInput
             required
             placeholder="email@domain.com"
             type="email"
+            className="only-email"
             onIonChange={event => {
               setEmail(event.detail.value);
             }}
           ></IonInput>
         </IonItem>
-      </div>
-      </IonCol>
-      </IonRow>
-    );
-  } else {
-    return (
-      <div className = "siu inputs">
-      <IonItem className = "input-style">
-        <IonInput
-          required
-          placeholder="email@domain.com"
-          type="email"
-          className="only-email"
-          onIonChange={event => {
-            setEmail(event.detail.value);
-          }}
-        ></IonInput>
-      </IonItem>
       </div>
     );
   }
@@ -172,17 +176,17 @@ const generateButton = (raffle: boolean) => {
   if (raffle) {
     return (
       <IonCol size='12' no-padding>
-      <IonButton size="large" type="submit" className="sign-up-button">
-        Enter Raffle
-      </IonButton>
+        <IonButton size="large" type="submit" className="sign-up-button">
+          Enter Raffle
+        </IonButton>
       </IonCol>
     );
   } else {
     return (
       <IonCol size="12">
-      <IonButton size="large" type="submit" className="sign-up-button">
-        Sign Up
-      </IonButton>
+        <IonButton size="large" type="submit" className="sign-up-button">
+          Sign Up
+        </IonButton>
       </IonCol>
     );
   }
@@ -218,53 +222,53 @@ const displayEnterEmail = (
           </p>
         </IonCol>
 
-        <IonRow className= "tutorial-row">
+        <IonRow className="tutorial-row">
           <IonCol>{generateInput(raffle, setFirstName, setLastName, setEmail)}</IonCol>
         </IonRow>
 
-        <IonRow className = "su-buttons-holder tutorial-row">
-            {generateButton(raffle)}
-            <IonCol size="12" className="correct">
-              <IonButton color = "medium" className="return-button" href="https://tinypowerhouse.org">
-                Return Home
-              </IonButton>
-            </IonCol>
-          </IonRow>
+        <IonRow className="su-buttons-holder tutorial-row">
+          {generateButton(raffle)}
+          <IonCol size="12" className="correct">
+            <IonButton color="medium" className="return-button" href="https://tinypowerhouse.org">
+              Return Home
+            </IonButton>
+          </IonCol>
+        </IonRow>
 
       </form>
     );
   } else {
     return (
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            postAll(answerIDs, quiz, firstName, lastName, email, history, setShowAlert, checked);
-          }}
-        >
-          {generateInput(raffle, setFirstName, setLastName, setEmail)}
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          postAll(answerIDs, quiz, firstName, lastName, email, history, setShowAlert, checked);
+        }}
+      >
+        {generateInput(raffle, setFirstName, setLastName, setEmail)}
 
-          {newsletter(raffle, checked, setChecked)}
+        {newsletter(raffle, checked, setChecked)}
 
-          <IonRow className = "tutorial-row">
+        <IonRow className="tutorial-row">
           <IonCol className="message" size="10">
             <p> We never spam. We’re here to serve you!</p>
             <p>
               Our only goal is to provide you with key information that can help you save money and the environment!
             </p>
           </IonCol>
-          </IonRow>
+        </IonRow>
 
-          
-          <IonRow className = "su-buttons-holder tutorial-row">
-            {generateButton(raffle)}
-            <IonCol size="12" className="correct">
-              <IonButton color = "medium" className="return-button" href="https://tinypowerhouse.org">
-                Return Home
-              </IonButton>
-            </IonCol>
-          </IonRow>
 
-        </form>
+        <IonRow className="su-buttons-holder tutorial-row">
+          {generateButton(raffle)}
+          <IonCol size="12" className="correct">
+            <IonButton color="medium" className="return-button" href="https://tinypowerhouse.org">
+              Return Home
+            </IonButton>
+          </IonCol>
+        </IonRow>
+
+      </form>
     );
   }
 };
@@ -279,26 +283,26 @@ const SignUp: React.FC<Props> = ({ history, raffle, answerIDs, quiz }) => {
   return (
     <IonPage>
       <IonContent fullscreen>
-          <IonGrid className="signup-grid">
+        <IonGrid className="signup-grid">
           <IonRow className="yb-holder tutorial-row">
             {title(raffle)}
           </IonRow>
 
-              {displayEnterEmail(
-                answerIDs,
-                quiz,
-                email,
-                setEmail,
-                firstName,
-                setFirstName,
-                lastName,
-                setLastName,
-                history,
-                setShowAlert,
-                checked,
-                setChecked,
-                raffle
-              )}
+          {displayEnterEmail(
+            answerIDs,
+            quiz,
+            email,
+            setEmail,
+            firstName,
+            setFirstName,
+            lastName,
+            setLastName,
+            history,
+            setShowAlert,
+            checked,
+            setChecked,
+            raffle
+          )}
 
           <IonAlert
             isOpen={showAlert}

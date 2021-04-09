@@ -4,21 +4,21 @@
 
 @media only screen and (min-width: 750px) {
   .title {
-      font-size: 3vw;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin: 0;
+    font-size: 3vw;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
   }
 }
 
-@media only screen and (max-width: 460px){
+@media only screen and (max-width: 460px) {
   .title {
-      font-size: 7vh;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin: 0;
+    font-size: 7vh;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
   }
 }
 
@@ -37,12 +37,11 @@
 .answer-button {
   height: 100%;
   padding: 6px;
-  @media (min-height:600px) and (max-width: 420px){
+  @media (min-height: 600px) and (max-width: 420px) {
     margin-bottom: 6px;
     padding: 2px;
   }
 }
-
 
 .answer-container {
   margin: 0.5rem;
@@ -58,12 +57,12 @@
 .score {
   float: right;
   --background: #ffe552;
-  --backgroun-hover:#ffe552;
+  --backgroun-hover: #ffe552;
   --color: black;
   --disabled: true;
 }
 
-.question-title-row{
+.question-title-row {
   width: 100%;
 }
 

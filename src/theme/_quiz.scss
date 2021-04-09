@@ -13,7 +13,6 @@
   position: absolute;
 }
 
-
 .title {
   font-size: 7vh;
   font-weight: bold;
@@ -58,35 +57,34 @@
 
   --border-color: #{$gygb-green};
   --border-radius: 10px;
-  --border-style: solid; 
+  --border-style: solid;
 
   text-transform: uppercase !important;
   letter-spacing: 2px;
   font-size: 3;
   font-weight: bold;
-  
+
   z-index: 100;
-  bottom:0;
+  bottom: 0;
   align-self: center;
   margin-top: 10%;
 
   flex-direction: column;
   justify-content: space-evenly;
 
-
-  @media(min-height:600px) and (max-width: 500px){
+  @media (min-height: 600px) and (max-width: 500px) {
     margin-top: 20%;
     min-height: 8vh;
     min-width: 6vw;
     margin-bottom: -55%;
   }
 
-  @media(max-height: 600px){
+  @media (max-height: 600px) {
     margin-top: 15%;
   }
 }
 
-.logo{
+.logo {
   z-index: 100;
   top: 53%;
   align-self: center;
@@ -97,7 +95,7 @@
   flex-direction: column;
   justify-content: space-evenly;
 
-  @media (min-height: 600px) and (max-width: 500px){
+  @media (min-height: 600px) and (max-width: 500px) {
     min-width: 92vw;
   }
 }
@@ -114,12 +112,12 @@
   font-weight: normal;
 }
 
-.quiz{
+.quiz {
   font-weight: 540;
 }
 
-@media(min-width: 460px){
-  .subtitle{
+@media (min-width: 460px) {
+  .subtitle {
     font-size: 4vw;
   }
 }

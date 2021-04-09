@@ -16,14 +16,15 @@
   height: 100%;
   padding: 5%;
 
-@media screen and (orientation:landscape) and (max-height:430px) {
+  @media screen and (orientation: landscape) and (max-height: 430px) {
     padding: 15%;
 
-    .tutorial-grid{
+    .tutorial-grid {
       justify-content: space-evenly;
     }
 
-    .tutorial-info, div.tutorial-info em {
+    .tutorial-info,
+    div.tutorial-info em {
       letter-spacing: 0.03em;
       line-height: 2.3vw;
       font-size: 1.5vw;
@@ -31,7 +32,7 @@
       // margin: 0 10% 3% 10%;
     }
 
-    .action-call{
+    .action-call {
       font-size: 1.5vw;
       // margin-bottom: 3%;
     }
@@ -41,30 +42,28 @@
       line-height: 23px;
       letter-spacing: 0.03em;
       // margin-bottom: 3%;
-     }
+    }
 
-     .termslink p{
-       font-size: 1.5vw;
-       letter-spacing: 0.03em;
-     }
-
-     .termslink a{
+    .termslink p {
       font-size: 1.5vw;
       letter-spacing: 0.03em;
-     }
-
-     .tutorial-button{
-       margin-top: 3%;
-       margin-bottom: 5%;
-       min-width: 5vh;
-       min-height: 12vh;
-     }
-
     }
-  
+
+    .termslink a {
+      font-size: 1.5vw;
+      letter-spacing: 0.03em;
+    }
+
+    .tutorial-button {
+      margin-top: 3%;
+      margin-bottom: 5%;
+      min-width: 5vh;
+      min-height: 12vh;
+    }
+  }
 }
 
-.tutorial-row{
+.tutorial-row {
   min-height: fit-content;
   justify-content: space-evenly;
 }
@@ -76,7 +75,7 @@
   --background-hover: white;
 
   --color: white;
-  --color-activated:#{$gygb-green};
+  --color-activated: #{$gygb-green};
   --color-focused: #{$gygb-green};
   --color-hover: #{$gygb-green};
 
@@ -91,29 +90,28 @@
   letter-spacing: 2px;
   font-size: 1.15em;
   font-weight: bold;
-  
+
   z-index: 100;
-  margin-bottom:18%;
+  margin-bottom: 18%;
   align-self: center;
 
   flex-direction: column;
   justify-content: space-evenly;
 
-  @media(min-height:600px) and (max-width: 500px){
+  @media (min-height: 600px) and (max-width: 500px) {
     min-height: 8vh;
     min-width: 6vw;
   }
 
-  @media(max-height: 600px){
+  @media (max-height: 600px) {
     margin-top: 2%;
   }
 }
 
-.tutorial-button:hover{
+.tutorial-button:hover {
   --border-color: #{$gygb-green};
 }
 
-  
 .tutorial-title {
   font-style: normal;
   font-weight: 500;
@@ -124,24 +122,25 @@
   letter-spacing: 0.04em;
   color: rgba(0, 0, 0, 0.7);
 
-  @media (max-height: 440px){
+  @media (max-height: 440px) {
     font-size: 2.4vw;
   }
 }
 
-.tutorial-info, div.tutorial-info em {
-    color: rgba(0, 0, 0, 0.7);
-    letter-spacing: 0.04em;
-    font-size: 2.3vh;
-    font-style: normal;
-    font-weight: 300;
+.tutorial-info,
+div.tutorial-info em {
+  color: rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.04em;
+  font-size: 2.3vh;
+  font-style: normal;
+  font-weight: 300;
 
-    @media (max-height: 440px){
-      font-size: 2.3vw;
-    }
+  @media (max-height: 440px) {
+    font-size: 2.3vw;
+  }
 }
 
-.small p{
+.small p {
   margin: 0;
   font-size: 2.2vh;
   line-height: 20px;
@@ -157,33 +156,33 @@
 .prize {
   @media (min-width: 420px) {
     font-size: 6vh;
-    color: #78AB41;
+    color: #78ab41;
   }
 }
 
-.prize{
+.prize {
   font-size: 5vw;
-  color: #78AB41;
+  color: #78ab41;
   font-weight: bold;
   font-style: normal;
   font-size: 5.5vh;
   line-height: auto;
 }
 
-.termslink{
+.termslink {
   font-size: 1.8vh;
-    p{
-      margin: 0;
-      margin-top: 1vh;
-      color: rgba(0, 0, 0, 0.7);
-    }
+  p {
+    margin: 0;
+    margin-top: 1vh;
+    color: rgba(0, 0, 0, 0.7);
+  }
 
-    a{
-      font-size: 1.8vh;
-    }
+  a {
+    font-size: 1.8vh;
+  }
 }
 
-.action-call{
+.action-call {
   color: rgba(21, 56, 79, 0.7);
   font-weight: 600;
   font-size: 2.4vh;
@@ -191,54 +190,52 @@
   line-height: auto;
   margin: 0 3% 0 3%;
 
-  @media screen and (orientation:landscape) {
+  @media screen and (orientation: landscape) {
     font-size: 2.3vw;
   }
 }
 
-@media screen and (min-width: 700px) and (min-height: 635px){
-
-  .tutorial-grid{
+@media screen and (min-width: 700px) and (min-height: 635px) {
+  .tutorial-grid {
     justify-content: space-evenly;
   }
-  
-  .termslink p{
+
+  .termslink p {
     font-size: 1.25em;
     font-style: normal;
     color: rgba(0, 0, 0, 0.7);
   }
-  .termslink a{
+  .termslink a {
     font-size: 1.25em;
   }
 
-  .x{
+  .x {
     padding-left: 3%;
     padding-right: 3%;
     justify-content: center;
     text-align: center;
   }
 
-  .tutorial-info p{
+  .tutorial-info p {
     font-size: 1.55em;
     color: rgba(0, 0, 0, 0.7);
   }
 
-  .action-call{
+  .action-call {
     font-size: 2.3vh;
     margin: 0;
   }
-  
-  .tutorial-button{
+
+  .tutorial-button {
     margin-top: 3%;
     margin-bottom: 3%;
     min-width: 5vh;
     min-height: 8vh;
   }
-
 }
 
-@media screen and (min-width: 900px){
-  .x{
+@media screen and (min-width: 900px) {
+  .x {
     padding-left: 25%;
     padding-right: 25%;
   }

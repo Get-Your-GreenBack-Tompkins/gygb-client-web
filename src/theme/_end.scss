@@ -22,7 +22,6 @@
   font-weight: normal;
 }
 
-
 .end-sub {
   line-height: 24px;
   display: flex;
@@ -37,7 +36,7 @@
   font-weight: normal;
 }
 
-.end-button{
+.end-button {
   --background: #228ad3;
   --background-hover: #95d0fa;
   --border-radius: 10px;
@@ -48,8 +47,7 @@
   letter-spacing: 2px;
   text-transform: uppercase !important;
 
-
-  @media(max-height:840px) and (max-width: 450px){
+  @media (max-height: 840px) and (max-width: 450px) {
     min-height: 8vh;
     min-width: 80%;
     margin-bottom: 4%;
@@ -60,12 +58,12 @@
   ion-button.end-button {
     font-size: 3.2vh;
   }
-  .end-sub{
+  .end-sub {
     font-size: 3vh;
     margin-bottom: 4vh;
   }
 
-  .end-button{
+  .end-button {
     margin-top: 3vh;
   }
 }
